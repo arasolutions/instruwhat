@@ -1,5 +1,5 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "com.arasolutions.instruwhat",
   "appName": "instruwhat",
   "bundledWebRuntime": false,
   "npmClient": "npm",
