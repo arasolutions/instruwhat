@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Media, MediaObject } from '@ionic-native/media/ngx';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-folder',
@@ -10,7 +11,7 @@ import { Media, MediaObject } from '@ionic-native/media/ngx';
 export class FolderPage implements OnInit {
   public folder: string;
 
-  constructor(private activatedRoute: ActivatedRoute, public media: Media) {
+  constructor(private activatedRoute: ActivatedRoute, public media: Media, public platform: Platform) {
     alert("constructor");
   }
 
@@ -24,12 +25,15 @@ export class FolderPage implements OnInit {
   }
 
   load(uri: string) {
-    this.file = this.media.create(uri);
-    alert(3);
+    if (this.platform.is('android')) {
+      this.file = this.media.create('/android_asset/public/' + uri);
+    }
+    if (this.platform.is('ios')) {
+      this.file = this.media.create('/android_asset/public/' + uri);
+    }
     this.file.onStatusUpdate.subscribe(status => {
       if (status == 1) {
         // STARTING
-        alert(JSON.stringify(this.file));
         this.percent = 0;
       }
       if (status == 2) {
@@ -39,10 +43,7 @@ export class FolderPage implements OnInit {
       }
       if (status == 4) {
         // STOPPING
-        alert("Terminé");
-        this.percent = 1;
-        this.file.stop();
-        clearInterval(this.interval);
+        this.stop
       }
     }); // fires when file status changes
     this.file.onSuccess.subscribe(() => console.log('Action is successful'));
@@ -58,6 +59,13 @@ export class FolderPage implements OnInit {
         this.percent = position / this.file.getDuration();
       });
     }, 50);
+  }
+
+  stop() {
+    alert("Terminé");
+    this.percent = 1;
+    this.file.stop();
+    clearInterval(this.interval);
   }
 
 }
