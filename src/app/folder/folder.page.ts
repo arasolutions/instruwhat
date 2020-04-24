@@ -21,7 +21,6 @@ export class FolderPage implements OnInit {
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
-
   }
 
   load(uri: string) {
@@ -39,7 +38,6 @@ export class FolderPage implements OnInit {
       if (status == 2) {
         // RUNNING
         // get current playback position
-
       }
       if (status == 4) {
         // STOPPING
@@ -62,7 +60,7 @@ export class FolderPage implements OnInit {
   }
 
   stop() {
-    alert("Terminé");
+    console.log("Terminé");
     this.percent = 1;
     this.file.stop();
     clearInterval(this.interval);

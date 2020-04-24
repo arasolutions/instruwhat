@@ -19,8 +19,8 @@
     <ion-button size="small">URL1</ion-button>
     <ion-row>
       <ion-col class="ion-align-self-start">
-        <ion-icon name="play-circle-outline" (click)="load('assets/instruments/SSBM.mp3')"></ion-icon>
-          <ion-icon name="stop-circle-outline" (click)="stop()"></ion-icon>
+        <ion-icon name="play-circle-outline" *ngIf="percent == 0" (click)="load('assets/instruments/SSBM.mp3')"></ion-icon>
+        <ion-icon name="stop-circle-outline" *ngIf="percent != 0" (click)="stop()"></ion-icon>
       </ion-col>
       <ion-col class="ion-align-self-end">
         <ion-progress-bar [value]="percent" color="medium"></ion-progress-bar>
