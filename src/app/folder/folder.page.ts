@@ -15,8 +15,11 @@ export class FolderPage implements OnInit {
   interval: any;
   percent: number;
   ngOnInit() {
+    alert(1);
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
+      alert(2);
     const file = this.media.create('https://www.pacdv.com/sounds/people_sound_effects/climbing-stairs-1.mp3');
+      alert(3);
     file.onStatusUpdate.subscribe(status => {
       console.log(status);
       if (status == 1) {
