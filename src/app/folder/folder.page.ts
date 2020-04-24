@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Media, MediaObject } from '@ionic-native/media/ngx';
 import { Platform } from '@ionic/angular';
 
-import { ModelsInstrumentComponent } from '../../components/models-instrument/models-instrument';
+import { InstrumentService } from '../../services/instrument.service';
 
 @Component({
   selector: 'app-folder',
@@ -19,27 +19,23 @@ export class FolderPage implements OnInit {
 
   public file: MediaObject;
 
-  public instruments: ModelsInstrumentComponent[];
+  public clicked:number;
+  public goodAnswer: any;
 
-  constructor(private activatedRoute: ActivatedRoute, public media: Media, public platform: Platform) {
-    this.instruments = new Array();
+  constructor(private activatedRoute: ActivatedRoute, public media: Media, public platform: Platform, public instrumentService: InstrumentService) {
+    this.instrumentService.loadInstruments();
+    this.goodAnswer = this.instrumentService.instruments[0];
+    console.log(this.goodAnswer);
+
   }
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
-    let instru = new ModelsInstrumentComponent();
-    this.instruments.push(instru);
-    instru = new ModelsInstrumentComponent();
-    this.instruments.push(instru);
-    instru = new ModelsInstrumentComponent();
-    this.instruments.push(instru);
-    instru = new ModelsInstrumentComponent();
-    this.instruments.push(instru);
     this.load();
   }
 
   load() {
-    const uri = 'assets/instruments/cordes/cordes-frappees/piano/SSBM.mp3';
+    const uri = 'assets/instruments/cordes/cordes-frappees/piano/piano.mp3';
     if (this.platform.is('android')) {
       this.file = this.media.create('/android_asset/public/' + uri);
     }
@@ -56,7 +52,7 @@ export class FolderPage implements OnInit {
       }
       if (status == 4) {
         // STOPPING
-        this.stop();
+        this.afterStop();
       }
     }); // fires when file status changes
 
@@ -78,10 +74,17 @@ export class FolderPage implements OnInit {
 
   stop() {
     console.log("Terminé");
+    this.file.stop();
+  }
+
+  afterStop() {
     this.percent = 1;
     this.playing = false;
-    this.file.stop();
-    clearInterval(this.interval);
+    this.playing = false;
+  }
+
+  choose(instrumentChosen: any) {
+    this.clicked = instrumentChosen.id;
   }
 
 }

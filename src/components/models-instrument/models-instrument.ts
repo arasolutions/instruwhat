@@ -9,6 +9,8 @@ import { Family, SubFamily } from '../../enums/family.enum'
  */
 export class ModelsInstrumentComponent {
 
+  id: number;
+
   label: string;
 
   photo: string;
@@ -19,11 +21,12 @@ export class ModelsInstrumentComponent {
 
   subFamily: SubFamily;
 
-  constructor() {
-    this.label = 'Piano';
-    this.level = Level.EASY;
-    this.photo = 'assets/instruments/cordes/cordes-frappees/piano/photo.png'
-    this.family = Family.CORDES;
-    this.subFamily = SubFamily.CORDES_FRAPPEES;
+  constructor(id: number, label: string, level: Level, photo: string, family: Family, subFamily: SubFamily) {
+    this.id = id;
+    this.label = label;
+    this.level = level;
+    this.photo = photo;
+    this.family = family;
+    this.subFamily = subFamily;
   }
 }

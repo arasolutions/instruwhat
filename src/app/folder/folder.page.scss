@@ -59,6 +59,18 @@ ion-content div {
   box-shadow: black 0 0 10px 0;
 }
 
+.instrument.good,
+.instrument.good .label {
+  background: #28ba62 !important;
+  color: white;
+}
+
+.instrument.bad,
+.instrument.bad .label {
+  background: #cf3c4f !important;
+  color: white;
+}
+
 .instrument .label {
   margin-top: 10px;
   background-color: #FEFEFE !important;

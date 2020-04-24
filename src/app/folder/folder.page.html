@@ -34,8 +34,8 @@
       <ion-row>
         <ion-grid>
           <ion-row>
-            <ion-col size="6" *ngFor="let instrument of instruments">
-              <div class="instrument">
+            <ion-col size="6" *ngFor="let instrument of instrumentService.instruments">
+              <div class="instrument" [class.good]="clicked==instrument.id && instrument.id==goodAnswer.id" [class.bad]="clicked==instrument.id&& instrument.id!=goodAnswer.id" (click)="choose(instrument)">
                 <img [src]="instrument.photo" />
                 <div class="label">
                   {{instrument.label}}
