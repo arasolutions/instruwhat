@@ -12,18 +12,20 @@ export class FolderPage implements OnInit {
   public folder: string;
 
   constructor(private activatedRoute: ActivatedRoute, public media: Media, public platform: Platform) {
-    alert("constructor");
   }
 
   interval: any;
-  percent: number;
+  percent: number = 0;
+  playing: boolean = false;
+
   file: MediaObject;
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
   }
 
-  load(uri: string) {
+  load() {
+    const uri = 'assets/instruments/SSBM.mp3';
     if (this.platform.is('android')) {
       this.file = this.media.create('/android_asset/public/' + uri);
     }
@@ -33,7 +35,6 @@ export class FolderPage implements OnInit {
     this.file.onStatusUpdate.subscribe(status => {
       if (status == 1) {
         // STARTING
-        this.percent = 0;
       }
       if (status == 2) {
         // RUNNING
@@ -41,7 +42,7 @@ export class FolderPage implements OnInit {
       }
       if (status == 4) {
         // STOPPING
-        this.stop
+        this.stop;
       }
     }); // fires when file status changes
     this.file.onSuccess.subscribe(() => console.log('Action is successful'));
@@ -52,6 +53,7 @@ export class FolderPage implements OnInit {
   play() {
     // play the file
     this.file.play();
+    this.playing=true;
     this.interval = setInterval(() => {
       this.file.getCurrentPosition().then((position) => {
         this.percent = position / this.file.getDuration();
@@ -62,6 +64,7 @@ export class FolderPage implements OnInit {
   stop() {
     console.log("Terminé");
     this.percent = 1;
+    this.playing=false;
     this.file.stop();
     clearInterval(this.interval);
   }
