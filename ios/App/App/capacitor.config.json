@@ -1,0 +1,8 @@
+{
+  "appId": "com.arasolutions.instruwhat",
+  "appName": "instruwhat",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}
