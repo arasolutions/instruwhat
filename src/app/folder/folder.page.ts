@@ -19,15 +19,15 @@ export class FolderPage implements OnInit {
   file: MediaObject;
   ngOnInit() {
     alert(1);
-    this.folder = this.activatedRoute.snapshot.paramMap.get('id');
+    /*this.folder = this.activatedRoute.snapshot.paramMap.get('id');
     alert(2);
     this.file = this.media.create('https://www.pacdv.com/sounds/people_sound_effects/climbing-stairs-1.mp3');
     alert(3);
     this.file.onStatusUpdate.subscribe(status => {
-      console.log(status);
+      alert(status);
       if (status == 1) {
         // STARTING
-        console.log(JSON.stringify(this.file));
+        alert(JSON.stringify(this.file));
         this.percent = 0;
       }
       if (status == 2) {
@@ -36,13 +36,13 @@ export class FolderPage implements OnInit {
         this.interval = setInterval(() => {
           this.file.getCurrentPosition().then((position) => {
             this.percent = position / this.file.getDuration();
-            console.log(this.percent);
+            alert(this.percent);
           });
         }, 100);
       }
       if (status == 4) {
         // STOPPING
-        console.log("Terminé");
+        alert("Terminé");
         this.file.stop();
         clearInterval(this.interval);
       }
@@ -50,6 +50,6 @@ export class FolderPage implements OnInit {
     this.file.onSuccess.subscribe(() => console.log('Action is successful'));
     this.file.onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); console.log(JSON.stringify(this.file)); });
     // play the file
-    this.file.play();
+    this.file.play();*/
   }
 }
