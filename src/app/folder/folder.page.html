@@ -16,8 +16,11 @@
 
   <div id="container">
 
-<ion-button size="small" (click)="load('https://www.pacdv.com/sounds/people_sound_effects/climbing-stairs-1.mp3')">URL</ion-button>
-<ion-button size="small" (click)="load('assets/instruments/SSBM.mp3')">URL</ion-button>
+    <ion-button size="small" (click)="load('https://www.pacdv.com/sounds/people_sound_effects/climbing-stairs-1.mp3')">URL</ion-button>
+    <ion-button size="small" (click)="load('assets/instruments/SSBM.mp3')">URL1</ion-button>
+    <ion-button size="small" (click)="load('../assets/instruments/SSBM.mp3')">URL2</ion-button>
+    <ion-button size="small" (click)="load('../../assets/instruments/SSBM.mp3')">URL3</ion-button>
+    <ion-button size="small" (click)="load('../../../assets/instruments/SSBM.mp3')">URL4</ion-button>
     <strong class="capitalize">{{ folder }}</strong>
     <ion-progress-bar [value]="percent" color="danger"></ion-progress-bar>
     <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
