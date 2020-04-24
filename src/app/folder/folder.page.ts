@@ -39,7 +39,7 @@ export class FolderPage implements OnInit {
   }
 
   load() {
-    const uri = 'assets/instruments/SSBM.mp3';
+    const uri = 'assets/instruments/cordes/cordes-frappees/piano/SSBM.mp3';
     if (this.platform.is('android')) {
       this.file = this.media.create('/android_asset/public/' + uri);
     }
