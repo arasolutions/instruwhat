@@ -18,9 +18,7 @@ export class FolderPage implements OnInit {
   percent: number;
   file: MediaObject;
   ngOnInit() {
-    alert(1);
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
-    alert(2);
     this.file = this.media.create('https://www.pacdv.com/sounds/people_sound_effects/climbing-stairs-1.mp3');
     alert(3);
     this.file.onStatusUpdate.subscribe(status => {
