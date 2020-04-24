@@ -33,16 +33,12 @@ export class FolderPage implements OnInit {
       if (status == 2) {
         // RUNNING
         // get current playback position
-        this.interval = setInterval(() => {
-          this.file.getCurrentPosition().then((position) => {
-            this.percent = position / this.file.getDuration();
-            alert(this.percent);
-          });
-        }, 100);
+
       }
       if (status == 4) {
         // STOPPING
         alert("Terminé");
+        this.percent = 1;
         this.file.stop();
         clearInterval(this.interval);
       }
@@ -51,5 +47,10 @@ export class FolderPage implements OnInit {
     this.file.onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); console.log(JSON.stringify(this.file)); });
     // play the file
     this.file.play();
+    this.interval = setInterval(() => {
+      this.file.getCurrentPosition().then((position) => {
+        this.percent = position / this.file.getDuration();
+      });
+    }, 100);
   }
 }
