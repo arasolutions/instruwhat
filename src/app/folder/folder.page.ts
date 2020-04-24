@@ -10,29 +10,32 @@ import { Media, MediaObject } from '@ionic-native/media/ngx';
 export class FolderPage implements OnInit {
   public folder: string;
 
-  constructor(private activatedRoute: ActivatedRoute, public media: Media) { }
+  constructor(private activatedRoute: ActivatedRoute, public media: Media) {
+    alert("constructor");
+  }
 
   interval: any;
   percent: number;
+  file: MediaObject;
   ngOnInit() {
     alert(1);
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
-      alert(2);
-    const file = this.media.create('https://www.pacdv.com/sounds/people_sound_effects/climbing-stairs-1.mp3');
-      alert(3);
-    file.onStatusUpdate.subscribe(status => {
+    alert(2);
+    this.file = this.media.create('https://www.pacdv.com/sounds/people_sound_effects/climbing-stairs-1.mp3');
+    alert(3);
+    this.file.onStatusUpdate.subscribe(status => {
       console.log(status);
       if (status == 1) {
         // STARTING
-        console.log(JSON.stringify(file));
+        console.log(JSON.stringify(this.file));
         this.percent = 0;
       }
       if (status == 2) {
         // RUNNING
         // get current playback position
         this.interval = setInterval(() => {
-          file.getCurrentPosition().then((position) => {
-            this.percent = position / file.getDuration();
+          this.file.getCurrentPosition().then((position) => {
+            this.percent = position / this.file.getDuration();
             console.log(this.percent);
           });
         }, 100);
@@ -40,21 +43,13 @@ export class FolderPage implements OnInit {
       if (status == 4) {
         // STOPPING
         console.log("Terminé");
-        file.stop();
+        this.file.stop();
         clearInterval(this.interval);
       }
     }); // fires when file status changes
-    file.onSuccess.subscribe(() => console.log('Action is successful'));
-    file.onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); console.log(JSON.stringify(file)); });
+    this.file.onSuccess.subscribe(() => console.log('Action is successful'));
+    this.file.onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); console.log(JSON.stringify(this.file)); });
     // play the file
-    file.play();
+    this.file.play();
   }
-
-  changePercent(file: MediaObject) {
-    file.getCurrentPosition().then((position) => {
-      this.percent = position / file.getDuration();
-      console.log(this.percent);
-    });
-  }
-
 }
