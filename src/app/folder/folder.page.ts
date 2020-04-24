@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Media, MediaObject } from '@ionic-native/media/ngx';
 import { Platform } from '@ionic/angular';
 
+import { ModelsInstrumentComponent } from '../../components/models-instrument/models-instrument';
+
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.page.html',
@@ -11,17 +13,29 @@ import { Platform } from '@ionic/angular';
 export class FolderPage implements OnInit {
   public folder: string;
 
+  public interval: any;
+  public percent: number = 0;
+  public playing: boolean = false;
+
+  public file: MediaObject;
+
+  public instruments: ModelsInstrumentComponent[];
+
   constructor(private activatedRoute: ActivatedRoute, public media: Media, public platform: Platform) {
+    this.instruments = new Array();
   }
-
-  interval: any;
-  percent: number = 0;
-  playing: boolean = false;
-
-  file: MediaObject;
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
+    let instru = new ModelsInstrumentComponent();
+    this.instruments.push(instru);
+    instru = new ModelsInstrumentComponent();
+    this.instruments.push(instru);
+    instru = new ModelsInstrumentComponent();
+    this.instruments.push(instru);
+    instru = new ModelsInstrumentComponent();
+    this.instruments.push(instru);
+    this.load();
   }
 
   load() {
@@ -42,18 +56,19 @@ export class FolderPage implements OnInit {
       }
       if (status == 4) {
         // STOPPING
-        this.stop;
+        this.stop();
       }
     }); // fires when file status changes
+
     this.file.onSuccess.subscribe(() => console.log('Action is successful'));
-    this.file.onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); console.log(JSON.stringify(this.file)); });
+    this.file.onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); });
     this.play();
   }
 
   play() {
     // play the file
     this.file.play();
-    this.playing=true;
+    this.playing = true;
     this.interval = setInterval(() => {
       this.file.getCurrentPosition().then((position) => {
         this.percent = position / this.file.getDuration();
@@ -64,7 +79,7 @@ export class FolderPage implements OnInit {
   stop() {
     console.log("Terminé");
     this.percent = 1;
-    this.playing=false;
+    this.playing = false;
     this.file.stop();
     clearInterval(this.interval);
   }
