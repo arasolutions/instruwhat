@@ -17,12 +17,16 @@ export class FolderPage implements OnInit {
   interval: any;
   percent: number;
   file: MediaObject;
+
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
-    this.file = this.media.create('https://www.pacdv.com/sounds/people_sound_effects/climbing-stairs-1.mp3');
+
+  }
+
+  load(uri: string) {
+    this.file = this.media.create(uri);
     alert(3);
     this.file.onStatusUpdate.subscribe(status => {
-      alert(status);
       if (status == 1) {
         // STARTING
         alert(JSON.stringify(this.file));
@@ -43,12 +47,17 @@ export class FolderPage implements OnInit {
     }); // fires when file status changes
     this.file.onSuccess.subscribe(() => console.log('Action is successful'));
     this.file.onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); console.log(JSON.stringify(this.file)); });
+    this.play();
+  }
+
+  play() {
     // play the file
     this.file.play();
     this.interval = setInterval(() => {
       this.file.getCurrentPosition().then((position) => {
         this.percent = position / this.file.getDuration();
       });
-    }, 100);
+    }, 50);
   }
+
 }
