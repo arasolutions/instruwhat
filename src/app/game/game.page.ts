@@ -83,7 +83,9 @@ export class GamePage implements OnInit {
 
     this.file.onSuccess.subscribe(() => console.log('Action is successful'));
     this.file.onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); });
-    this.play();
+    setInterval(() => {
+      this.play();
+    }, 500);
   }
 
   play() {
@@ -141,6 +143,7 @@ export class GamePage implements OnInit {
     }
     this.novice = false;
     this.current++;
+    this.stop();
     this.load();
 
     this.slides.getActiveIndex().then(index => {
