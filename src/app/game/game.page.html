@@ -23,8 +23,8 @@
         <div class="player">
           <ion-row>
             <ion-col size="auto" class="ion-align-self-start music-action">
-              <ion-icon name="play-circle-outline" *ngIf="!questionplaying" (click)="play(current)"></ion-icon>
-              <ion-icon name="stop-circle-outline" *ngIf="questionplaying" (click)="stop(current)"></ion-icon>
+              <ion-icon name="play-circle-outline" *ngIf="!playing" (click)="play(current)"></ion-icon>
+              <ion-icon name="stop-circle-outline" *ngIf="playing" (click)="stop(current)"></ion-icon>
             </ion-col>
             <ion-col class="progress">
               <ion-progress-bar [value]="percent" color="warning"></ion-progress-bar>
@@ -70,7 +70,7 @@
                   {{ question.goodAnswer.label}}
                 </div>
                 <div class="ion-float-right">
-                  3 000 pts.
+                  {{ question.points }} pts.
                 </div>
               </h2>
               <p>

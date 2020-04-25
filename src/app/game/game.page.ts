@@ -24,6 +24,7 @@ export class GamePage implements OnInit {
   public percent: number = 0;
 
   public files: MediaObject[];
+  playing: boolean = false;
 
   public questionnaire: any;
 
@@ -90,9 +91,12 @@ export class GamePage implements OnInit {
   }
 
   play(indexFile: number) {
-    console.log("Play");
     // play the files
+    for (let file of this.files) {
+      file.stop();
+    }
     this.files[indexFile].play();
+    this.playing = true;
     this.questionnaire.questions[indexFile].playing = true;
     this.interval = setInterval(() => {
       this.files[indexFile].getCurrentPosition().then((position) => {
@@ -103,11 +107,12 @@ export class GamePage implements OnInit {
 
   stop(indexFile: number) {
     this.files[indexFile].stop();
+    this.playing = false;
+    this.questionnaire.questions[indexFile].playing = false;
   }
 
-  afterStop(indexFile:number) {
+  afterStop(indexFile: number) {
     this.percent = 1;
-    this.questionnaire.questions[indexFile].playing = false;
   }
 
   choose(question: any, instrumentChosen: any) {
