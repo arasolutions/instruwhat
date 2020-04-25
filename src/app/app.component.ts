@@ -14,32 +14,32 @@ export class AppComponent implements OnInit {
   public appPages = [
     {
       title: 'Inbox',
-      url: '/folder/Inbox',
+      url: '/game/Inbox',
       icon: 'mail'
     },
     {
       title: 'Outbox',
-      url: '/folder/Outbox',
+      url: '/game/Outbox',
       icon: 'paper-plane'
     },
     {
       title: 'Favorites',
-      url: '/folder/Favorites',
+      url: '/game/Favorites',
       icon: 'heart'
     },
     {
       title: 'Archived',
-      url: '/folder/Archived',
+      url: '/game/Archived',
       icon: 'archive'
     },
     {
       title: 'Trash',
-      url: '/folder/Trash',
+      url: '/game/Trash',
       icon: 'trash'
     },
     {
       title: 'Spam',
-      url: '/folder/Spam',
+      url: '/game/Spam',
       icon: 'warning'
     }
   ];

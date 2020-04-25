@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { Media } from '@ionic-native/media/ngx';
 
-import { InstrumentService } from '../services/instrument.service';
+import { InstrumentService } from './services/instrument.service';
 
 @NgModule({
   declarations: [AppComponent],

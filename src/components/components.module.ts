@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { ModelsInstrumentComponent } from './models-instrument/models-instrument';
 @NgModule({
-	declarations: [ModelsInstrumentComponent],
+	declarations: [],
 	imports: [],
-	exports: [ModelsInstrumentComponent]
+	exports: []
 })
 export class ComponentsModule {}

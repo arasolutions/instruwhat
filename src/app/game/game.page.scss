@@ -2,6 +2,17 @@ ion-menu-button {
   color: var(--ion-color-primary);
 }
 
+.game-slides {
+  height: 100%;
+}
+
+.game-slides ion-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #444;
+}
+
 #container {
   background: #333;
   display: contents;
@@ -52,22 +63,23 @@ ion-content div {
 .instrument {
   margin: 5px;
   padding: 10px;
-  border: solid 2px black;
-  border-radius: 10px;
+  border-radius: 5px;
   font-weight: bold;
   background-color: #FEFEFE !important;
-  box-shadow: black 0 0 10px 0;
+  box-shadow: #FEFEFE 0 0 5px 0;
 }
 
 .instrument.good,
 .instrument.good .label {
   background: #28ba62 !important;
+  box-shadow: #28ba62 0 0 5px 0;
   color: white;
 }
 
 .instrument.bad,
 .instrument.bad .label {
   background: #cf3c4f !important;
+  box-shadow: #cf3c4f 0 0 5px 0;
   color: white;
 }
 
@@ -78,19 +90,64 @@ ion-content div {
 }
 
 .player {
-  height: 10%;
-  padding: 20px 10px;
+  //height: 10%;
+  padding: 20px 10px 0;
   color: var(--ion-color-warning) !important;
 }
 
 .question {
-  height: 10%;
+  //height: 10%;
   font-size: 1.5rem;
   padding: 30px 30px 0;
 }
 
 .answer {
-  height: 80%;
+  //height: 80%;
+}
+
+.overlay-swipe {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, .3) !important;
+  display: inline-flex;
+  align-items: center;
+  align-content: center;
+  color: black !important;
+}
+
+.block-swipe {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  align-content: center;
+  background: #fefefe !important;
+  border-radius: 10px;
+  color: #333 !important;
+}
+
+.block-swipe > div {
+  margin: auto;
+}
+
+.block-swipe > div > div {
+  background: #fefefe !important;
+  color: #444;
+}
+
+.block-swipe > div > div > img {
+  height: 100px;
+}
+
+.block-swipe-text {
+  padding: 10px;
 }
 
 ion-footer {

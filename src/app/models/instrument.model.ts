@@ -1,5 +1,5 @@
-import { Level } from '../../enums/level.enum'
-import { Family, SubFamily } from '../../enums/family.enum'
+import { Level } from '../enums/level.enum'
+import { Family, SubFamily } from '../enums/family.enum'
 
 /**
  * Generated class for the ModelsInstrumentComponent component.
@@ -7,7 +7,7 @@ import { Family, SubFamily } from '../../enums/family.enum'
  * See https://angular.io/api/core/Component for more info on Angular
  * Components.
  */
-export class ModelsInstrumentComponent {
+export class InstrumentModel {
 
   id: number;
 
@@ -15,16 +15,19 @@ export class ModelsInstrumentComponent {
 
   photo: string;
 
+  sound: string;
+
   level: Level;
 
   family: Family;
 
   subFamily: SubFamily;
 
-  constructor(id: number, label: string, level: Level, photo: string, family: Family, subFamily: SubFamily) {
+  constructor(id: number, label: string, level: Level, sound: string, photo: string, family: Family, subFamily: SubFamily) {
     this.id = id;
     this.label = label;
     this.level = level;
+    this.sound = sound;
     this.photo = photo;
     this.family = family;
     this.subFamily = subFamily;
