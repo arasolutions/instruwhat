@@ -76,7 +76,7 @@ export class GamePage implements OnInit {
       }
       if (status == 4) {
         // STOPPING
-        this.afterStop();
+        this.afterStop(this.files.length - 1);
       }
     }); // fires when files status changes
 
@@ -105,7 +105,7 @@ export class GamePage implements OnInit {
     this.files[indexFile].stop();
   }
 
-  afterStop() {
+  afterStop(indexFile:number) {
     this.percent = 1;
     this.questionnaire.questions[indexFile].playing = false;
   }
