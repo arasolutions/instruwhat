@@ -90,6 +90,7 @@ export class GamePage implements OnInit {
   }
 
   play(indexFile: number) {
+    alert(indexFile);
     // play the files
     for (let file of this.files) {
       file.stop();
@@ -101,6 +102,7 @@ export class GamePage implements OnInit {
       this.files[indexFile].getCurrentPosition().then((position) => {
         this.percent = position / this.files[indexFile].getDuration();
         this.questionnaire.questions[indexFile].percent = this.percent;
+        alert(this.percent);
       });
     }, 50);
   }
