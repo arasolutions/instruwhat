@@ -58,8 +58,9 @@ export class GamePage implements OnInit {
   }
 
   load() {
-    const uri = this.questionsInGame[0].goodAnswer.sound;
-    
+    const uri = this.questionsInGame[this.current].goodAnswer.sound;
+    console.log(uri);
+
     if (this.platform.is('android')) {
       this.file = this.media.create('/android_asset/public/' + uri);
     }

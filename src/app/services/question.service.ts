@@ -12,15 +12,34 @@ export class QuestionService {
   }
 
   createQuestion(id): QuestionModel {
-    const index = Math.floor(Math.random() * Math.floor(4));
+    const index = Math.floor(Math.random() * Math.floor(this.instrumentService.instruments.length));
 
+    console.log(index);
     let result = new QuestionModel(id, this.instrumentService.instruments[index]);
+    result.instruments.push(this.instrumentService.instruments[index]);
 
-    for (let i = 0; i < this.instrumentService.instruments.length; i++) {
-      result.instruments.push(this.instrumentService.instruments[i]);
+    //Id possible
+    let possiblities = new Array();
+
+    for (let instrument of this.instrumentService.instruments) {
+      if (instrument.id != index + 1) {
+        possiblities.push(instrument.id);
+      }
+    }
+
+    console.log(possiblities);
+    for (let i = 0; i < 3; i++) {
+      let ind = Math.floor(Math.random() * Math.floor(possiblities.length));
+
+      result.instruments.push(this.instrumentService.getInstrumentById(possiblities[ind]));
+      possiblities.splice(ind, 1);
+
     }
 
     this.randomize(result.instruments);
+
+    console.log(result);
+
 
     return result;
   }

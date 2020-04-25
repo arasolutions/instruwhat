@@ -28,7 +28,15 @@ export class InstrumentService {
     let violon = new InstrumentModel(4, 'Violon', Level.EASY, 'assets/instruments/cordes/cordes-pincees/violon/violon.mp3', 'assets/instruments/cordes/cordes-pincees/violon/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
     this.instruments.push(violon);
 
+    let violoncelle = new InstrumentModel(5, 'Violoncelle', Level.EASY, 'assets/instruments/cordes/cordes-pincees/violoncelle/violon.mp3', 'assets/instruments/cordes/cordes-pincees/violoncelle/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
+    this.instruments.push(violoncelle);
 
+    let triangle = new InstrumentModel(6, 'Triangle', Level.EASY, 'assets/instruments/percussions/sons-indetermines/triangle/triangle.mp3', 'assets/instruments/percussions/sons-indetermines/triangle/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_INDETERMINE);
+    this.instruments.push(triangle);
+  }
+
+  getInstrumentById(id: number) {
+    return this.instruments.find(element => element.id == id);
   }
 
 }
