@@ -85,7 +85,7 @@ export class GamePage implements OnInit {
     this.file.onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); });
     setTimeout(() => {
       this.play();
-    }, 700);
+    }, 600);
   }
 
   play() {

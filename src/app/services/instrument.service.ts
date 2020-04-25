@@ -28,11 +28,23 @@ export class InstrumentService {
     let violon = new InstrumentModel(4, 'Violon', Level.EASY, 'assets/instruments/cordes/cordes-pincees/violon/violon.mp3', 'assets/instruments/cordes/cordes-pincees/violon/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
     this.instruments.push(violon);
 
-    let violoncelle = new InstrumentModel(5, 'Violoncelle', Level.EASY, 'assets/instruments/cordes/cordes-pincees/violoncelle/violon.mp3', 'assets/instruments/cordes/cordes-pincees/violoncelle/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
+    let violoncelle = new InstrumentModel(5, 'Violoncelle', Level.EASY, 'assets/instruments/cordes/cordes-pincees/violoncelle/violoncelle.mp3', 'assets/instruments/cordes/cordes-pincees/violoncelle/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
     this.instruments.push(violoncelle);
 
     let triangle = new InstrumentModel(6, 'Triangle', Level.EASY, 'assets/instruments/percussions/sons-indetermines/triangle/triangle.mp3', 'assets/instruments/percussions/sons-indetermines/triangle/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
     this.instruments.push(triangle);
+
+    let violon_alto = new InstrumentModel(7, 'Violon alto', Level.EASY, 'assets/instruments/cordes/cordes-pincees/alto/alto.mp3', 'assets/instruments/cordes/cordes-pincees/alto/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
+    this.instruments.push(violon_alto);
+
+    let marimba = new InstrumentModel(8, 'Marimba', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-determines/marimba/marimba.mp3', 'assets/instruments/percussions/sons-determines/marimba/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_DETERMINE);
+    this.instruments.push(marimba);
+
+    let djembe = new InstrumentModel(9, 'Djembé', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/djembe/djembe.mp3', 'assets/instruments/percussions/sons-indetermines/djembe/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
+    this.instruments.push(djembe);
+
+    let cajon = new InstrumentModel(10, 'Cajón', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/cajon/cajon.mp3', 'assets/instruments/percussions/sons-indetermines/cajon/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
+    this.instruments.push(cajon);
   }
 
   getInstrumentById(id: number) {
