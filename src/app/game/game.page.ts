@@ -45,7 +45,6 @@ export class GamePage implements OnInit {
 
     this.questionsInGame.push(this.questionnaire.questions[this.current]);
     this.load();
-    console.log(this.questionnaire);
 
     this.novice = true;
   }
@@ -59,8 +58,8 @@ export class GamePage implements OnInit {
   }
 
   load() {
-    const uri = this.questionsInGame[0].sound;
-
+    const uri = this.questionsInGame[0].goodAnswer.sound;
+    
     if (this.platform.is('android')) {
       this.file = this.media.create('/android_asset/public/' + uri);
     }
