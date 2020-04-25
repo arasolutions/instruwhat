@@ -31,7 +31,7 @@ export class InstrumentService {
     let violoncelle = new InstrumentModel(5, 'Violoncelle', Level.EASY, 'assets/instruments/cordes/cordes-pincees/violoncelle/violon.mp3', 'assets/instruments/cordes/cordes-pincees/violoncelle/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
     this.instruments.push(violoncelle);
 
-    let triangle = new InstrumentModel(6, 'Triangle', Level.EASY, 'assets/instruments/percussions/sons-indetermines/triangle/triangle.mp3', 'assets/instruments/percussions/sons-indetermines/triangle/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_INDETERMINE);
+    let triangle = new InstrumentModel(6, 'Triangle', Level.EASY, 'assets/instruments/percussions/sons-indetermines/triangle/triangle.mp3', 'assets/instruments/percussions/sons-indetermines/triangle/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
     this.instruments.push(triangle);
   }
 
