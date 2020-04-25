@@ -15,8 +15,8 @@ export class QuestionService {
     const index = Math.floor(Math.random() * Math.floor(this.instrumentService.instruments.length));
 
     console.log(index);
-    let result = new QuestionModel(id, this.instrumentService.instruments[index]);
-    result.instruments.push(this.instrumentService.instruments[index]);
+    let result = new QuestionModel(id, this.instrumentService.getInstrumentById(index + 1));
+    result.instruments.push(this.instrumentService.getInstrumentById(index + 1));
 
     //Id possible
     let possiblities = new Array();
@@ -27,18 +27,17 @@ export class QuestionService {
       }
     }
 
-    console.log(possiblities);
+    //console.log(possiblities);
     for (let i = 0; i < 3; i++) {
       let ind = Math.floor(Math.random() * Math.floor(possiblities.length));
 
       result.instruments.push(this.instrumentService.getInstrumentById(possiblities[ind]));
       possiblities.splice(ind, 1);
-
     }
 
     this.randomize(result.instruments);
 
-    console.log(result);
+    //console.log(result);
 
 
     return result;

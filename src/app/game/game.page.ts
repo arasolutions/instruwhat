@@ -22,9 +22,8 @@ export class GamePage implements OnInit {
 
   public interval: any;
   public percent: number = 0;
-  public playing: boolean = false;
 
-  public file: MediaObject;
+  public files: MediaObject[];
 
   public questionnaire: any;
 
@@ -34,12 +33,13 @@ export class GamePage implements OnInit {
 
   public novice: boolean;
 
-  public nbQuestions: number = 15;
+  public nbQuestions: number = 5;
   public current: number;
 
   constructor(private activatedRoute: ActivatedRoute, public media: Media, public platform: Platform, public instrumentService: InstrumentService, public questionService: QuestionService, public questionnaireService: QuestionnaireService) {
     this.instrumentService.loadInstruments();
     this.questionsInGame = new Array();
+    this.files = new Array();
     this.questionnaire = this.questionnaireService.createQuestionnaire(this.nbQuestions);
     this.current = 0;
 
@@ -59,15 +59,14 @@ export class GamePage implements OnInit {
 
   load() {
     const uri = this.questionsInGame[this.current].goodAnswer.sound;
-    console.log(uri);
 
     if (this.platform.is('android')) {
-      this.file = this.media.create('/android_asset/public/' + uri);
+      this.files.push(this.media.create('/android_asset/public/' + uri));
     }
     if (this.platform.is('ios')) {
-      this.file = this.media.create('/android_asset/public/' + uri);
+      this.files.push(this.media.create('/android_asset/public/' + uri));
     }
-    this.file.onStatusUpdate.subscribe(status => {
+    this.files[this.files.length - 1].onStatusUpdate.subscribe(status => {
       if (status == 1) {
         // STARTING
       }
@@ -79,35 +78,36 @@ export class GamePage implements OnInit {
         // STOPPING
         this.afterStop();
       }
-    }); // fires when file status changes
+    }); // fires when files status changes
 
-    this.file.onSuccess.subscribe(() => console.log('Action is successful'));
-    this.file.onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); });
+    this.files[this.files.length - 1].onSuccess.subscribe(() => console.log('Action is successful'));
+    this.files[this.files.length - 1].onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); });
     setTimeout(() => {
-      this.play();
+      this.play(this.files.length - 1);
     }, 600);
+    console.log(this.files);
+
   }
 
-  play() {
+  play(indexFile: number) {
     console.log("Play");
-    // play the file
-    this.file.play();
-    this.playing = true;
+    // play the files
+    this.files[indexFile].play();
+    this.questionnaire.questions[indexFile].playing = true;
     this.interval = setInterval(() => {
-      this.file.getCurrentPosition().then((position) => {
-        this.percent = position / this.file.getDuration();
+      this.files[indexFile].getCurrentPosition().then((position) => {
+        this.percent = position / this.files[indexFile].getDuration();
       });
     }, 50);
   }
 
-  stop() {
-    console.log("Terminé");
-    this.file.stop();
+  stop(indexFile: number) {
+    this.files[indexFile].stop();
   }
 
   afterStop() {
     this.percent = 1;
-    this.playing = false;
+    this.questionnaire.questions[indexFile].playing = false;
   }
 
   choose(question: any, instrumentChosen: any) {
@@ -116,15 +116,16 @@ export class GamePage implements OnInit {
 
       if (question.clicked == question.goodAnswer.id) {
         question.state = QuestionState.GOOD;
+        question.points = 500 + (500 * (1 - this.percent));
       } else {
         question.state = QuestionState.BAD;
+        question.points = 0;
       }
+
 
       // Création de la prochaine slide
       if (this.current < this.nbQuestions - 1) {
         this.questionsInGame.push(this.questionnaire.questions[this.current + 1]);
-      } else {
-        // Génération de la page finale
       }
 
     }
@@ -139,14 +140,14 @@ export class GamePage implements OnInit {
   }
 
   onSlideChange() {
-    if (this.current == this.nbQuestions) {
+    if (this.current + 1 == this.nbQuestions) {
       console.log("Terminé");
+    } else {
+      this.novice = false;
+      this.stop(this.current);
+      this.current++;
+      this.load();
     }
-    this.novice = false;
-    this.current++;
-    this.stop();
-    this.load();
-
     this.slides.getActiveIndex().then(index => {
       this.slides.el.swiper.removeSlide(0);
       /*if (index > this.maxSlideViewed) {

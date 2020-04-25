@@ -18,11 +18,17 @@ export class QuestionModel {
 
   clicked: boolean;
 
+  points: number;
+
+  playing:boolean;
+
   constructor(id: number, goodAnswer: any) {
     this.id = id;
     this.instruments = new Array();
     this.goodAnswer = goodAnswer;
     this.state = QuestionState.NOT_PLAYED;
     this.clicked = false;
+    this.playing = false;
+    this.points = 0;
   }
 }
