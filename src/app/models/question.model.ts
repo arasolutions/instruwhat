@@ -20,7 +20,9 @@ export class QuestionModel {
 
   points: number;
 
-  playing:boolean;
+  playing: boolean;
+
+  percent: number;
 
   constructor(id: number, goodAnswer: any) {
     this.id = id;
@@ -30,5 +32,6 @@ export class QuestionModel {
     this.clicked = false;
     this.playing = false;
     this.points = 0;
+    this.percent = 0;
   }
 }

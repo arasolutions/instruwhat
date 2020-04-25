@@ -86,7 +86,6 @@ export class GamePage implements OnInit {
     setTimeout(() => {
       this.play(this.files.length - 1);
     }, 600);
-    console.log(this.files);
 
   }
 
@@ -101,6 +100,7 @@ export class GamePage implements OnInit {
     this.interval = setInterval(() => {
       this.files[indexFile].getCurrentPosition().then((position) => {
         this.percent = position / this.files[indexFile].getDuration();
+        this.questionnaire.questions[indexFile].percent = this.percent;
       });
     }, 50);
   }
@@ -113,6 +113,7 @@ export class GamePage implements OnInit {
 
   afterStop(indexFile: number) {
     this.percent = 1;
+    this.questionnaire.questions[indexFile].percent = 1;
   }
 
   choose(question: any, instrumentChosen: any) {
@@ -121,7 +122,7 @@ export class GamePage implements OnInit {
 
       if (question.clicked == question.goodAnswer.id) {
         question.state = QuestionState.GOOD;
-        question.points = 500 + (500 * (1 - this.percent));
+        question.points = Math.floor(500 + (500 * (1 - this.percent)));
       } else {
         question.state = QuestionState.BAD;
         question.points = 0;
