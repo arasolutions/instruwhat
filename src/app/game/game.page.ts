@@ -83,12 +83,13 @@ export class GamePage implements OnInit {
 
     this.file.onSuccess.subscribe(() => console.log('Action is successful'));
     this.file.onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); });
-    setInterval(() => {
+    setTimeout(() => {
       this.play();
-    }, 500);
+    }, 700);
   }
 
   play() {
+    console.log("Play");
     // play the file
     this.file.play();
     this.playing = true;
