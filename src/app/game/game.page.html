@@ -15,7 +15,7 @@
 
 <ion-content [fullscreen]="true">
   <div id="container">
-    <ion-slides #questionSlides class="game-slides" (ionSlideDidChange)="onSlideChange()" [options]="slideOpts">
+    <ion-slides #questionSlides class="game-slides" (ionSlideWillChange)="onSlideWillChange()" (ionSlideDidChange)="onSlideChange()" [options]="slideOpts">
       <ion-slide *ngFor="let question of questionsInGame">
         <div class="question">
           Quel est cet instrument ?
@@ -23,8 +23,8 @@
         <div class="player">
           <ion-row>
             <ion-col size="auto" class="ion-align-self-start music-action">
-              <ion-icon name="play-circle-outline" *ngIf="!playing" (click)="play(current)"></ion-icon>
-              <ion-icon name="stop-circle-outline" *ngIf="playing" (click)="stop(current)"></ion-icon>
+              <!--<ion-icon name="play-circle-outline" *ngIf="!playing" (click)="play(current)"></ion-icon>
+              <ion-icon name="stop-circle-outline" *ngIf="playing" (click)="stop(current)"></ion-icon>-->
             </ion-col>
             <ion-col class="progress">
               <ion-progress-bar [value]="percent" color="warning"></ion-progress-bar>
@@ -36,7 +36,7 @@
             <ion-grid>
               <ion-row>
                 <ion-col size="6" *ngFor="let instrument of question.instruments">
-                  <div class="instrument" [class.good]="question.clicked && instrument.id==question.goodAnswer.id" [class.bad]="question.clicked==instrument.id && instrument.id!=question.goodAnswer.id" (click)="choose(question, instrument)">
+                  <div class="instrument" [class.good]="question.clicked && instrument.id==question.goodAnswer.id" [class.bad]="question.clicked==instrument.id && instrument.id!=question.goodAnswer.id" (click)="choose(current, question, instrument)">
                     <img [src]="instrument.photo" />
                     <div class="label">
                       {{ instrument.label }}
@@ -80,7 +80,7 @@
                     <ion-icon name="stop-circle-outline" *ngIf="question.playing" (click)="stop(i)"></ion-icon>
                   </ion-col>
                   <ion-col class="progress">
-                    <ion-progress-bar [value]="percent" color="warning"></ion-progress-bar>
+                    <ion-progress-bar [value]="question.percent" color="warning"></ion-progress-bar>
                   </ion-col>
                 </ion-row>
               </p>

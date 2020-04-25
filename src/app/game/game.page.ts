@@ -83,6 +83,7 @@ export class GamePage implements OnInit {
 
     this.files[this.files.length - 1].onSuccess.subscribe(() => console.log('Action is successful'));
     this.files[this.files.length - 1].onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); });
+    this.percent = 0;
     setTimeout(() => {
       this.play(this.files.length - 1);
     }, 600);
@@ -90,36 +91,39 @@ export class GamePage implements OnInit {
   }
 
   play(indexFile: number) {
-    alert(indexFile);
     // play the files
-    for (let file of this.files) {
-      file.stop();
+    for (let i = 0; i < this.files.length; i++) {
+      this.stop(i);
     }
     this.files[indexFile].play();
     this.playing = true;
     this.questionnaire.questions[indexFile].playing = true;
+    clearInterval(this.interval);
     this.interval = setInterval(() => {
       this.files[indexFile].getCurrentPosition().then((position) => {
         this.percent = position / this.files[indexFile].getDuration();
         this.questionnaire.questions[indexFile].percent = this.percent;
-        alert(this.percent);
       });
     }, 50);
   }
 
   stop(indexFile: number) {
     this.files[indexFile].stop();
+    clearInterval(this.interval);
     this.playing = false;
     this.questionnaire.questions[indexFile].playing = false;
+    this.afterStop(indexFile);
   }
 
   afterStop(indexFile: number) {
-    this.percent = 1;
-    this.questionnaire.questions[indexFile].percent = 1;
+    this.percent = 0;
+    this.questionnaire.questions[indexFile].percent = 0;
   }
 
-  choose(question: any, instrumentChosen: any) {
+  choose(indexFile: number, question: any, instrumentChosen: any) {
     if (question.state == QuestionState.NOT_PLAYED) {
+      this.files[indexFile].pause();
+      clearInterval(this.interval);
       question.clicked = instrumentChosen.id;
 
       if (question.clicked == question.goodAnswer.id) {
@@ -152,7 +156,6 @@ export class GamePage implements OnInit {
       console.log("Terminé");
     } else {
       this.novice = false;
-      this.stop(this.current);
       this.current++;
       this.load();
     }
@@ -169,6 +172,10 @@ export class GamePage implements OnInit {
         this.game.loadQuestions(10);
       }*/
     });
+  }
+
+  onSlideWillChange() {
+    this.stop(this.current);
   }
 
 }
