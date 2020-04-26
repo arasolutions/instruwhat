@@ -10,7 +10,7 @@ ion-menu-button {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background: #444;
+  background: #2980b9;
 }
 
 #container {
@@ -40,10 +40,9 @@ ion-menu-button {
   text-decoration: none;
 }
 
-ion-content,
-ion-content div {
-  background: #444;
-  color: white;
+ion-content {
+  --background: #2980b9;
+  --color: white;
 }
 
 .music-action ion-icon {
@@ -54,8 +53,8 @@ ion-content div {
   font-size: 20px;
 }
 
-#final-slide ion-item, ion-footer ion-item {
-  --background: #444;
+#final-slide ion-item {
+  --background: #2980b9;
 }
 
 #final-slide ion-item ion-avatar {
@@ -64,8 +63,17 @@ ion-content div {
   box-shadow: #fefefe 0 0 5px 0;
 }
 
-#final-slide ion-item ion-avatar > img{
+#final-slide ion-item ion-avatar > img {
   padding: 5px;
+}
+
+#final-slide ion-header ion-item,
+#finish-footer ion-item {
+  --background: #07507F;
+}
+
+#finish-footer ion-item.action-line {
+  --background: #022F4C;
 }
 
 .progress {
@@ -169,7 +177,6 @@ ion-content div {
 }
 
 ion-footer {
-  height: 40px;
   background-color: #333;
 }
 
@@ -188,7 +195,29 @@ ion-footer {
   //height: 100%;
 }
 
+.score-label {
+  color: white;
+}
+
 .score {
   font-family: 'Roboto Mono';
   color: white;
+}
+
+.highscore {
+  font-family: 'Roboto Mono';
+  color: #cf3c4f;
+}
+
+.score-list {
+  min-height: 100%;
+}
+
+.score-player ion-col {
+  padding-bottom: 0;
+}
+
+.loader-icon {
+  width: 100px;
+  padding: 20px;
 }

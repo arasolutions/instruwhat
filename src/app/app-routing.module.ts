@@ -4,12 +4,16 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'param-game',
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./game/game.module').then( m => m.GamePageModule)
+    path: 'game',
+    loadChildren: () => import('./pages/game/game.module').then( m => m.GamePageModule)
+  },
+  {
+    path: 'param-game',
+    loadChildren: () => import('./pages/param-game/param-game.module').then( m => m.ParamGamePageModule)
   }
 ];
 

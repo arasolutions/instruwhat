@@ -1,8 +1,9 @@
 export enum Family {
-  BOIS,
-  CUIVRES,
-  PERCUSSIONS,
-  CORDES
+  ALL = <any>{ 'label': 'Tout' },
+  BOIS = <any>{ 'label': 'Bois' },
+  CUIVRES = <any>{ 'label': 'Cuivre' },
+  PERCUSSIONS = <any>{ 'label': 'Percussions' },
+  CORDES = <any>{ 'label': 'Cordes' }
 }
 
 export enum SubFamily {

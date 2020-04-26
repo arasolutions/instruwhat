@@ -14,7 +14,6 @@ export class QuestionService {
   createQuestion(id): QuestionModel {
     const index = Math.floor(Math.random() * Math.floor(this.instrumentService.instruments.length));
 
-    console.log(index);
     let result = new QuestionModel(id, this.instrumentService.getInstrumentById(index + 1));
     result.instruments.push(this.instrumentService.getInstrumentById(index + 1));
 

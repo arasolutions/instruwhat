@@ -1,3 +1,5 @@
+import { ParamGameForm } from '../forms/param-game.form';
+import { Family } from '../enums/family.enum';
 
 /**
  * Generated class for the ModelsInstrumentComponent component.
@@ -9,16 +11,25 @@ export class QuestionnaireModel {
 
   id: number;
 
+  form: ParamGameForm;
+
+  help: boolean;
+
+  family: Family;
+
   questions: any[];
 
   nbQuestions: number;
 
   score: number;
 
-  constructor(id: number, nbQuestions: any) {
+  constructor(id: number, form: ParamGameForm) {
     this.id = id;
+    this.form = form;
     this.questions = new Array();
-    this.nbQuestions = nbQuestions;
+    this.nbQuestions = form.nbQuestions;
+    this.help = form.help;
+    this.family = form.family;
     this.score = 0;
   }
 
