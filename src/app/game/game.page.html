@@ -59,39 +59,50 @@
         </div>
       </ion-slide>
       <ion-slide id="final-slide" *ngIf="current + 1 == nbQuestions">
-        <ion-list>
-          <ion-item *ngFor="let question of questionnaire.questions; let i = index">
-            <ion-avatar slot="start">
-              <img [src]="question.goodAnswer.photo">
-            </ion-avatar>
+        <ion-content>
+          <ion-item>
             <ion-label>
               <h2>
-                <div class="ion-float-left">
-                  {{ question.goodAnswer.label}}
-                </div>
-                <div class="ion-float-right">
-                  {{ question.points }} pts.
+                <div class="ion-float-right score">
+                  Ton score
                 </div>
               </h2>
-              <p>
-                <ion-row>
-                  <ion-col size="auto" class="ion-align-self-start music-action">
-                    <ion-icon name="play-circle-outline" *ngIf="!question.playing" (click)="play(i)"></ion-icon>
-                    <ion-icon name="stop-circle-outline" *ngIf="question.playing" (click)="stop(i)"></ion-icon>
-                  </ion-col>
-                  <ion-col class="progress">
-                    <ion-progress-bar [value]="question.percent" color="warning"></ion-progress-bar>
-                  </ion-col>
-                </ion-row>
-              </p>
             </ion-label>
           </ion-item>
-        </ion-list>
+          <ion-list>
+            <ion-item *ngFor="let question of questionnaire.questions; let i = index">
+              <ion-avatar slot="start">
+                <img [src]="question.goodAnswer.photo">
+              </ion-avatar>
+              <ion-label>
+                <h2>
+                  <div class="ion-float-left">
+                    {{ question.goodAnswer.label}}
+                  </div>
+                  <div class="ion-float-right score">
+                    {{ question.points| number:'1.0-0' }}
+                  </div>
+                </h2>
+                <p>
+                  <ion-row>
+                    <ion-col size="auto" class="ion-align-self-start music-action">
+                      <ion-icon name="play-circle-outline" *ngIf="!question.playing" (click)="play(i)"></ion-icon>
+                      <ion-icon name="stop-circle-outline" *ngIf="question.playing" (click)="stop(i)"></ion-icon>
+                    </ion-col>
+                    <ion-col class="progress">
+                      <ion-progress-bar [value]="question.percent" color="warning"></ion-progress-bar>
+                    </ion-col>
+                  </ion-row>
+                </p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-content>
       </ion-slide>
     </ion-slides>
   </div>
 </ion-content>
-<ion-footer collapse="condense">
+<ion-footer collapse="condense" *ngIf="!finished">
   <div class="answers">
     <div class="answer-item" *ngFor="let question of questionnaire.questions">
       <img src="assets/settings/instru-icon/saxophone/default.png" *ngIf="question.state == 0" />
@@ -99,4 +110,18 @@
       <img src="assets/settings/instru-icon/saxophone/bad.png" *ngIf="question.state == 2" />
     </div>
   </div>
+</ion-footer>
+<ion-footer collapse="condense" *ngIf="finished">
+  <ion-item>
+    <ion-label>
+      <h2>
+        <div class="ion-float-left score">
+          Total
+        </div>
+        <div class="ion-float-right score">
+          {{ questionnaire.score | number:'1.0-0' }}
+        </div>
+      </h2>
+    </ion-label>
+  </ion-item>
 </ion-footer>

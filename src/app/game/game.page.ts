@@ -34,8 +34,10 @@ export class GamePage implements OnInit {
 
   public novice: boolean;
 
-  public nbQuestions: number = 5;
+  public nbQuestions: number = 15;
   public current: number;
+
+  public finished: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute, public media: Media, public platform: Platform, public instrumentService: InstrumentService, public questionService: QuestionService, public questionnaireService: QuestionnaireService) {
     this.instrumentService.loadInstruments();
@@ -154,6 +156,8 @@ export class GamePage implements OnInit {
   onSlideChange() {
     if (this.current + 1 == this.nbQuestions) {
       console.log("Terminé");
+      this.finished = true;
+      this.questionnaire.updateScore();
     } else {
       this.novice = false;
       this.current++;

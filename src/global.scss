@@ -80,3 +80,17 @@
   animation-duration: 0.5s;
   opacity: 0;
 }
+
+@font-face {
+  font-family: 'Source Code Pro';
+  src: url('./assets/fonts/SourceCodePro-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('./assets/fonts/RobotoMono-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}

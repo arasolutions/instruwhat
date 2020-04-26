@@ -54,6 +54,20 @@ ion-content div {
   font-size: 20px;
 }
 
+#final-slide ion-item, ion-footer ion-item {
+  --background: #444;
+}
+
+#final-slide ion-item ion-avatar {
+  background: #fefefe;
+  border-radius: 5px;
+  box-shadow: #fefefe 0 0 5px 0;
+}
+
+#final-slide ion-item ion-avatar > img{
+  padding: 5px;
+}
+
 .progress {
   display: flex;
   align-items: center;
@@ -172,4 +186,9 @@ ion-footer {
 
 .answer-item img {
   //height: 100%;
+}
+
+.score {
+  font-family: 'Roboto Mono';
+  color: white;
 }

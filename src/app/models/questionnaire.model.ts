@@ -13,9 +13,18 @@ export class QuestionnaireModel {
 
   nbQuestions: number;
 
+  score: number;
+
   constructor(id: number, nbQuestions: any) {
     this.id = id;
     this.questions = new Array();
     this.nbQuestions = nbQuestions;
+    this.score = 0;
+  }
+
+  updateScore() {
+    for (let question of this.questions) {
+      this.score += question.points;
+    }
   }
 }
