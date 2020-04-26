@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 
 import { Family } from '../../enums/family.enum';
+import { Level } from '../../enums/level.enum';
 import { ParamGameForm } from '../../forms/param-game.form';
 
 import { QuestionnaireService } from '../../services/questionnaire.service';
@@ -15,25 +16,28 @@ import { InstrumentService } from '../../services/instrument.service';
 export class ParamGamePage implements OnInit {
 
   families: Family[];
+  levels: Level[];
 
   form: ParamGameForm;
 
   animate: boolean = false;
 
-  constructor(public router: Router, public questionnaireService: QuestionnaireService, public instrumentService: InstrumentService) {
-        this.instrumentService.loadInstruments();
+  constructor(public router: Router, public route: ActivatedRoute, public questionnaireService: QuestionnaireService, public instrumentService: InstrumentService) {
+
+    this.instrumentService.loadInstruments();
 
     this.form = new ParamGameForm();
 
-    this.families = new Array();
-    this.families.push(Family.ALL);
-    this.families.push(Family.BOIS);
-    this.families.push(Family.CUIVRES);
-    this.families.push(Family.PERCUSSIONS);
-    this.families.push(Family.CORDES);
+    this.families = Family.getAll();
+
+    this.levels = Level.getAll();
   }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+
   }
 
   ionViewDidEnter() {
@@ -41,16 +45,13 @@ export class ParamGamePage implements OnInit {
   }
 
   goToGame() {
-
-    let questionnaire = this.questionnaireService.createQuestionnaire(this.form);
-
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        questionnaire: questionnaire.id
+        form: JSON.stringify(this.form)
       }
     };
 
-    this.router.navigate(['/game']);
+    this.router.navigate(['/initial-game'], navigationExtras);
   }
 
 }

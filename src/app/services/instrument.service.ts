@@ -45,6 +45,18 @@ export class InstrumentService {
 
     let cajon = new InstrumentModel(10, 'Cajón', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/cajon/cajon.mp3', 'assets/instruments/percussions/sons-indetermines/cajon/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
     this.instruments.push(cajon);
+
+    let clavecin = new InstrumentModel(11, 'Clavecin', Level.INTERMEDIATE, 'assets/instruments/cordes/cordes-frappees/clavecin/clavecin.mp3', 'assets/instruments/cordes/cordes-frappees/clavecin/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
+    this.instruments.push(clavecin);
+
+    let guitare = new InstrumentModel(12, 'Guitare', Level.EASY, 'assets/instruments/cordes/cordes-pincees/guitare/guitare.mp3', 'assets/instruments/cordes/cordes-pincees/guitare/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
+    this.instruments.push(guitare);
+
+    let guitare_electrique = new InstrumentModel(13, 'Guitare éléctrique', Level.EASY, 'assets/instruments/cordes/cordes-pincees/guitare-electrique/guitare-electrique.mp3', 'assets/instruments/cordes/cordes-pincees/guitare-electrique/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
+    this.instruments.push(guitare_electrique);
+
+    let harpe = new InstrumentModel(14, 'Harpe', Level.EASY, 'assets/instruments/cordes/cordes-pincees/harpe/harpe.mp3', 'assets/instruments/cordes/cordes-pincees/harpe/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
+    this.instruments.push(harpe);
   }
 
   getInstrumentById(id: number) {

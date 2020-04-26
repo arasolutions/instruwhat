@@ -28,6 +28,14 @@ export class QuestionnaireService {
     return result;
   }
 
+  restartQuestionnaire() {
+    this.questionnaire.questions = new Array();
+    this.questionnaire.score = 0;
+    for (let i = 0; i < this.questionnaire.nbQuestions; i++) {
+      this.questionnaire.questions.push(this.questionService.createQuestion(i));
+    }
+  }
+
   getQuestionnaire() {
     return this.questionnaire;
   }

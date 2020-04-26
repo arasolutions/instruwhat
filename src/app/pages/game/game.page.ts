@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Media, MediaObject } from '@ionic-native/media/ngx';
-import { Platform, NavParams  } from '@ionic/angular';
+import { Platform, NavParams } from '@ionic/angular';
 
 import { InstrumentService } from '../../services/instrument.service';
 import { QuestionnaireService } from '../../services/questionnaire.service';
@@ -37,13 +37,8 @@ export class GamePage implements OnInit {
 
   public current: number;
 
-  public initial: boolean;
   public finished: boolean;
 
-  public intervalLoader: any;
-  public intervalLoaderIcon: any;
-  public loading: number = 0;
-  public loaderIcon: string;
 
   constructor(public router: Router, public navParams: NavParams, private activatedRoute: ActivatedRoute, public media: Media, public platform: Platform, public instrumentService: InstrumentService, public questionService: QuestionService, public questionnaireService: QuestionnaireService) {
 
@@ -68,39 +63,14 @@ export class GamePage implements OnInit {
   }
 
   ionViewDidEnter() {
-
-    this.initial = true;
     this.finished = false;
 
     this.slides.lockSwipeToPrev(true);
     this.slides.lockSwipeToNext(true);
-
-    //Loader
-    let icons = ['saxophone', 'clarinette', 'piano', 'tambour', 'triangle', 'trompette', 'xylophone'];
-    let currentIcon = 0;
-    this.intervalLoaderIcon = setInterval(() => {
-      this.loaderIcon = icons[currentIcon % icons.length];
-      console.log(this.loaderIcon);
-
-      currentIcon++;
-    }, 100);
-
-    this.intervalLoader = setInterval(() => {
-      if (this.loading == 3000) {
-        clearInterval(this.intervalLoader);
-        clearInterval(this.intervalLoaderIcon);
-        this.slides.lockSwipeToNext(false);
-        this.slides.slideNext();
-        this.slides.lockSwipeToNext(true);
-        return;
-      }
-      this.loading += 50;
-    }, 50);
   }
 
   load() {
     const uri = this.questionsInGame[this.current].goodAnswer.sound;
-    console.log(uri);
 
     if (this.platform.is('android')) {
       this.files.push(this.media.create('/android_asset/public/' + uri));
@@ -125,6 +95,10 @@ export class GamePage implements OnInit {
     this.files[this.files.length - 1].onSuccess.subscribe(() => console.log('Action is successful'));
     this.files[this.files.length - 1].onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); });
     this.percent = 0;
+
+    setTimeout(() => {
+      this.play(this.files.length - 1);
+    }, 400);
 
   }
 
@@ -159,26 +133,26 @@ export class GamePage implements OnInit {
   }
 
   choose(indexFile: number, question: any, instrumentChosen: any) {
-    if (question.state == QuestionState.NOT_PLAYED) {
-      this.files[indexFile].pause();
-      clearInterval(this.interval);
-      this.slides.lockSwipeToNext(false);
-      question.clicked = instrumentChosen.id;
+    if (!this.isDisabled(instrumentChosen, question)) {
+      if (question.state == QuestionState.NOT_PLAYED) {
+        this.files[indexFile].pause();
+        clearInterval(this.interval);
+        this.slides.lockSwipeToNext(false);
+        question.clicked = instrumentChosen.id;
 
-      if (question.clicked == question.goodAnswer.id) {
-        question.state = QuestionState.GOOD;
-        question.points = Math.floor(200 + (800 * (1 - this.percent)));
-      } else {
-        question.state = QuestionState.BAD;
-        question.points = 0;
+        if (question.clicked == question.goodAnswer.id) {
+          question.state = QuestionState.GOOD;
+          question.points = Math.floor(200 + (800 * (1 - this.percent)));
+        } else {
+          question.state = QuestionState.BAD;
+          question.points = 0;
+        }
+
+        // Création de la prochaine slide
+        if (this.current < this.questionnaire.nbQuestions - 1) {
+          this.questionsInGame.push(this.questionnaire.questions[this.current + 1]);
+        }
       }
-
-
-      // Création de la prochaine slide
-      if (this.current < this.questionnaire.nbQuestions - 1) {
-        this.questionsInGame.push(this.questionnaire.questions[this.current + 1]);
-      }
-
     }
   }
 
@@ -191,29 +165,19 @@ export class GamePage implements OnInit {
   }
 
   onSlideChange() {
-    if (!this.initial) {
-      this.slides.lockSwipeToNext(true);
-      if (this.current + 1 == this.questionnaire.nbQuestions) {
-        this.finished = true;
-        this.questionnaire.updateScore();
-      } else {
-        this.novice = false;
-        this.current++;
-        this.load();
-        setTimeout(() => {
-          this.play(this.files.length - 1);
-        }, 400);
-        if (this.current + 1 < this.questionnaire.nbQuestions) {
-          this.slides.getActiveIndex().then(index => {
-            this.slides.el.swiper.removeSlide(0);
-          });
-        }
-      }
+    this.slides.lockSwipeToNext(true);
+    if (this.current + 1 == this.questionnaire.nbQuestions) {
+      this.finished = true;
+      this.questionnaire.updateScore();
     } else {
-      this.initial = false;
-      this.slides.getActiveIndex().then(index => {
-        this.slides.el.swiper.removeSlide(0);
-      });
+      this.novice = false;
+      this.current++;
+      this.load();
+      if (this.current + 1 < this.questionnaire.nbQuestions) {
+        this.slides.getActiveIndex().then(index => {
+          this.slides.el.swiper.removeSlide(0);
+        });
+      }
     }
   }
 
@@ -222,7 +186,28 @@ export class GamePage implements OnInit {
     this.stop(this.current);
   }
 
-  restart() {
+  restartGame() {
+    this.router.navigate(['/initial-game'], { queryParams: { form: JSON.stringify(this.questionnaire.form) } });
+  }
+  
+  stopGame() {
     this.router.navigate(['/param-game']);
+  }
+
+  isDisabled(instrument: any, question: any) {
+    if (!this.questionnaire.help) {
+      return false;
+    }
+    let firstDisabled = (question.state == QuestionState.NOT_PLAYED && this.percent > .5 && this.questionnaire.help && instrument.id == question.helpAnswers[0].id);
+    let secondDisabled = (question.state == QuestionState.NOT_PLAYED && this.percent > .8 && this.questionnaire.help && instrument.id == question.helpAnswers[1].id);
+
+    /*if (firstDisabled) {
+      console.log("First : " + instrument);
+    }
+    if (secondDisabled) {
+      console.log("Second : " + instrument);
+    }*/
+
+    return firstDisabled || secondDisabled;
   }
 }

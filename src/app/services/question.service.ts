@@ -20,24 +20,26 @@ export class QuestionService {
     //Id possible
     let possiblities = new Array();
 
+    let helpAnswers = new Array();
+
     for (let instrument of this.instrumentService.instruments) {
       if (instrument.id != index + 1) {
         possiblities.push(instrument.id);
       }
     }
 
-    //console.log(possiblities);
     for (let i = 0; i < 3; i++) {
       let ind = Math.floor(Math.random() * Math.floor(possiblities.length));
-
-      result.instruments.push(this.instrumentService.getInstrumentById(possiblities[ind]));
+      let intru = this.instrumentService.getInstrumentById(possiblities[ind]);
+      result.instruments.push(intru);
+      result.helpAnswers.push(intru);
       possiblities.splice(ind, 1);
     }
 
     this.randomize(result.instruments);
 
-    //console.log(result);
-
+    this.randomize(result.helpAnswers);
+    result.helpAnswers.splice(-1,1);
 
     return result;
   }

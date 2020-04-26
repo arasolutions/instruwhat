@@ -17,3 +17,9 @@ export enum SubFamily {
   CORDES_PINCEES_CLAVIER,
   CORDES_FRAPPEES
 }
+
+export namespace Family {
+  export function getAll() {
+    return [this.ALL, this.BOIS, this.CUIVRES, this.PERCUSSIONS, this.CORDES];
+  }
+}

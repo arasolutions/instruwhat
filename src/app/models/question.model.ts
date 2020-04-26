@@ -12,6 +12,8 @@ export class QuestionModel {
 
   instruments: any[];
 
+  helpAnswers: any[];
+
   goodAnswer: any;
 
   state: QuestionState;
@@ -27,6 +29,7 @@ export class QuestionModel {
   constructor(id: number, goodAnswer: any) {
     this.id = id;
     this.instruments = new Array();
+    this.helpAnswers = new Array();
     this.goodAnswer = goodAnswer;
     this.state = QuestionState.NOT_PLAYED;
     this.clicked = false;

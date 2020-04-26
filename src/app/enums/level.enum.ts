@@ -1,5 +1,11 @@
 export enum Level {
-  EASY = 10,
-  INTERMEDIATE = 20,
-  EXPERT = 30
+  EASY = <any>{ 'label': 'Facile', 'value': 10 },
+  INTERMEDIATE = <any>{ 'label': 'Intermédiaire', 'value': 20 },
+  EXPERT = <any>{ 'label': 'Expert', 'value': 30 }
+}
+
+export namespace Level {
+  export function getAll() {
+    return [this.EASY, this.INTERMEDIATE, this.EXPERT];
+  }
 }

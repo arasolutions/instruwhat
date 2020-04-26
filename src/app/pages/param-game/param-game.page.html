@@ -21,6 +21,17 @@
       </ion-col>
     </ion-row>
 
+        <ion-row class="param-label">
+          Niveau
+        </ion-row>
+        <ion-row>
+          <ion-col offset="2" size="8">
+            <ion-select [(ngModel)]="form.level" ok-text="Ok" cancel-text="Annuler">
+              <ion-select-option *ngFor="let level of levels" [value]="level">{{level.label}}</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+
     <ion-row class="param-label">
       {{form.nbQuestions}} questions
     </ion-row>
@@ -35,7 +46,7 @@
     </ion-row>
     <ion-row class="ion-text-center">
       <ion-col offset="2" size="8">
-        <ion-toggle color="dark"></ion-toggle>
+        <ion-toggle [(ngModel)]="form.help" color="dark"></ion-toggle>
       </ion-col>
     </ion-row>
   </div>

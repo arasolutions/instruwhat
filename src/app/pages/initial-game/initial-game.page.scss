@@ -1,0 +1,22 @@
+ion-content {
+  --background: #2980b9;
+  --color: white;
+  display: contents;
+  text-align: center;
+}
+
+#initial {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.loader-icon {
+  width: 100px;
+  padding: 20px;
+}
