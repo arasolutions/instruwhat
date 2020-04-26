@@ -125,9 +125,6 @@ export class GamePage implements OnInit {
     this.files[this.files.length - 1].onSuccess.subscribe(() => console.log('Action is successful'));
     this.files[this.files.length - 1].onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); });
     this.percent = 0;
-    setTimeout(() => {
-      this.play(this.files.length - 1);
-    }, 400);
 
   }
 
@@ -203,6 +200,9 @@ export class GamePage implements OnInit {
         this.novice = false;
         this.current++;
         this.load();
+        setTimeout(() => {
+          this.play(this.files.length - 1);
+        }, 400);
         if (this.current + 1 < this.questionnaire.nbQuestions) {
           this.slides.getActiveIndex().then(index => {
             this.slides.el.swiper.removeSlide(0);
