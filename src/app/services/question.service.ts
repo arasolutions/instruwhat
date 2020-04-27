@@ -11,11 +11,11 @@ export class QuestionService {
 
   }
 
-  createQuestion(id): QuestionModel {
+  createQuestion(id, instrumentChosen:any): QuestionModel {
     const index = Math.floor(Math.random() * Math.floor(this.instrumentService.instruments.length));
 
-    let result = new QuestionModel(id, this.instrumentService.getInstrumentById(index + 1));
-    result.instruments.push(this.instrumentService.getInstrumentById(index + 1));
+    let result = new QuestionModel(id, instrumentChosen);
+    result.instruments.push(instrumentChosen);
 
     //Id possible
     let possiblities = new Array();
@@ -23,7 +23,7 @@ export class QuestionService {
     let helpAnswers = new Array();
 
     for (let instrument of this.instrumentService.instruments) {
-      if (instrument.id != index + 1) {
+      if (instrument.id != instrumentChosen.id) {
         possiblities.push(instrument.id);
       }
     }
@@ -43,6 +43,7 @@ export class QuestionService {
 
     return result;
   }
+
 
   randomize(a) {
     let b, c, d;

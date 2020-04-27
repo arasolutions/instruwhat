@@ -69,10 +69,54 @@ export class InstrumentService {
 
     let trombone = new InstrumentModel(18, 'Trombone', Level.INTERMEDIATE, 'assets/instruments/cuivres/trombone/trombone.mp3', 'assets/instruments/cuivres/trombone/photo.png', Family.CUIVRES, null);
     this.instruments.push(trombone);
+
+    let flute_traversiere = new InstrumentModel(19, 'Flûte traversière ', Level.EASY, 'assets/instruments/bois/biseau/flute-traversiere/flute-traversiere.mp3', 'assets/instruments/bois/biseau/flute-traversiere/photo.png', Family.BOIS, SubFamily.BOIS_BISEAU);
+    this.instruments.push(flute_traversiere);
+
+    let piccolo = new InstrumentModel(20, 'Piccolo ', Level.EASY, 'assets/instruments/bois/biseau/piccolo/piccolo.mp3', 'assets/instruments/bois/biseau/piccolo/photo.png', Family.BOIS, SubFamily.BOIS_BISEAU)
+    this.instruments.push(piccolo);
+
+    let clarinette = new InstrumentModel(21, 'Clarinette', Level.EASY, 'assets/instruments/bois/anche-simple/clarinette/clarinette.mp3', 'assets/instruments/bois/anche-simple/clarinette/photo.png', Family.BOIS, SubFamily.BOIS_ANCHE_SIMPLE);
+    this.instruments.push(clarinette);
+
+    let cornemuse = new InstrumentModel(22, 'Cornemuse', Level.INTERMEDIATE, 'assets/instruments/bois/anche-simple/cornemuse/cornemuse.mp3', 'assets/instruments/bois/anche-simple/cornemuse/photo.png', Family.BOIS, SubFamily.BOIS_ANCHE_SIMPLE);
+    this.instruments.push(cornemuse);
+
+    let hautbois = new InstrumentModel(23, 'Hautbois', Level.EASY, 'assets/instruments/bois/anche-double/hautbois/hautbois.mp3', 'assets/instruments/bois/anche-double/hautbois/photo.png', Family.BOIS, SubFamily.BOIS_ANCHE_DOUBLE);
+    this.instruments.push(hautbois);
+
+    let tuba = new InstrumentModel(24, 'Tuba', Level.INTERMEDIATE, 'assets/instruments/cuivres/tuba/tuba.mp3', 'assets/instruments/cuivres/tuba/photo.png', Family.CUIVRES, null);
+    this.instruments.push(tuba);
+
+    let claves = new InstrumentModel(25, 'Claves', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/claves/claves.mp3', 'assets/instruments/percussions/sons-indetermines/claves/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
+    this.instruments.push(claves);
+
+    let trompette = new InstrumentModel(26, 'Trompette', Level.EASY, 'assets/instruments/cuivres/trompette/trompette.mp3', 'assets/instruments/cuivres/trompette/photo.png', Family.CUIVRES, null);
+    this.instruments.push(trompette);
   }
 
   getInstrumentById(id: number) {
     return this.instruments.find(element => element.id == id);
+  }
+
+  getXInstruments(nbQuestion: number): InstrumentModel[] {
+    let result = this.instruments;
+    this.randomize(result);
+
+    result.splice(-1 * (this.instruments.length - nbQuestion), this.instruments.length - nbQuestion);
+
+    return result;
+  }
+
+  randomize(a) {
+    let b, c, d;
+    c = a.length;
+    while (c) {
+      b = Math.random() * c-- | 0;
+      d = a[c];
+      a[c] = a[b];
+      a[b] = d;
+    }
   }
 
 }

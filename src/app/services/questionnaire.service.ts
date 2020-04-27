@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { QuestionService } from './question.service';
+import { InstrumentService } from './instrument.service';
+
 import { QuestionnaireModel } from '../models/questionnaire.model';
 
 import { ParamGameForm } from '../forms/param-game.form';
@@ -12,15 +14,17 @@ export class QuestionnaireService {
 
   questionnaire: QuestionnaireModel;
 
-  constructor(public questionService: QuestionService) {
+  constructor(public questionService: QuestionService, public instrumentService:InstrumentService) {
 
   }
 
   createQuestionnaire(form: ParamGameForm): QuestionnaireModel {
     let result = new QuestionnaireModel(Math.floor(Math.random() * Math.floor(4000)), form);
 
-    for (let i = 0; i < form.nbQuestions; i++) {
-      result.questions.push(this.questionService.createQuestion(i));
+    let questionnaireInstru = this.instrumentService.getXInstruments(form.nbQuestions);
+
+    for (let i = 0; i < questionnaireInstru.length; i++) {
+      result.questions.push(this.questionService.createQuestion(i, questionnaireInstru[i]));
     }
 
     this.questionnaire = result;

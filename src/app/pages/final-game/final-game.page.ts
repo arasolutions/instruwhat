@@ -57,11 +57,8 @@ export class FinalGamePage implements OnInit {
       this.files[i].onSuccess.subscribe(() => console.log('Action is successful'));
       this.files[i].onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); });
     });
-
-
-    console.log(this.files);
-
   }
+
   play(indexFile: number) {
     // play the files
     for (let i = 0; i < this.files.length; i++) {

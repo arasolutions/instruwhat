@@ -171,7 +171,7 @@ export class GamePage implements OnInit {
 
       setTimeout(() => {
         this.router.navigate(['/final-game']);
-      }, 1000);
+      }, 50);
 
     } else {
       this.novice = false;
