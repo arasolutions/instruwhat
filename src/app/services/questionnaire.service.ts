@@ -14,7 +14,7 @@ export class QuestionnaireService {
 
   questionnaire: QuestionnaireModel;
 
-  constructor(public questionService: QuestionService, public instrumentService:InstrumentService) {
+  constructor(public questionService: QuestionService, public instrumentService: InstrumentService) {
 
   }
 
@@ -34,9 +34,12 @@ export class QuestionnaireService {
 
   restartQuestionnaire() {
     this.questionnaire.questions = new Array();
+
+    let questionnaireInstru = this.instrumentService.getXInstruments(this.questionnaire.nbQuestions);
+
     this.questionnaire.score = 0;
-    for (let i = 0; i < this.questionnaire.nbQuestions; i++) {
-      this.questionnaire.questions.push(this.questionService.createQuestion(i));
+    for (let i = 0; i < questionnaireInstru.length; i++) {
+      this.questionnaire.questions.push(this.questionService.createQuestion(i, questionnaireInstru[i]));
     }
   }
 
