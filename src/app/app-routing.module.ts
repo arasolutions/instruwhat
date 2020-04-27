@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'initial-game',
     loadChildren: () => import('./pages/initial-game/initial-game.module').then( m => m.InitialGamePageModule)
+  },
+  {
+    path: 'final-game',
+    loadChildren: () => import('./pages/final-game/final-game.module').then( m => m.FinalGamePageModule)
   }
 ];
 

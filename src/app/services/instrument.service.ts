@@ -57,6 +57,18 @@ export class InstrumentService {
 
     let harpe = new InstrumentModel(14, 'Harpe', Level.EASY, 'assets/instruments/cordes/cordes-pincees/harpe/harpe.mp3', 'assets/instruments/cordes/cordes-pincees/harpe/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
     this.instruments.push(harpe);
+
+    let basson = new InstrumentModel(15, 'Basson', Level.INTERMEDIATE, 'assets/instruments/bois/anche-double/basson/basson.mp3', 'assets/instruments/bois/anche-double/basson/photo.png', Family.BOIS, SubFamily.BOIS_ANCHE_DOUBLE);
+    this.instruments.push(basson);
+
+    let harmonica = new InstrumentModel(16, 'Harmonica', Level.EASY, 'assets/instruments/bois/anche-libre/harmonica/harmonica.mp3', 'assets/instruments/bois/anche-libre/harmonica/photo.png', Family.BOIS, SubFamily.BOIS_ANCHE_LIBRE);
+    this.instruments.push(harmonica);
+
+    let timbales = new InstrumentModel(17, 'Timbales', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-determines/timbales/timbales.mp3', 'assets/instruments/percussions/sons-determines/timbales/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_DETERMINE);
+    this.instruments.push(timbales);
+
+    let trombone = new InstrumentModel(18, 'Trombone', Level.INTERMEDIATE, 'assets/instruments/cuivres/trombone/trombone.mp3', 'assets/instruments/cuivres/trombone/photo.png', Family.CUIVRES, null);
+    this.instruments.push(trombone);
   }
 
   getInstrumentById(id: number) {

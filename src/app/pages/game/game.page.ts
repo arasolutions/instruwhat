@@ -167,8 +167,12 @@ export class GamePage implements OnInit {
   onSlideChange() {
     this.slides.lockSwipeToNext(true);
     if (this.current + 1 == this.questionnaire.nbQuestions) {
-      this.finished = true;
       this.questionnaire.updateScore();
+
+      setTimeout(() => {
+        this.router.navigate(['/final-game']);
+      }, 1000);
+
     } else {
       this.novice = false;
       this.current++;
@@ -184,14 +188,6 @@ export class GamePage implements OnInit {
 
   onSlideWillChange() {
     this.stop(this.current);
-  }
-
-  restartGame() {
-    this.router.navigate(['/initial-game'], { queryParams: { form: JSON.stringify(this.questionnaire.form) } });
-  }
-  
-  stopGame() {
-    this.router.navigate(['/param-game']);
   }
 
   isDisabled(instrument: any, question: any) {

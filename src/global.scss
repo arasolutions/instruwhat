@@ -158,9 +158,9 @@
 }
 
 .bounceInUp {
-  -webkit-animation-name: bounceInUp;
-  animation-name: bounceInUp;
-  animation-duration: 2s;
+  -webkit-animation-name: bounceInUp, fadeIn;
+  animation-name: bounceInUp, fadeIn;
+  animation-duration: 1.5s, 0.5s;
 }
 
 @font-face {

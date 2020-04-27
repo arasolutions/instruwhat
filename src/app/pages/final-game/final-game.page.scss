@@ -1,0 +1,65 @@
+ion-content {
+  --background: #2980b9;
+  --color: white;
+}
+
+.music-action ion-icon {
+  font-size: 20px;
+}
+
+ion-item,
+ion-list {
+  background: #2980b9;
+  --background: #2980b9;
+}
+
+ion-item ion-avatar {
+  background: #fefefe;
+  border-radius: 5px;
+  box-shadow: #fefefe 0 0 5px 0;
+}
+
+ion-item ion-avatar > img {
+  padding: 5px;
+}
+
+ion-footer ion-item,
+ion-header ion-item {
+  --background: #07507F;
+}
+
+ion-footer ion-item.action-line {
+  --background: #022F4C;
+}
+
+.score-label {
+  color: white;
+}
+
+.score {
+  font-family: 'Roboto Mono';
+  color: white;
+}
+
+.highscore {
+  font-family: 'Roboto Mono';
+  color: #cf3c4f;
+}
+
+.score-list {
+  min-height: 100%;
+}
+
+.score-player ion-col {
+  padding-bottom: 0;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+}
+
+.progress ion-progress-bar {
+  height: 5px;
+  border-radius: 5px;
+}
