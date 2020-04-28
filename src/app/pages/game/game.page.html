@@ -1,10 +1,17 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar color="secondary">
     <div class="theme">
-      <ion-row>
-        <ion-col size="3"></ion-col>
-        <ion-col size="6">Mode Expert</ion-col>
-        <ion-col size="3">{{ current + 1 }} / {{ questionnaire.nbQuestions }}</ion-col>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="3" (click)="askCancel()" class="back">
+          <strong *ngIf="!finished">
+            <ion-icon name="chevron-back-outline"></ion-icon> Retour
+          </strong>
+        </ion-col>
+        <ion-col size="6" class="ion-text-center">
+          <div class="label-level">{{questionnaire.form.family.fulllabel}}</div>
+          <div class="label-instrument">Niveau <strong>{{questionnaire.form.level.label}}</strong></div>
+        </ion-col>
+        <ion-col size="3" class="ion-text-right"><strong>{{ current + 1 }} / {{ questionnaire.nbQuestions }}</strong></ion-col>
       </ion-row>
     </div>
   </ion-toolbar>
@@ -14,16 +21,12 @@
     <ion-slides #questionSlides class="game-slides" (ionSlideWillChange)="onSlideWillChange()" (ionSlideDidChange)="onSlideChange()" [options]="slideOpts">
       <ion-slide class="slide-game" *ngFor="let question of questionsInGame">
         <ion-content>
-          <div class="question">
+          <div class="question ion-align-items-center">
             Quel est cet instrument ?
           </div>
           <div class="player">
             <ion-row>
-              <ion-col size="auto" class="ion-align-self-start music-action">
-                <!--<ion-icon name="play-circle-outline" *ngIf="!playing" (click)="play(current)"></ion-icon>
-              <ion-icon name="stop-circle-outline" *ngIf="playing" (click)="stop(current)"></ion-icon>-->
-              </ion-col>
-              <ion-col class="progress">
+              <ion-col size="12">
                 <ion-progress-bar [value]="percent" color="warning"></ion-progress-bar>
               </ion-col>
             </ion-row>
@@ -58,18 +61,28 @@
         </ion-content>
       </ion-slide>
       <ion-slide id="final-slide" *ngIf="current + 1 == questionnaire.nbQuestions">
-        <ion-content>
+        <ion-content [fullscreen]="true">
+          <div id="final">
+            <ion-row>
+              <ion-col offset="2" size="8">
+                <img [src]="'assets/settings/instru-icon/' + loaderIcon + '/default.png'" class="loader-icon" />
+                <ion-progress-bar color="warning" [value]="loading / 2000"></ion-progress-bar>
+              </ion-col>
+            </ion-row>
+          </div>
         </ion-content>
       </ion-slide>
     </ion-slides>
   </div>
 </ion-content>
 <ion-footer>
-  <div class="answers">
-    <div class="answer-item" *ngFor="let question of questionnaire.questions">
-      <img src="assets/settings/instru-icon/saxophone/default.png" *ngIf="question.state == 0" />
-      <img src="assets/settings/instru-icon/saxophone/good.png" *ngIf="question.state == 1" />
-      <img src="assets/settings/instru-icon/saxophone/bad.png" *ngIf="question.state == 2" />
+  <ion-toolbar color="secondary">
+    <div class="answers">
+      <div class="answer-item" *ngFor="let question of questionnaire.questions">
+        <img src="assets/settings/instru-icon/saxophone/default.png" *ngIf="question.state == 0" />
+        <img src="assets/settings/instru-icon/saxophone/good.png" *ngIf="question.state == 1" />
+        <img src="assets/settings/instru-icon/saxophone/bad.png" *ngIf="question.state == 2" />
+      </div>
     </div>
-  </div>
+  </ion-toolbar>
 </ion-footer>

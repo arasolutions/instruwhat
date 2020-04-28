@@ -43,6 +43,12 @@ export class GamePage implements OnInit {
   public block_action: boolean;
 
 
+  public intervalLoader: any;
+  public intervalLoaderIcon: any;
+  public loading: number;
+  public loaderIcon: string;
+  public icons = ['saxophone', 'clarinette', 'piano', 'tambour', 'triangle', 'trompette', 'xylophone'];
+
   constructor(public router: Router, public navParams: NavParams, private activatedRoute: ActivatedRoute, private alertCtrl: AlertController, public media: Media, public platform: Platform, public instrumentService: InstrumentService, public questionService: QuestionService, public questionnaireService: QuestionnaireService) {
 
     this.questionsInGame = new Array();
@@ -63,12 +69,9 @@ export class GamePage implements OnInit {
   }
 
   ngOnInit() {
-
     this.slideOpts = {
       slidesPerView: 1
     };
-
-
   }
 
   async ionViewDidEnter() {
@@ -77,13 +80,12 @@ export class GamePage implements OnInit {
     this.slides.lockSwipeToPrev(true);
     this.slides.lockSwipeToNext(true);
 
-
     const backButtonSub = this.platform.backButton.subscribeWithPriority(10000, () => {
       if (this.fileStatus == 2) {
         // En lecture
         this.file.setVolume(0.0);
       }
-      this.demandeAnnuler();
+      this.askCancel();
     });
   }
 
@@ -151,9 +153,7 @@ export class GamePage implements OnInit {
 
           if (question.clicked == question.goodAnswer.id) {
             question.state = QuestionState.GOOD;
-            console.log("percent pour calcul : " + this.percent);
             question.points = Math.floor(200 + (800 * (1 - this.percent)));
-            console.log("Points : " + question.points);
 
           } else {
             question.state = QuestionState.BAD;
@@ -199,9 +199,26 @@ export class GamePage implements OnInit {
     if (this.current + 1 == this.questionnaire.nbQuestions) {
       this.finished = true;
       this.questionnaire.updateScore();
-      setTimeout(() => {
-        this.router.navigate(['/final-game']);
-      }, 200);
+
+      //Loader
+      this.loading = 2000;
+      let currentIcon = 0;
+      this.intervalLoaderIcon = setInterval(() => {
+        this.loaderIcon = this.icons[currentIcon % this.icons.length];
+        currentIcon++;
+      }, 100);
+
+      this.intervalLoader = setInterval(() => {
+        if (this.loading == 0) {
+          clearInterval(this.intervalLoader);
+          clearInterval(this.intervalLoaderIcon);
+
+          this.router.navigate(['/final-game']);
+          return;
+        }
+        this.loading -= 50;
+      }, 50);
+
     } else {
       this.current++;
       this.stop();
@@ -226,7 +243,7 @@ export class GamePage implements OnInit {
     return firstDisabled || secondDisabled;
   }
 
-  async demandeAnnuler() {
+  async askCancel() {
     const alert = await this.alertCtrl.create({
       header: 'Quitter',
       message: 'Tu veux vraiment quitter ?',

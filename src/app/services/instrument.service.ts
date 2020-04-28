@@ -49,13 +49,13 @@ export class InstrumentService {
     let clavecin = new InstrumentModel(11, 'Clavecin', Level.INTERMEDIATE, 'assets/instruments/cordes/cordes-frappees/clavecin/clavecin.mp3', 'assets/instruments/cordes/cordes-frappees/clavecin/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
     this.instruments.push(clavecin);
 
-    let guitare = new InstrumentModel(12, 'Guitare', Level.EASY, 'assets/instruments/cordes/cordes-pincees/guitare/guitare.mp3', 'assets/instruments/cordes/cordes-pincees/guitare/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
+    let guitare = new InstrumentModel(12, 'Guitare', Level.EASY, 'assets/instruments/cordes/cordes-pincees/guitare/guitare.mp3', 'assets/instruments/cordes/cordes-pincees/guitare/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
     this.instruments.push(guitare);
 
-    let guitare_electrique = new InstrumentModel(13, 'Guitare éléctrique', Level.EASY, 'assets/instruments/cordes/cordes-pincees/guitare-electrique/guitare-electrique.mp3', 'assets/instruments/cordes/cordes-pincees/guitare-electrique/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
+    let guitare_electrique = new InstrumentModel(13, 'Guitare éléctrique', Level.EASY, 'assets/instruments/cordes/cordes-pincees/guitare-electrique/guitare-electrique.mp3', 'assets/instruments/cordes/cordes-pincees/guitare-electrique/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
     this.instruments.push(guitare_electrique);
 
-    let harpe = new InstrumentModel(14, 'Harpe', Level.EASY, 'assets/instruments/cordes/cordes-pincees/harpe/harpe.mp3', 'assets/instruments/cordes/cordes-pincees/harpe/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
+    let harpe = new InstrumentModel(14, 'Harpe', Level.EASY, 'assets/instruments/cordes/cordes-pincees/harpe/harpe.mp3', 'assets/instruments/cordes/cordes-pincees/harpe/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
     this.instruments.push(harpe);
 
     let basson = new InstrumentModel(15, 'Basson', Level.INTERMEDIATE, 'assets/instruments/bois/anche-double/basson/basson.mp3', 'assets/instruments/bois/anche-double/basson/photo.png', Family.BOIS, SubFamily.BOIS_ANCHE_DOUBLE);
@@ -93,6 +93,21 @@ export class InstrumentService {
 
     let trompette = new InstrumentModel(26, 'Trompette', Level.EASY, 'assets/instruments/cuivres/trompette/trompette.mp3', 'assets/instruments/cuivres/trompette/photo.png', Family.CUIVRES, null);
     this.instruments.push(trompette);
+
+    let saxo_baryton = new InstrumentModel(27, 'Saxo baryton', Level.INTERMEDIATE, 'assets/instruments/bois/anche-simple/saxo-baryton/saxo-baryton.mp3', 'assets/instruments/bois/anche-simple/saxo-baryton/photo.png', Family.BOIS, SubFamily.BOIS_ANCHE_SIMPLE);
+    this.instruments.push(saxo_baryton);
+
+    let hang = new InstrumentModel(28, 'Hang', Level.EXPERT, 'assets/instruments/percussions/sons-determines/hang/hang.mp3', 'assets/instruments/percussions/sons-determines/hang/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_DETERMINE);
+    this.instruments.push(hang);
+
+    let guiro = new InstrumentModel(29, 'Guiro', Level.EXPERT, 'assets/instruments/percussions/sons-indetermines/guiro/guiro.mp3', 'assets/instruments/percussions/sons-indetermines/guiro/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
+    this.instruments.push(guiro);
+
+    let yukulele = new InstrumentModel(30, 'Yukulélé', Level.INTERMEDIATE, 'assets/instruments/cordes/cordes-pincees/yukulele/yukulele.mp3', 'assets/instruments/cordes/cordes-pincees/yukulele/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
+    this.instruments.push(yukulele);
+
+    let didgeridoo = new InstrumentModel(31, 'Didgeridoo', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/didgeridoo/didgeridoo.mp3', 'assets/instruments/percussions/sons-indetermines/didgeridoo/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
+    this.instruments.push(didgeridoo);
   }
 
   getInstrumentById(id: number) {
@@ -100,10 +115,12 @@ export class InstrumentService {
   }
 
   getXInstruments(nbQuestion: number): InstrumentModel[] {
-    let result = this.instruments;
-    this.randomize(result);
+    let result = new Array<InstrumentModel>();
+    this.randomize(this.instruments);
 
-    result.splice(-1 * (this.instruments.length - nbQuestion), this.instruments.length - nbQuestion);
+    for (let i = 0; i < nbQuestion; i++) {
+      result.push(this.instruments[i]);
+    }
 
     return result;
   }

@@ -10,23 +10,25 @@ ion-header ion-item {
 
 ion-select {
   background: white;
-  box-shadow: white 0 0 5px 1px;
-  padding: 20px 15px;
+  box-shadow: white 0 0 5px 0;
+  padding: 15px;
   border-radius: 10px;
 }
 
 .param-label {
   text-align: center;
-  /* align-items: center; */
   display: block;
-  padding: 15px 0 5px;
   color: white;
   font-weight: bold;
   font-size: 1.5em;
 }
 
+ion-row:not(.param-label) {
+  height: 13%;
+}
+
 .buttons {
-  padding-top: 30px;
+  padding-top: 15px;
 }
 
 ion-range {
