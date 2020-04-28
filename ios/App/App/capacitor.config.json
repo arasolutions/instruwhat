@@ -1,1 +1,7 @@
-{}
+{
+  "appId": "com.arasolutions.instruwhat",
+  "appName": "InstruWhat",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

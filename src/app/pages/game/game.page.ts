@@ -24,7 +24,7 @@ export class GamePage implements OnInit {
   public interval: any;
   public percent: number = 0;
 
-  public files: MediaObject[];
+  public file: MediaObject;
   playing: boolean = false;
 
   public questionnaire: any;
@@ -39,20 +39,26 @@ export class GamePage implements OnInit {
 
   public finished: boolean;
 
+  public block_action: boolean;
+
 
   constructor(public router: Router, public navParams: NavParams, private activatedRoute: ActivatedRoute, public media: Media, public platform: Platform, public instrumentService: InstrumentService, public questionService: QuestionService, public questionnaireService: QuestionnaireService) {
 
     this.questionsInGame = new Array();
-    this.files = new Array();
     this.questionnaire = this.questionnaireService.getQuestionnaire();
     console.log(this.questionnaire);
 
     this.current = 0;
 
     this.questionsInGame.push(this.questionnaire.questions[this.current]);
+
     this.load();
+    setTimeout(() => {
+      this.play();
+    }, 400);
 
     this.novice = true;
+    this.block_action = false;
   }
 
   ngOnInit() {
@@ -70,15 +76,14 @@ export class GamePage implements OnInit {
   }
 
   load() {
-    const uri = this.questionsInGame[this.current].goodAnswer.sound;
+    const uri = this.questionsInGame[0].goodAnswer.sound;
 
     if (this.platform.is('android')) {
-      this.files.push(this.media.create('/android_asset/public/' + uri));
+      this.file = this.media.create('/android_asset/public/' + uri);
+    } else {
+      this.file = this.media.create('/android_asset/public/' + uri);
     }
-    if (this.platform.is('ios')) {
-      this.files.push(this.media.create('/android_asset/public/' + uri));
-    }
-    this.files[this.files.length - 1].onStatusUpdate.subscribe(status => {
+    this.file.onStatusUpdate.subscribe(status => {
       if (status == 1) {
         // STARTING
       }
@@ -88,69 +93,65 @@ export class GamePage implements OnInit {
       }
       if (status == 4) {
         // STOPPING
-        this.afterStop(this.files.length - 1);
+        this.afterStop();
       }
     }); // fires when files status changes
 
-    this.files[this.files.length - 1].onSuccess.subscribe(() => console.log('Action is successful'));
-    this.files[this.files.length - 1].onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); });
+    this.file.onSuccess.subscribe(() => console.log('Action is successful'));
+    this.file.onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); });
     this.percent = 0;
-
-    setTimeout(() => {
-      this.play(this.files.length - 1);
-    }, 400);
-
   }
 
-  play(indexFile: number) {
+  play() {
     // play the files
-    for (let i = 0; i < this.files.length; i++) {
-      this.stop(i);
+    this.stop();
+    if (!this.questionsInGame[0].clicked) {
+      this.file.play();
+      this.playing = true;
+      clearInterval(this.interval);
+      this.interval = setInterval(() => {
+        this.file.getCurrentPosition().then((position) => {
+          this.percent = position / this.file.getDuration();
+        });
+      }, 50);
     }
-    this.files[indexFile].play();
-    this.playing = true;
-    this.questionnaire.questions[indexFile].playing = true;
-    clearInterval(this.interval);
-    this.interval = setInterval(() => {
-      this.files[indexFile].getCurrentPosition().then((position) => {
-        this.percent = position / this.files[indexFile].getDuration();
-        this.questionnaire.questions[indexFile].percent = this.percent;
-      });
-    }, 50);
   }
 
-  stop(indexFile: number) {
-    this.files[indexFile].stop();
+  stop() {
+    this.file.stop();
     clearInterval(this.interval);
     this.playing = false;
-    this.questionnaire.questions[indexFile].playing = false;
-    this.afterStop(indexFile);
+    this.afterStop();
   }
 
-  afterStop(indexFile: number) {
+  afterStop() {
+    clearInterval(this.interval);
     this.percent = 0;
-    this.questionnaire.questions[indexFile].percent = 0;
   }
 
-  choose(indexFile: number, question: any, instrumentChosen: any) {
-    if (!this.isDisabled(instrumentChosen, question)) {
-      if (question.state == QuestionState.NOT_PLAYED) {
-        this.files[indexFile].pause();
-        clearInterval(this.interval);
-        this.slides.lockSwipeToNext(false);
-        question.clicked = instrumentChosen.id;
+  choose(question: any, instrumentChosen: any) {
+    if (!this.block_action) {
+      if (!this.isDisabled(instrumentChosen, question)) {
+        if (question.state == QuestionState.NOT_PLAYED) {
+          question.clicked = instrumentChosen.id;
+          if (this.playing) {
+            this.file.pause();
+            clearInterval(this.interval);
+          }
 
-        if (question.clicked == question.goodAnswer.id) {
-          question.state = QuestionState.GOOD;
-          question.points = Math.floor(200 + (800 * (1 - this.percent)));
-        } else {
-          question.state = QuestionState.BAD;
-          question.points = 0;
-        }
+          if (question.clicked == question.goodAnswer.id) {
+            question.state = QuestionState.GOOD;
+            question.points = Math.floor(200 + (800 * (1 - this.percent)));
+          } else {
+            question.state = QuestionState.BAD;
+            question.points = 0;
+          }
 
-        // Création de la prochaine slide
-        if (this.current < this.questionnaire.nbQuestions - 1) {
-          this.questionsInGame.push(this.questionnaire.questions[this.current + 1]);
+          // Création de la prochaine slide
+          if (this.current < this.questionnaire.nbQuestions - 1) {
+            this.questionsInGame.push(this.questionnaire.questions[this.current + 1]);
+          }
+          this.slides.lockSwipeToNext(false);
         }
       }
     }
@@ -166,28 +167,33 @@ export class GamePage implements OnInit {
 
   onSlideChange() {
     this.slides.lockSwipeToNext(true);
-    if (this.current + 1 == this.questionnaire.nbQuestions) {
-      this.questionnaire.updateScore();
-
-      setTimeout(() => {
-        this.router.navigate(['/final-game']);
-      }, 50);
-
-    } else {
-      this.novice = false;
-      this.current++;
-      this.load();
+    if (!this.finished) {
       if (this.current + 1 < this.questionnaire.nbQuestions) {
-        this.slides.getActiveIndex().then(index => {
-          this.slides.el.swiper.removeSlide(0);
-        });
+
+        this.questionsInGame.shift();
       }
+      this.load();
+      setTimeout(() => {
+        this.play();
+      }, 400);
     }
+    this.block_action = false;
   }
 
-
   onSlideWillChange() {
-    this.stop(this.current);
+    this.block_action = true;
+
+    if (this.current + 1 == this.questionnaire.nbQuestions) {
+      this.finished = true;
+      this.questionnaire.updateScore();
+      setTimeout(() => {
+        this.router.navigate(['/final-game']);
+      }, 200);
+    } else {
+      this.current++;
+      this.stop();
+      this.novice = false;
+    }
   }
 
   isDisabled(instrument: any, question: any) {
