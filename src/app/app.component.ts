@@ -10,15 +10,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public appPages = [
-    {
-      title: 'Jeu',
-      url: '/param-game',
-      icon: 'mail'
-    }
-  ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -29,9 +20,7 @@ export class AppComponent implements OnInit {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      //this.statusBar.styleDefault();
-      this.statusBar.styleLightContent(),
-      this.statusBar.backgroundColorByHexString('#333');
+      this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
   }

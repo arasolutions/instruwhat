@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Media, MediaObject } from '@ionic-native/media/ngx';
-import { Platform, NavParams } from '@ionic/angular';
+import { Platform, NavParams, AlertController } from '@ionic/angular';
 
 import { InstrumentService } from '../../services/instrument.service';
 import { QuestionnaireService } from '../../services/questionnaire.service';
@@ -25,6 +25,7 @@ export class GamePage implements OnInit {
   public percent: number = 0;
 
   public file: MediaObject;
+  public fileStatus: number;
   playing: boolean = false;
 
   public questionnaire: any;
@@ -42,7 +43,7 @@ export class GamePage implements OnInit {
   public block_action: boolean;
 
 
-  constructor(public router: Router, public navParams: NavParams, private activatedRoute: ActivatedRoute, public media: Media, public platform: Platform, public instrumentService: InstrumentService, public questionService: QuestionService, public questionnaireService: QuestionnaireService) {
+  constructor(public router: Router, public navParams: NavParams, private activatedRoute: ActivatedRoute, private alertCtrl: AlertController, public media: Media, public platform: Platform, public instrumentService: InstrumentService, public questionService: QuestionService, public questionnaireService: QuestionnaireService) {
 
     this.questionsInGame = new Array();
     this.questionnaire = this.questionnaireService.getQuestionnaire();
@@ -66,13 +67,24 @@ export class GamePage implements OnInit {
     this.slideOpts = {
       slidesPerView: 1
     };
+
+
   }
 
-  ionViewDidEnter() {
+  async ionViewDidEnter() {
     this.finished = false;
 
     this.slides.lockSwipeToPrev(true);
     this.slides.lockSwipeToNext(true);
+
+
+    const backButtonSub = this.platform.backButton.subscribeWithPriority(10000, () => {
+      if (this.fileStatus == 2) {
+        // En lecture
+        this.file.setVolume(0.0);
+      }
+      this.demandeAnnuler();
+    });
   }
 
   load() {
@@ -84,20 +96,14 @@ export class GamePage implements OnInit {
       this.file = this.media.create('/android_asset/public/' + uri);
     }
     this.file.onStatusUpdate.subscribe(status => {
-      if (status == 1) {
-        // STARTING
-      }
-      if (status == 2) {
-        // RUNNING
-        // get current playback position
-      }
+      this.fileStatus = status;
       if (status == 4) {
         // STOPPING
         this.afterStop();
       }
     }); // fires when files status changes
 
-    this.file.onSuccess.subscribe(() => console.log('Action is successful'));
+    this.file.onSuccess.subscribe(() => { this.afterFinished(); });
     this.file.onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); });
     this.percent = 0;
   }
@@ -119,14 +125,18 @@ export class GamePage implements OnInit {
 
   stop() {
     this.file.stop();
-    clearInterval(this.interval);
     this.playing = false;
-    this.afterStop();
+    clearInterval(this.interval);
   }
 
   afterStop() {
+    this.percent = 1;
     clearInterval(this.interval);
-    this.percent = 0;
+  }
+
+  afterFinished() {
+    this.percent = 1;
+    clearInterval(this.interval);
   }
 
   choose(question: any, instrumentChosen: any) {
@@ -141,7 +151,10 @@ export class GamePage implements OnInit {
 
           if (question.clicked == question.goodAnswer.id) {
             question.state = QuestionState.GOOD;
+            console.log("percent pour calcul : " + this.percent);
             question.points = Math.floor(200 + (800 * (1 - this.percent)));
+            console.log("Points : " + question.points);
+
           } else {
             question.state = QuestionState.BAD;
             question.points = 0;
@@ -212,4 +225,30 @@ export class GamePage implements OnInit {
 
     return firstDisabled || secondDisabled;
   }
+
+  async demandeAnnuler() {
+    const alert = await this.alertCtrl.create({
+      header: 'Quitter',
+      message: 'Tu veux vraiment quitter ?',
+      buttons: [
+        {
+          text: 'Non',
+          role: 'cancel',
+          handler: () => {
+            this.file.setVolume(1.0);
+          }
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            this.stop();
+            this.router.navigate(['/param-game']);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+
 }

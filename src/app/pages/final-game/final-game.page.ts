@@ -27,6 +27,9 @@ export class FinalGamePage implements OnInit {
   }
 
   ngOnInit() {
+    const backButtonSub = this.platform.backButton.subscribeWithPriority(10000, () => {
+      this.router.navigate(['/param-game']);
+    });
   }
 
   loadAllSounds() {
