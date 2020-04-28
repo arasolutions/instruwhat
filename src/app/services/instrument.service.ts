@@ -108,6 +108,15 @@ export class InstrumentService {
 
     let didgeridoo = new InstrumentModel(31, 'Didgeridoo', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/didgeridoo/didgeridoo.mp3', 'assets/instruments/percussions/sons-indetermines/didgeridoo/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
     this.instruments.push(didgeridoo);
+
+    let castagnettes = new InstrumentModel(32, 'Castagnettes', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/castagnettes/castagnettes.mp3', 'assets/instruments/percussions/sons-indetermines/castagnettes/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
+    this.instruments.push(castagnettes);
+
+    let flute_de_pan = new InstrumentModel(33, 'Flûte de pan', Level.INTERMEDIATE, 'assets/instruments/bois/biseau/flute-de-pan/flute-de-pan.mp3', 'assets/instruments/bois/biseau/flute-de-pan/photo.png', Family.BOIS, SubFamily.BOIS_BISEAU);
+    this.instruments.push(flute_de_pan);
+
+    let ocarina = new InstrumentModel(34, 'Ocarina', Level.EXPERT, 'assets/instruments/bois/biseau/ocarina/ocarina.mp3', 'assets/instruments/bois/biseau/ocarina/photo.png', Family.BOIS, SubFamily.BOIS_BISEAU);
+    this.instruments.push(ocarina);
   }
 
   getInstrumentById(id: number) {
