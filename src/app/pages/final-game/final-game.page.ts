@@ -19,10 +19,14 @@ export class FinalGamePage implements OnInit {
 
   interval: any;
 
+  currentFile: number;
+
   constructor(public router: Router, public platform: Platform, public route: ActivatedRoute, public media: Media, public questionnaireService: QuestionnaireService) {
     this.questionnaire = this.questionnaireService.getQuestionnaire();
 
     this.loadAllSounds();
+
+    this.currentFile = null;
 
   }
 
@@ -64,10 +68,11 @@ export class FinalGamePage implements OnInit {
 
   play(indexFile: number) {
     // play the files
-    for (let i = 0; i < this.files.length; i++) {
-      this.stop(i);
+    if (!this.currentFile != null) {
+      this.stop(this.currentFile);
     }
     this.files[indexFile].play();
+    this.currentFile = indexFile;
     this.questionnaire.questions[indexFile].playing = true;
     clearInterval(this.interval);
     this.interval = setInterval(() => {
@@ -79,6 +84,7 @@ export class FinalGamePage implements OnInit {
 
   stop(indexFile: number) {
     this.files[indexFile].stop();
+    this.currentFile = null;
     clearInterval(this.interval);
     this.questionnaire.questions[indexFile].playing = false;
     this.afterStop(indexFile);

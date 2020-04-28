@@ -91,28 +91,33 @@ export class GamePage implements OnInit {
 
   load() {
     const uri = this.questionsInGame[0].goodAnswer.sound;
-
     if (this.platform.is('android')) {
-      this.file = this.media.create('/android_asset/public/' + uri);
-    } else {
+        this.file = this.media.create('/android_asset/public/' + uri);
+    }    else {
       this.file = this.media.create('/android_asset/public/' + uri);
     }
     this.file.onStatusUpdate.subscribe(status => {
-      this.fileStatus = status;
+        this.fileStatus = status;
       if (status == 4) {
         // STOPPING
         this.afterStop();
       }
     }); // fires when files status changes
-
-    this.file.onSuccess.subscribe(() => { this.afterFinished(); });
-    this.file.onError.subscribe(error => { console.log('Error! ' + JSON.stringify(error)); });
+    this.file.onSuccess.subscribe(() => {
+      this.afterFinished();
+    });
+    this.file.onError.subscribe(error => {
+      console.log('Error! ' + JSON.stringify(error));
+    });
     this.percent = 0;
   }
 
   play() {
     // play the files
-    this.stop();
+    if (this.fileStatus == 2) {
+      this.stop();
+    }
+
     if (!this.questionsInGame[0].clicked) {
       this.file.play();
       this.playing = true;
@@ -126,7 +131,9 @@ export class GamePage implements OnInit {
   }
 
   stop() {
-    this.file.stop();
+    if (this.fileStatus == 2 || this.fileStatus == 3) {
+      this.file.stop();
+    }
     this.playing = false;
     clearInterval(this.interval);
   }
@@ -146,23 +153,25 @@ export class GamePage implements OnInit {
       if (!this.isDisabled(instrumentChosen, question)) {
         if (question.state == QuestionState.NOT_PLAYED) {
           question.clicked = instrumentChosen.id;
-          if (this.playing) {
+          if (this.fileStatus == 2) {
             this.file.pause();
             clearInterval(this.interval);
           }
-
           if (question.clicked == question.goodAnswer.id) {
             question.state = QuestionState.GOOD;
             question.points = Math.floor(200 + (800 * (1 - this.percent)));
-
-          } else {
+          }
+          else {
             question.state = QuestionState.BAD;
             question.points = 0;
           }
-
           // Création de la prochaine slide
-          if (this.current < this.questionnaire.nbQuestions - 1) {
+          if (this.current + 1 < this.questionnaire.nbQuestions) {
             this.questionsInGame.push(this.questionnaire.questions[this.current + 1]);
+          }
+
+          if (this.current + 1 == this.questionnaire.nbQuestions) {
+            this.finished = true;
           }
           this.slides.lockSwipeToNext(false);
         }
@@ -181,8 +190,7 @@ export class GamePage implements OnInit {
   onSlideChange() {
     this.slides.lockSwipeToNext(true);
     if (!this.finished) {
-      if (this.current + 1 < this.questionnaire.nbQuestions) {
-
+      if (this.current < this.questionnaire.nbQuestions) {
         this.questionsInGame.shift();
       }
       this.load();
@@ -192,14 +200,11 @@ export class GamePage implements OnInit {
     }
     this.block_action = false;
   }
-
   onSlideWillChange() {
     this.block_action = true;
-
+    this.stop();
     if (this.current + 1 == this.questionnaire.nbQuestions) {
-      this.finished = true;
       this.questionnaire.updateScore();
-
       //Loader
       this.loading = 2000;
       let currentIcon = 0;
@@ -207,21 +212,18 @@ export class GamePage implements OnInit {
         this.loaderIcon = this.icons[currentIcon % this.icons.length];
         currentIcon++;
       }, 100);
-
       this.intervalLoader = setInterval(() => {
         if (this.loading == 0) {
           clearInterval(this.intervalLoader);
           clearInterval(this.intervalLoaderIcon);
-
           this.router.navigate(['/final-game']);
           return;
         }
         this.loading -= 50;
       }, 50);
-
-    } else {
+    }
+    else {
       this.current++;
-      this.stop();
       this.novice = false;
     }
   }
