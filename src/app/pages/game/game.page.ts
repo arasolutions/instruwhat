@@ -133,6 +133,7 @@ export class GamePage implements OnInit {
   stop() {
     if (this.fileStatus == 2 || this.fileStatus == 3) {
       this.file.stop();
+              this.file.release();
     }
     this.playing = false;
     clearInterval(this.interval);

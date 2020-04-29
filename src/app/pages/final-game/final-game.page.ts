@@ -25,7 +25,6 @@ export class FinalGamePage implements OnInit {
     this.questionnaire = this.questionnaireService.getQuestionnaire();
 
     this.loadAllSounds();
-
     this.currentFile = null;
 
   }
@@ -68,7 +67,7 @@ export class FinalGamePage implements OnInit {
 
   play(indexFile: number) {
     // play the files
-    if (!this.currentFile != null) {
+    if (this.currentFile != null) {
       this.stop(this.currentFile);
     }
     this.files[indexFile].play();
@@ -95,11 +94,22 @@ export class FinalGamePage implements OnInit {
   }
 
   restartGame() {
+    this.releaseAll()
     this.router.navigate(['/initial-game'], { queryParams: { form: JSON.stringify(this.questionnaire.form) } });
   }
 
   stopGame() {
+    this.releaseAll();
     this.router.navigate(['/param-game']);
+  }
+
+  releaseAll() {
+    if (this.currentFile != null) {
+      this.stop(this.currentFile);
+    }
+    for (let i = 0; i < this.files.length; i++) {
+      this.files[i].release();
+    }
   }
 
 }
