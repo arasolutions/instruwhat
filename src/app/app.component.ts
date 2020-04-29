@@ -10,12 +10,37 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  public items = [
+    {
+      'label': 'Jouer',
+      'path': '/param-game',
+      'icon': 'play-outline'
+    },
+    {
+      'label': 'Mes scores',
+      'path': '/scores',
+      'icon': 'medal-outline'
+    },
+    {
+      'label': 'Paramètres',
+      'path': '/settings',
+      'icon': 'options-outline'
+    },
+    {
+      'label': 'Lexique',
+      'path': '/glossary',
+      'icon': 'book-outline'
+    }
+  ];
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
     this.initializeApp();
+    this.preloadImages();
   }
 
   initializeApp() {
@@ -23,6 +48,11 @@ export class AppComponent implements OnInit {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  preloadImages() {
+    // Icones chargement
+
   }
 
   ngOnInit() {

@@ -22,6 +22,18 @@ const routes: Routes = [
   {
     path: 'final-game',
     loadChildren: () => import('./pages/final-game/final-game.module').then( m => m.FinalGamePageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'scores',
+    loadChildren: () => import('./pages/scores/scores.module').then( m => m.ScoresPageModule)
+  },
+  {
+    path: 'glossary',
+    loadChildren: () => import('./pages/glossary/glossary.module').then( m => m.GlossaryPageModule)
   }
 ];
 
