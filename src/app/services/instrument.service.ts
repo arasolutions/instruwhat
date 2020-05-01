@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { InstrumentModel } from '../models/instrument.model';
 import { Level } from '../enums/level.enum'
 import { Family, SubFamily } from '../enums/family.enum'
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,26 @@ export class InstrumentService {
 
   public instruments: InstrumentModel[];
 
-  constructor() { }
+  constructor(public afs: AngularFirestore) {
+  }
+
+  addInsrument(instru) {
+      let data: any;
+      data = {};
+      data.id = instru.id;
+      data.label = instru.label;
+      data.level = instru.level;
+      data.sound = instru.sound;
+      data.photo = instru.photo;
+      data.family = instru.family;
+      data.subfamily = instru.subFamily;
+      this.afs.collection<any>('instrument').add(data);
+  }
 
   loadInstruments() {
     this.instruments = new Array();
 
-    let piano = new InstrumentModel(1, 'Piano', Level.EASY, 'assets/instruments/cordes/cordes-frappees/piano/piano.mp3', 'assets/instruments/cordes/cordes-frappees/piano/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
+    /*let piano = new InstrumentModel(1, 'Piano', Level.EASY, 'assets/instruments/cordes/cordes-frappees/piano/piano.mp3', 'assets/instruments/cordes/cordes-frappees/piano/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
     this.instruments.push(piano);
 
     let xylophone = new InstrumentModel(2, 'Xylophone', Level.EASY, 'assets/instruments/percussions/sons-determines/xylophone/xylophone.mp3', 'assets/instruments/percussions/sons-determines/xylophone/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_DETERMINE);
@@ -116,7 +131,24 @@ export class InstrumentService {
     this.instruments.push(flute_de_pan);
 
     let ocarina = new InstrumentModel(34, 'Ocarina', Level.EXPERT, 'assets/instruments/bois/biseau/ocarina/ocarina.mp3', 'assets/instruments/bois/biseau/ocarina/photo.png', Family.BOIS, SubFamily.BOIS_BISEAU);
-    this.instruments.push(ocarina);
+    this.instruments.push(ocarina);*/
+
+    let instrusFire = new Array();
+    let instrumentsCollection = this.afs.collection<any>('instrument').valueChanges();
+    let instrusObs = instrumentsCollection.subscribe(val => {
+        val.forEach(function (value) {
+            let ins = new InstrumentModel(value.id,
+                                          value.label,
+                                          value.level,
+                                          value.sound,
+                                          value.photo,
+                                          value.family,
+                                          value.subFamily);
+            instrusFire.push(ins);
+        });
+        this.instruments = instrusFire;
+    });
+
   }
 
   getInstrumentById(id: number) {

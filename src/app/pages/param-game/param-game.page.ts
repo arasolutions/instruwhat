@@ -27,6 +27,7 @@ export class ParamGamePage implements OnInit {
   constructor(public router: Router, public route: ActivatedRoute, public questionnaireService: QuestionnaireService, public instrumentService: InstrumentService, public analytics: AngularFireAnalytics) {
 
     this.analytics.logEvent('page_view', {page: 'ParamGame'});
+
     this.instrumentService.loadInstruments();
 
     this.form = new ParamGameForm();
