@@ -5,6 +5,8 @@ import { Family } from '../../enums/family.enum';
 import { Level } from '../../enums/level.enum';
 import { ParamGameForm } from '../../forms/param-game.form';
 
+import { AngularFireAnalytics } from '@angular/fire/analytics';
+
 import { QuestionnaireService } from '../../services/questionnaire.service';
 import { InstrumentService } from '../../services/instrument.service';
 
@@ -22,8 +24,9 @@ export class ParamGamePage implements OnInit {
 
   animate: boolean = false;
 
-  constructor(public router: Router, public route: ActivatedRoute, public questionnaireService: QuestionnaireService, public instrumentService: InstrumentService) {
+  constructor(public router: Router, public route: ActivatedRoute, public questionnaireService: QuestionnaireService, public instrumentService: InstrumentService, public analytics: AngularFireAnalytics) {
 
+    this.analytics.logEvent('page_view', {page: 'ParamGame'});
     this.instrumentService.loadInstruments();
 
     this.form = new ParamGameForm();
