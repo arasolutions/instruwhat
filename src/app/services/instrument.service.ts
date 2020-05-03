@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 
 import { InstrumentModel } from '../models/instrument.model';
-import { Level } from '../enums/level.enum'
-import { Family, SubFamily } from '../enums/family.enum'
+import { Level } from '../enums/level.enum';
+import { Family, SubFamily } from '../enums/family.enum';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,9 @@ export class InstrumentService {
 
   public instruments: InstrumentModel[];
 
-  constructor(public afs: AngularFirestore) {
+  constructor(public afs: AngularFirestore,
+              public afStorage: AngularFireStorage) {
+
   }
 
   addInsrument(instru) {
@@ -31,7 +34,7 @@ export class InstrumentService {
   loadInstruments() {
     this.instruments = new Array();
 
-    /*let piano = new InstrumentModel(1, 'Piano', Level.EASY, 'assets/instruments/cordes/cordes-frappees/piano/piano.mp3', 'assets/instruments/cordes/cordes-frappees/piano/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
+    let piano = new InstrumentModel(1, 'Piano', Level.EASY, 'assets/instruments/cordes/cordes-frappees/piano/piano.mp3', 'assets/instruments/cordes/cordes-frappees/piano/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
     this.instruments.push(piano);
 
     let xylophone = new InstrumentModel(2, 'Xylophone', Level.EASY, 'assets/instruments/percussions/sons-determines/xylophone/xylophone.mp3', 'assets/instruments/percussions/sons-determines/xylophone/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_DETERMINE);
@@ -131,23 +134,9 @@ export class InstrumentService {
     this.instruments.push(flute_de_pan);
 
     let ocarina = new InstrumentModel(34, 'Ocarina', Level.EXPERT, 'assets/instruments/bois/biseau/ocarina/ocarina.mp3', 'assets/instruments/bois/biseau/ocarina/photo.png', Family.BOIS, SubFamily.BOIS_BISEAU);
-    this.instruments.push(ocarina);*/
+    this.instruments.push(ocarina);
 
-    let instrusFire = new Array();
-    let instrumentsCollection = this.afs.collection<any>('instrument').valueChanges();
-    let instrusObs = instrumentsCollection.subscribe(val => {
-        val.forEach(function (value) {
-            let ins = new InstrumentModel(value.id,
-                                          value.label,
-                                          value.level,
-                                          value.sound,
-                                          value.photo,
-                                          value.family,
-                                          value.subFamily);
-            instrusFire.push(ins);
-        });
-        this.instruments = instrusFire;
-    });
+    //this.getInstrumentsByFirebase();
 
   }
 
@@ -176,5 +165,45 @@ export class InstrumentService {
       a[b] = d;
     }
   }
+
+  /* Firebase
+    getInstrumentsByFirebase : permet de récupérer les instruments depuis Firebase Database
+    getPhotoFirebase : permet de récupérer un média depuis Firebase Storage
+   */
+    getInstrumentsByFirebase() {
+        let instrusFire = new Array();
+        let instrumentsCollection = this.afs.collection<any>('instrument').valueChanges();
+        let instrusObs = instrumentsCollection.subscribe(val => {
+            val.forEach(function (value) {
+                let ins = new InstrumentModel(value.id,
+                    value.label,
+                    value.level,
+                    value.sound,
+                    value.photo,
+                    value.family,
+                    value.subFamily);
+                instrusFire.push(ins);
+            });
+            this.instruments = instrusFire;
+        });
+    }
+    async getPhotoFirebase() {
+        let urlLink = '';
+        const linkPh = 'instrument/bois/anche-double/basson/photo.png';
+        try {
+            this.afStorage.ref(linkPh).getDownloadURL().subscribe((val) => {
+                if (val) {
+                    console.log('Val OK');
+                    urlLink = val;
+                }
+            }, e => {
+                //console.log(e);
+            });
+        } catch (e) {
+            //console.log(e);
+        }
+        return urlLink;
+    }
+
 
 }
