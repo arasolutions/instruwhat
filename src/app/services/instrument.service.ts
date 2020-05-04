@@ -140,6 +140,10 @@ export class InstrumentService {
 
   }
 
+    getInstruments() {
+        return this.instruments;
+    }
+
   getInstrumentById(id: number) {
     return this.instruments.find(element => element.id == id);
   }

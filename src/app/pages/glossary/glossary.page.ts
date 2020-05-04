@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
+
+import { Media, MediaObject} from '@ionic-native/media/ngx';
+
+import { InstrumentService } from '../../services/instrument.service';
 
 @Component({
   selector: 'app-glossary',
@@ -7,7 +12,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GlossaryPage implements OnInit {
 
-  constructor() { }
+  instruments: any;
+  files: MediaObject[];
+
+  constructor(public instrumentService: InstrumentService,
+              public media: Media,
+              public platform: Platform) {
+      this.instruments = this.instrumentService.getInstruments();
+      if (this.instruments === undefined) {
+          this.instrumentService.loadInstruments();
+          this.instruments = this.instrumentService.getInstruments();
+      }
+      this.loadAllSounds();
+      console.log(this.instruments);
+  }
+
+    loadAllSounds() {
+        this.files = new Array();
+        this.instruments.forEach((intru, i) => {
+            const uri = intru.sound;
+
+            if (this.platform.is('android')) {
+                this.files[intru.id] = this.media.create('/android_asset/public/' + uri);
+            }
+            if (this.platform.is('ios')) {
+                this.files[intru.id] = this.media.create('/android_asset/public/' + uri);
+            }
+        });
+    }
+
+    play(intruId: number) {
+        // play the files
+        this.files[intruId].play();
+        console.log('coucou');
+    }
 
   ngOnInit() {
   }

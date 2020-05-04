@@ -7,5 +7,40 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  GLOSSAIRE
+  <!-- Label only -->
+  <ion-segment value="favorite">
+    <ion-segment-button value="all">
+      <ion-label>Tous</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="bois">
+      <ion-label>Bois</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="cuivre">
+      <ion-label>Cuivre</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="percussions">
+      <ion-label>Percussions</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="cordes">
+      <ion-label>Cordes</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-searchbar showCancelButton="always" class="list-searchbar"></ion-searchbar>
+  <ion-list>
+    <ion-list-header>
+      Instruments
+    </ion-list-header>
+
+    <ion-item *ngFor="let instrument of instruments" (click)="play(instrument.id);">
+      <ion-avatar slot="start">
+        <img [src]="instrument.photo">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ instrument.label }}</h2>
+        <!--<h3>{{ instrument.family.label }}</h3>-->
+        <p>{{ instrument.family.label }}</p>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
 </ion-content>
