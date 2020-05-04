@@ -42,23 +42,23 @@ export class GlossaryPage implements OnInit {
         });
     }
 
-    play(intruId: number) {
-      if (this.instruments[intruId].playing) {
+    play(intruId: number, indexFile: number) {
+      if (this.instruments[indexFile].playing) {
           // Stop the sound
           this.files[intruId].stop();
           clearInterval(this.interval);
-          this.instruments[intruId].playing = false;
-          this.instruments[intruId].percent = 0;
+          this.instruments[indexFile].playing = false;
+          this.instruments[indexFile].percent = 0;
       } else {
           // Play the sound
           this.files[intruId].play();
           clearInterval(this.interval);
           this.interval = setInterval(() => {
               this.files[intruId].getCurrentPosition().then((position) => {
-                  this.instruments[intruId].percent = position / this.files[intruId].getDuration();
+                  this.instruments[indexFile].percent = position / this.files[intruId].getDuration();
               });
           }, 50);
-          this.instruments[intruId].playing = true;
+          this.instruments[indexFile].playing = true;
       }
     }
 

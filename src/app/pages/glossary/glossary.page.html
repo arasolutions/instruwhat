@@ -31,7 +31,7 @@
       Instruments
     </ion-list-header>
 
-    <ion-item *ngFor="let instrument of instruments" (click)="play(instrument.id);">
+    <ion-item *ngFor="let instrument of instruments; let i = index" (click)="play(instrument.id, i);">
       <ion-avatar slot="start">
         <img [src]="instrument.photo">
       </ion-avatar>
