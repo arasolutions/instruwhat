@@ -13,6 +13,7 @@ import { InstrumentService } from '../../services/instrument.service';
 export class GlossaryPage implements OnInit {
 
   instruments: any;
+  interval: any;
   files: MediaObject[];
 
   constructor(public instrumentService: InstrumentService,
@@ -42,9 +43,23 @@ export class GlossaryPage implements OnInit {
     }
 
     play(intruId: number) {
-        // play the files
-        this.files[intruId].play();
-        console.log('coucou');
+      if (this.instruments[intruId].playing) {
+          // Stop the sound
+          this.files[intruId].stop();
+          clearInterval(this.interval);
+          this.instruments[intruId].playing = false;
+          this.instruments[intruId].percent = 0;
+      } else {
+          // Play the sound
+          this.files[intruId].play();
+          clearInterval(this.interval);
+          this.interval = setInterval(() => {
+              this.files[intruId].getCurrentPosition().then((position) => {
+                  this.instruments[intruId].percent = position / this.files[intruId].getDuration();
+              });
+          }, 50);
+          this.instruments[intruId].playing = true;
+      }
     }
 
   ngOnInit() {

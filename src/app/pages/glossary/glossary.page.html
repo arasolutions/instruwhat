@@ -39,6 +39,7 @@
         <h2>{{ instrument.label }}</h2>
         <!--<h3>{{ instrument.family.label }}</h3>-->
         <p>{{ instrument.family.label }}</p>
+        <p *ngIf="instrument.playing"><ion-progress-bar [value]="instrument.percent" color="warning"></ion-progress-bar></p>
       </ion-label>
     </ion-item>
 
