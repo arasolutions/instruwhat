@@ -16,6 +16,7 @@ ion-segment-button {
 }
 .list-searchbar {
   text-align: center;
+  --background: var(--ion-color-secondary, #3dc2ff);
   --color: #FFF;
   --cancel-button-color: #FFF;
   --clear-button-color: #FFF;

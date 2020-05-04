@@ -13,6 +13,7 @@ import { InstrumentService } from '../../services/instrument.service';
 export class GlossaryPage implements OnInit {
 
   instruments: any;
+  instrumentsList: any;
   interval: any;
   files: MediaObject[];
 
@@ -25,7 +26,7 @@ export class GlossaryPage implements OnInit {
           this.instruments = this.instrumentService.getInstruments();
       }
       this.loadAllSounds();
-      console.log(this.instruments);
+      this.instrumentsList = this.instruments;
   }
 
     loadAllSounds() {
@@ -43,23 +44,39 @@ export class GlossaryPage implements OnInit {
     }
 
     play(intruId: number, indexFile: number) {
-      if (this.instruments[indexFile].playing) {
+      if (this.instrumentsList[indexFile].playing) {
           // Stop the sound
           this.files[intruId].stop();
           clearInterval(this.interval);
-          this.instruments[indexFile].playing = false;
-          this.instruments[indexFile].percent = 0;
+          this.instrumentsList[indexFile].playing = false;
+          this.instrumentsList[indexFile].percent = 0;
       } else {
           // Play the sound
           this.files[intruId].play();
           clearInterval(this.interval);
           this.interval = setInterval(() => {
               this.files[intruId].getCurrentPosition().then((position) => {
-                  this.instruments[indexFile].percent = position / this.files[intruId].getDuration();
+                  this.instrumentsList[indexFile].percent = position / this.files[intruId].getDuration();
               });
           }, 50);
-          this.instruments[indexFile].playing = true;
+          this.instrumentsList[indexFile].playing = true;
       }
+    }
+
+    filterList(evt) {
+      const searchTerm = evt.srcElement.value;
+      if (!searchTerm) {
+          this.instrumentsList = this.instruments;
+          return;
+      }
+      this.instrumentsList = this.instruments.filter(currentInstru => {
+          if (currentInstru.label && searchTerm) {
+              if (currentInstru.label.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+                  return true;
+              }
+              return false;
+          }
+      });
     }
 
   ngOnInit() {
