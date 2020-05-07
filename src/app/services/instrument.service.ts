@@ -159,6 +159,28 @@ export class InstrumentService {
     return result;
   }
 
+  getInstrumentsByFilters(form): InstrumentModel[] {
+    let resultFilter = new Array<InstrumentModel>();
+    let resultCount = new Array<InstrumentModel>();
+    this.randomize(this.instruments);
+
+    for (let i = 0; i < this.instruments.length; i++) {
+      // On vérfie la famille de l'instrument
+      if (form.family.label === Family.ALL.label || this.instruments[i].family.label === form.family.label) {
+          // On vérfie le niveau de l'instrument
+          if (this.instruments[i].level.value <= form.level.value) {
+              // On vérfie le niveau de l'instrument
+              resultFilter.push(this.instruments[i]);
+          }
+      }
+    }
+
+    for (let i = 0; i < form.nbQuestions; i++) {
+      resultCount.push(resultFilter[i]);
+    }
+    return resultCount;
+  }
+
   randomize(a) {
     let b, c, d;
     c = a.length;

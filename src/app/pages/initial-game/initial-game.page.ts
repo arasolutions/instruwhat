@@ -29,8 +29,6 @@ export class InitialGamePage implements OnInit {
     let form = <ParamGameForm>JSON.parse(this.route.snapshot.queryParams.form);
     let questionnaire = this.questionnaireService.createQuestionnaire(form);
 
-    console.log(questionnaire);
-
     //Loader
     this.loading = 0;
     let currentIcon = 0;

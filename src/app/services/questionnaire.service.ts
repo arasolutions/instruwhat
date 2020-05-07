@@ -21,8 +21,8 @@ export class QuestionnaireService {
   createQuestionnaire(form: ParamGameForm): QuestionnaireModel {
     let result = new QuestionnaireModel(Math.floor(Math.random() * Math.floor(4000)), form);
 
-    let questionnaireInstru = this.instrumentService.getXInstruments(form.nbQuestions);
-console.log(questionnaireInstru);
+    //let questionnaireInstru = this.instrumentService.getXInstruments(form.nbQuestions);
+    let questionnaireInstru = this.instrumentService.getInstrumentsByFilters(form);
 
     for (let i = 0; i < questionnaireInstru.length; i++) {
       result.questions.push(this.questionService.createQuestion(i, questionnaireInstru[i]));
