@@ -135,7 +135,10 @@ export class FinalGamePage implements OnInit {
               }, {
                   text: 'Enregistrer',
                   handler: (prompt) => {
-                      const name = prompt.name.toUpperCase().substring(0, 10);
+                      let name = prompt.name.toUpperCase().substring(0, 10);
+                      if (name === '') {
+                          name = 'INCONNU';
+                      }
                       this.scoreService.addScore(name, this.questionnaire.score, this.questionnaire.family, this.questionnaire.level, this.questionnaire.nbQuestions);
                   }
               }]
