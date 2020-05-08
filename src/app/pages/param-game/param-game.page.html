@@ -8,12 +8,12 @@
 </ion-header>
 <ion-content [fullscreen]="true">
 
-  <ion-row class="param-label ion-padding-top">
+  <ion-row class="param-label ion-padding-top fix-data">
     Famille
   </ion-row>
-  <ion-row>
+  <ion-row class="fix-data">
     <ion-col offset="2" size="8">
-      <ion-select [(ngModel)]="form.family" ok-text="Ok" cancel-text="Annuler">
+      <ion-select [(ngModel)]="form.family" ok-text="Ok" cancel-text="Annuler" disabled="true">
         <ion-select-option *ngFor="let family of families" [value]="family">{{family.label}}</ion-select-option>
       </ion-select>
     </ion-col>
