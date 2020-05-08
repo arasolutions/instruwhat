@@ -111,7 +111,7 @@ export class InstrumentService {
     let yukulele = new InstrumentModel(30, 'Yukulélé', Level.INTERMEDIATE, 'assets/instruments/cordes/cordes-pincees/yukulele/yukulele.mp3', 'assets/instruments/cordes/cordes-pincees/yukulele/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
     this.instruments.push(yukulele);
 
-    let didgeridoo = new InstrumentModel(31, 'Didgeridoo', Level.EASY, 'assets/instruments/cuivres/didgeridoo/didgeridoo.mp3', 'assets/instruments/cuivres/didgeridoo/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
+    let didgeridoo = new InstrumentModel(31, 'Didgeridoo', Level.EASY, 'assets/instruments/cuivres/didgeridoo/didgeridoo.mp3', 'assets/instruments/cuivres/didgeridoo/photo.png', Family.CUIVRES, null);
     this.instruments.push(didgeridoo);
 
     let castagnettes = new InstrumentModel(32, 'Castagnettes', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/castagnettes/castagnettes.mp3', 'assets/instruments/percussions/sons-indetermines/castagnettes/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
