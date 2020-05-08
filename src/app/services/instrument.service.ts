@@ -111,28 +111,28 @@ export class InstrumentService {
     let yukulele = new InstrumentModel(30, 'Yukulélé', Level.INTERMEDIATE, 'assets/instruments/cordes/cordes-pincees/yukulele/yukulele.mp3', 'assets/instruments/cordes/cordes-pincees/yukulele/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
     this.instruments.push(yukulele);
 
-    let didgeridoo = new InstrumentModel(31, 'Didgeridoo', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/didgeridoo/didgeridoo.mp3', 'assets/instruments/percussions/sons-indetermines/didgeridoo/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
+    let didgeridoo = new InstrumentModel(31, 'Didgeridoo', Level.EASY, 'assets/instruments/cuivres/didgeridoo/didgeridoo.mp3', 'assets/instruments/cuivres/didgeridoo/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
     this.instruments.push(didgeridoo);
 
     let castagnettes = new InstrumentModel(32, 'Castagnettes', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/castagnettes/castagnettes.mp3', 'assets/instruments/percussions/sons-indetermines/castagnettes/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
     this.instruments.push(castagnettes);
 
-    let flute_de_pan = new InstrumentModel(33, 'Flûte de pan', Level.INTERMEDIATE, 'assets/instruments/bois/biseau/flute-de-pan/flute-de-pan.mp3', 'assets/instruments/bois/biseau/flute-de-pan/photo.png', Family.BOIS, SubFamily.BOIS_BISEAU);
+    let flute_de_pan = new InstrumentModel(33, 'Flûte de pan', Level.EASY, 'assets/instruments/bois/biseau/flute-de-pan/flute-de-pan.mp3', 'assets/instruments/bois/biseau/flute-de-pan/photo.png', Family.BOIS, SubFamily.BOIS_BISEAU);
     this.instruments.push(flute_de_pan);
 
     let ocarina = new InstrumentModel(34, 'Ocarina', Level.EXPERT, 'assets/instruments/bois/biseau/ocarina/ocarina.mp3', 'assets/instruments/bois/biseau/ocarina/photo.png', Family.BOIS, SubFamily.BOIS_BISEAU);
     this.instruments.push(ocarina);
 
-    let guimbarde = new InstrumentModel(35, 'Guimbarde', Level.EASY, 'assets/instruments/percussions/sons-indetermines/didgeridoo/didgeridoo.mp3', 'assets/instruments/percussions/sons-indetermines/didgeridoo/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_DETERMINE);
+    let guimbarde = new InstrumentModel(35, 'Guimbarde', Level.EASY, 'assets/instruments/percussions/sons-determines/guimbarde/guimbarde.mp3', 'assets/instruments/percussions/sons-indetermines/didgeridoo/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_DETERMINE);
     this.instruments.push(guimbarde);
 
-    let kazoo = new InstrumentModel(36, 'Kazoo', Level.EASY, 'assets/instruments/percussions/sons-indetermines/castagnettes/castagnettes.mp3', 'assets/instruments/percussions/sons-indetermines/castagnettes/photo.png', Family.BOIS, SubFamily.BOIS_AUTRE);
+    let kazoo = new InstrumentModel(36, 'Kazoo', Level.EASY, 'assets/instruments/bois/autres/kazoo/kazoo.mp3', 'assets/instruments/percussions/sons-indetermines/castagnettes/photo.png', Family.BOIS, SubFamily.BOIS_AUTRE);
     this.instruments.push(kazoo);
 
-    let gong = new InstrumentModel(37, 'Gong', Level.EASY, 'assets/instruments/bois/biseau/flute-de-pan/flute-de-pan.mp3', 'assets/instruments/bois/biseau/flute-de-pan/photo.png', Family.BOIS, SubFamily.PERCUSSIONS_NON_DETERMINE);
+    let gong = new InstrumentModel(37, 'Gong', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/gong/gong.mp3', 'assets/instruments/bois/biseau/flute-de-pan/photo.png', Family.BOIS, SubFamily.PERCUSSIONS_NON_DETERMINE);
     this.instruments.push(gong);
 
-    let cithare = new InstrumentModel(38, 'Ocarina', Level.EASY, 'assets/instruments/bois/biseau/ocarina/ocarina.mp3', 'assets/instruments/bois/biseau/ocarina/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
+    let cithare = new InstrumentModel(38, 'Cithare', Level.INTERMEDIATE, 'assets/instruments/cordes/cordes-pincees/cithare/cithare.mp3', 'assets/instruments/bois/biseau/ocarina/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
     this.instruments.push(cithare);
 
     //this.getInstrumentsByFirebase();
