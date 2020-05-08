@@ -1,9 +1,9 @@
 export enum Family {
-  ALL = <any>{ 'label': 'Tout', 'fulllabel': 'Tous les instruments' },
-  BOIS = <any>{ 'label': 'Bois', 'fulllabel': 'Bois' },
-  CUIVRES = <any>{ 'label': 'Cuivre', 'fulllabel': 'Cuivre' },
-  PERCUSSIONS = <any>{ 'label': 'Percussions', 'fulllabel': 'Percussions' },
-  CORDES = <any>{ 'label': 'Cordes', 'fulllabel': 'Cordes' }
+  ALL = <any>{ 'id': 1, 'label': 'Tout', 'fulllabel': 'Tous les instruments' },
+  BOIS = <any>{ 'id': 2, 'label': 'Bois', 'fulllabel': 'Bois' },
+  CUIVRES = <any>{ 'id': 3, 'label': 'Cuivre', 'fulllabel': 'Cuivre' },
+  PERCUSSIONS = <any>{ 'id': 4, 'label': 'Percussions', 'fulllabel': 'Percussions' },
+  CORDES = <any>{ 'id': 5, 'label': 'Cordes', 'fulllabel': 'Cordes' }
 }
 
 export enum SubFamily {
@@ -22,5 +22,9 @@ export enum SubFamily {
 export namespace Family {
   export function getAll() {
     return [this.ALL, this.BOIS, this.CUIVRES, this.PERCUSSIONS, this.CORDES];
+  }
+
+  export function getById(id: number) {
+    return this.getAll().find((element:any) => element.id === id);
   }
 }

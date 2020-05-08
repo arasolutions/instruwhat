@@ -2,3 +2,31 @@ ion-content {
   --background: #2980b9;
   color: white;
 }
+
+ion-list.score-list {
+  padding: 10%;
+  background: #2980b9;
+}
+
+ion-list.score-list > ion-item {
+  --background: #2980b9;
+}
+
+ion-list.score-list > ion-item > ion-label,
+ion-list.score-list > ion-item > ion-note {
+  font-family: 'Roboto Mono';
+  color: white;
+  font-size: 1em;
+}
+
+.level-label {
+  font-size: 0.9em;
+  position: absolute;
+  margin-top: -20px;
+  width: 100%;
+}
+
+.level-value {
+  font-size: 0.9em;
+  width: 100%;
+}

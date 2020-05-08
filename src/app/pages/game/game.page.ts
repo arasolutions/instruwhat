@@ -92,12 +92,12 @@ export class GamePage implements OnInit {
   load() {
     const uri = this.questionsInGame[0].goodAnswer.sound;
     if (this.platform.is('android')) {
-        this.file = this.media.create('/android_asset/public/' + uri);
-    }    else {
+      this.file = this.media.create('/android_asset/public/' + uri);
+    } else {
       this.file = this.media.create('/android_asset/public/' + uri);
     }
     this.file.onStatusUpdate.subscribe(status => {
-        this.fileStatus = status;
+      this.fileStatus = status;
       if (status == 4) {
         // STOPPING
         this.afterStop();
@@ -133,7 +133,7 @@ export class GamePage implements OnInit {
   stop() {
     if (this.fileStatus == 2 || this.fileStatus == 3) {
       this.file.stop();
-              this.file.release();
+      this.file.release();
     }
     this.playing = false;
     clearInterval(this.interval);

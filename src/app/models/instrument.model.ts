@@ -9,27 +9,81 @@ import { Family, SubFamily } from '../enums/family.enum'
  */
 export class InstrumentModel {
 
-  id: number;
+  private _id: number;
 
-  label: string;
+  private _label: string;
 
-  photo: string;
+  private _photo: string;
 
-  sound: string;
+  private _sound: string;
 
-  level: Level;
+  private _level: Level;
 
-  family: Family;
+  private _family: Family;
 
-  subFamily: SubFamily;
+  private _subFamily: SubFamily;
 
   constructor(id: number, label: string, level: Level, sound: string, photo: string, family: Family, subFamily: SubFamily) {
-    this.id = id;
-    this.label = label;
-    this.level = level;
-    this.sound = sound;
-    this.photo = photo;
-    this.family = family;
-    this.subFamily = subFamily;
+    this._id = id;
+    this._label = label;
+    this._level = level;
+    this._sound = sound;
+    this._photo = photo;
+    this._family = family;
+    this._subFamily = subFamily;
+  }
+
+
+  get id(): number {
+    return this._id;
+  }
+
+  set id(value: number) {
+    this._id = value;
+  }
+
+  get label(): string {
+    return this._label;
+  }
+
+  set label(value: string) {
+    this._label = value;
+  }
+
+  get photo(): string {
+    return this._photo;
+  }
+
+  set photo(value: string) {
+    this._photo = value;
+  }
+
+  get sound(): string {
+    return this._sound;
+  }
+
+  set sound(value: string) {
+    this._sound = value;
+  }
+
+  get level(): Level {
+    return this._level;
+  }
+  set level(value: Level) {
+    this._level = value;
+  }
+
+  get family(): Family {
+    return this._family;
+  }
+  set family(value: Family) {
+    this._family = value;
+  }
+
+  get subFamily(): SubFamily {
+    return this._subFamily;
+  }
+  set subFamily(value: SubFamily) {
+    this._subFamily = value;
   }
 }

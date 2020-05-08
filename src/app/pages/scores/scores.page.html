@@ -7,5 +7,42 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  Scores
+  <ion-toolbar color="secondary">
+    <div class="theme">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="4" (click)="changeFamily()" class="ion-text-center">
+          <div class="level-value">{{familyChosen.fulllabel}}</div>
+        </ion-col>
+        <ion-col size="4" (click)="changeLevel()" class="ion-text-center">
+          <div class="level-value">Niveau <strong>{{levelChosen.label}}</strong></div>
+        </ion-col>
+        <ion-col size="4" (click)="changeNbQuestions()" class="ion-text-center">
+          <div class="level-value"><strong>{{questionsChosen}}</strong> questions</div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-toolbar>
+  <ion-list class="score-list">
+    <!--<ng-container *ngFor="let question of questionnaire.questions; let i = index">-->
+    <!--[class.bounceInUp]="finished" [style.animation-delay]="finished ? (0.05 * i) + 's':''"-->
+    <ion-item class="bounceInUp" [style.animation-delay]="(0.05 * i) + 's, 0s'" *ngFor="let score of scores; let i = index">
+      <ion-label>
+        {{i}}. {{score.name}}
+      </ion-label>
+      <ion-note slot="end" color="primary">{{score.score}}</ion-note>
+    </ion-item>
+    <!--</ng-container>-->
+  </ion-list>
 </ion-content>
+<ion-footer id="finish-footer" collapse="condense">
+
+  <ion-item lines="none" class="action-line">
+    <ion-label>
+      <h2>
+        <div class="ion-text-center highscore">
+          HIGH SCORE
+        </div>
+      </h2>
+    </ion-label>
+  </ion-item>
+</ion-footer>

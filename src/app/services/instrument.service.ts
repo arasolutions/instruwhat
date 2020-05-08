@@ -14,21 +14,8 @@ export class InstrumentService {
   public instruments: InstrumentModel[];
 
   constructor(public afs: AngularFirestore,
-              public afStorage: AngularFireStorage) {
+    public afStorage: AngularFireStorage) {
 
-  }
-
-  addInsrument(instru) {
-      let data: any;
-      data = {};
-      data.id = instru.id;
-      data.label = instru.label;
-      data.level = instru.level;
-      data.sound = instru.sound;
-      data.photo = instru.photo;
-      data.family = instru.family;
-      data.subfamily = instru.subFamily;
-      this.afs.collection<any>('instrument').add(data);
   }
 
   loadInstruments() {
@@ -140,9 +127,9 @@ export class InstrumentService {
 
   }
 
-    getInstruments() {
-        return this.instruments;
-    }
+  getInstruments() {
+    return this.instruments;
+  }
 
   getInstrumentById(id: number) {
     return this.instruments.find(element => element.id == id);
@@ -164,16 +151,7 @@ export class InstrumentService {
     let resultCount = new Array<InstrumentModel>();
     this.randomize(this.instruments);
 
-    for (let i = 0; i < this.instruments.length; i++) {
-      // On vérfie la famille de l'instrument
-      if (form.family.label === Family.ALL.label || this.instruments[i].family.label === form.family.label) {
-          // On vérfie le niveau de l'instrument
-          if (this.instruments[i].level.value <= form.level.value) {
-              // On vérfie le niveau de l'instrument
-              resultFilter.push(this.instruments[i]);
-          }
-      }
-    }
+    resultFilter = this.instruments.filter(element  => (form.family.id === Family.ALL['id'] || element.family['id'] == form.family.id) && element.level['value'] <= form.level.value);
 
     for (let i = 0; i < form.nbQuestions; i++) {
       resultCount.push(resultFilter[i]);
@@ -196,40 +174,40 @@ export class InstrumentService {
     getInstrumentsByFirebase : permet de récupérer les instruments depuis Firebase Database
     getPhotoFirebase : permet de récupérer un média depuis Firebase Storage
    */
-    getInstrumentsByFirebase() {
-        let instrusFire = new Array();
-        let instrumentsCollection = this.afs.collection<any>('instrument').valueChanges();
-        let instrusObs = instrumentsCollection.subscribe(val => {
-            val.forEach(function (value) {
-                let ins = new InstrumentModel(value.id,
-                    value.label,
-                    value.level,
-                    value.sound,
-                    value.photo,
-                    value.family,
-                    value.subFamily);
-                instrusFire.push(ins);
-            });
-            this.instruments = instrusFire;
-        });
-    }
-    async getPhotoFirebase() {
-        let urlLink = '';
-        const linkPh = 'instrument/bois/anche-double/basson/photo.png';
-        try {
-            this.afStorage.ref(linkPh).getDownloadURL().subscribe((val) => {
-                if (val) {
-                    console.log('Val OK');
-                    urlLink = val;
-                }
-            }, e => {
-                //console.log(e);
-            });
-        } catch (e) {
-            //console.log(e);
+  getInstrumentsByFirebase() {
+    let instrusFire = new Array();
+    let instrumentsCollection = this.afs.collection<any>('instrument').valueChanges();
+    let instrusObs = instrumentsCollection.subscribe(val => {
+      val.forEach(function(value) {
+        let ins = new InstrumentModel(value.id,
+          value.label,
+          value.level,
+          value.sound,
+          value.photo,
+          value.family,
+          value.subFamily);
+        instrusFire.push(ins);
+      });
+      this.instruments = instrusFire;
+    });
+  }
+  async getPhotoFirebase() {
+    let urlLink = '';
+    const linkPh = 'instrument/bois/anche-double/basson/photo.png';
+    try {
+      this.afStorage.ref(linkPh).getDownloadURL().subscribe((val) => {
+        if (val) {
+          console.log('Val OK');
+          urlLink = val;
         }
-        return urlLink;
+      }, e => {
+        //console.log(e);
+      });
+    } catch (e) {
+      //console.log(e);
     }
+    return urlLink;
+  }
 
 
 }

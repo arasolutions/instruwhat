@@ -8,4 +8,8 @@ export namespace Level {
   export function getAll() {
     return [this.EASY, this.INTERMEDIATE, this.EXPERT];
   }
+
+  export function getByValue(value: number) {
+    return this.getAll().find((element: any) => element.value === value);
+  }
 }
