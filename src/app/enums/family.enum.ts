@@ -11,6 +11,7 @@ export enum SubFamily {
   BOIS_ANCHE_DOUBLE,
   BOIS_ANCHE_LIBRE,
   BOIS_ANCHE_SIMPLE,
+  BOIS_AUTRE,
   PERCUSSIONS_NON_DETERMINE,
   PERCUSSIONS_DETERMINE,
   CORDES_FROTTEES,
@@ -25,6 +26,6 @@ export namespace Family {
   }
 
   export function getById(id: number) {
-    return this.getAll().find((element:any) => element.id === id);
+    return this.getAll().find((element: any) => element.id === id);
   }
 }
