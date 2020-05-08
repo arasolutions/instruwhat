@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Media, MediaObject } from '@ionic-native/media/ngx';
-import { Platform, NavParams, AlertController } from '@ionic/angular';
+import { Platform, AlertController } from '@ionic/angular';
 
 import { InstrumentService } from '../../services/instrument.service';
 import { QuestionnaireService } from '../../services/questionnaire.service';
@@ -49,7 +49,7 @@ export class GamePage implements OnInit {
   public loaderIcon: string;
   public icons = ['saxophone', 'clarinette', 'piano', 'tambour', 'triangle', 'trompette', 'xylophone'];
 
-  constructor(public router: Router, public navParams: NavParams, private activatedRoute: ActivatedRoute, private alertCtrl: AlertController, public media: Media, public platform: Platform, public instrumentService: InstrumentService, public questionService: QuestionService, public questionnaireService: QuestionnaireService) {
+  constructor(public router: Router, private activatedRoute: ActivatedRoute, private alertCtrl: AlertController, public media: Media, public platform: Platform, public instrumentService: InstrumentService, public questionService: QuestionService, public questionnaireService: QuestionnaireService) {
 
     this.questionsInGame = new Array();
     this.questionnaire = this.questionnaireService.getQuestionnaire();

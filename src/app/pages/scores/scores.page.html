@@ -9,10 +9,10 @@
     <div class="theme">
       <ion-row class="ion-align-items-center">
         <ion-col size="4" (click)="changeFamily()" class="ion-text-center">
-          <div class="level-value">{{familyChosen.fulllabel}}</div>
+          <div class="level-value">{{familyChosen['fulllabel']}}</div>
         </ion-col>
         <ion-col size="4" (click)="changeLevel()" class="ion-text-center">
-          <div class="level-value">Niveau <strong>{{levelChosen.label}}</strong></div>
+          <div class="level-value">Niveau <strong>{{levelChosen['label']}}</strong></div>
         </ion-col>
         <ion-col size="4" (click)="changeNbQuestions()" class="ion-text-center">
           <div class="level-value"><strong>{{questionsChosen}}</strong> questions</div>
