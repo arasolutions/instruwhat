@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 
 import { Media, MediaObject } from '@ionic-native/media/ngx';
 
@@ -21,7 +21,7 @@ export class FinalGamePage implements OnInit {
 
   currentFile: number;
 
-  constructor(public router: Router, public platform: Platform, public route: ActivatedRoute, public media: Media, public questionnaireService: QuestionnaireService) {
+  constructor(public router: Router, public platform: Platform, public route: ActivatedRoute, public media: Media, public questionnaireService: QuestionnaireService, public alertCtrl: AlertController) {
     this.questionnaire = this.questionnaireService.getQuestionnaire();
 
     this.loadAllSounds();
@@ -110,6 +110,34 @@ export class FinalGamePage implements OnInit {
     for (let i = 0; i < this.files.length; i++) {
       this.files[i].release();
     }
+  }
+
+  saveResult() {
+      this.alertCtrl.create({
+          header: 'Sauvegarde du score!',
+          subHeader: 'Renseigne ton nom',
+          inputs: [
+              {
+                  name: 'name',
+                  type: 'text',
+                  placeholder: 'NOM'
+              }
+          ],
+          buttons: [
+              {
+                  text: 'Annuler',
+                  role: 'cancel',
+                  cssClass: 'secondary',
+                  handler: () => {
+                      console.log('Confirm Cancel');
+                  }
+              }, {
+                  text: 'Enregistrer',
+                  handler: (prompt) => { //takes the data
+                      console.log(prompt.name.toUpperCase());
+                  }
+              }]
+      }).then(alert => alert.present());
   }
 
 }
