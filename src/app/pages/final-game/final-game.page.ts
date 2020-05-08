@@ -5,6 +5,7 @@ import { AlertController, Platform } from '@ionic/angular';
 import { Media, MediaObject } from '@ionic-native/media/ngx';
 
 import { QuestionnaireService } from '../../services/questionnaire.service';
+import { ScoreService } from '../../services/score.service';
 
 @Component({
   selector: 'app-final-game',
@@ -21,7 +22,7 @@ export class FinalGamePage implements OnInit {
 
   currentFile: number;
 
-  constructor(public router: Router, public platform: Platform, public route: ActivatedRoute, public media: Media, public questionnaireService: QuestionnaireService, public alertCtrl: AlertController) {
+  constructor(public router: Router, public platform: Platform, public route: ActivatedRoute, public media: Media, public questionnaireService: QuestionnaireService, public alertCtrl: AlertController, public scoreService: ScoreService) {
     this.questionnaire = this.questionnaireService.getQuestionnaire();
 
     this.loadAllSounds();
@@ -114,8 +115,8 @@ export class FinalGamePage implements OnInit {
 
   saveResult() {
       this.alertCtrl.create({
-          header: 'Sauvegarde du score!',
-          subHeader: 'Renseigne ton nom',
+          header: 'Enregistre ton score !',
+          message: 'Renseigne ton nom (10 caractères maximum)',
           inputs: [
               {
                   name: 'name',
@@ -133,8 +134,9 @@ export class FinalGamePage implements OnInit {
                   }
               }, {
                   text: 'Enregistrer',
-                  handler: (prompt) => { //takes the data
-                      console.log(prompt.name.toUpperCase());
+                  handler: (prompt) => {
+                      const name = prompt.name.toUpperCase().substring(0, 10);
+                      this.scoreService.addScore(name, this.questionnaire.score, this.questionnaire.family, this.questionnaire.level, this.questionnaire.nbQuestions);
                   }
               }]
       }).then(alert => alert.present());
