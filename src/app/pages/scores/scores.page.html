@@ -23,7 +23,8 @@
 </ion-header>
 <ion-content [fullscreen]="true">
   <ng-container *ngIf="scores.length == 0">
-    Pas de score
+    <div class="no-result bounceInUp">Pas de score
+    </div>
   </ng-container>
   <ion-list class="score-list" *ngIf="scores.length >= 1">
     <ion-item class="bounceInUp" [style.animation-delay]="(0.05 * i) + 's, 0s'" *ngFor="let score of scores; let i = index">
@@ -36,14 +37,4 @@
   </ion-list>
 </ion-content>
 <ion-footer id="finish-footer" collapse="condense">
-
-  <ion-item lines="none" class="action-line">
-    <ion-label>
-      <h2>
-        <div class="ion-text-center highscore">
-          HIGH SCORE
-        </div>
-      </h2>
-    </ion-label>
-  </ion-item>
 </ion-footer>
