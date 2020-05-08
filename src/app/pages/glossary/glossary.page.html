@@ -5,9 +5,6 @@
     </ion-buttons>
     <ion-title class="ion-pull-right">Lexique</ion-title>
   </ion-toolbar>
-</ion-header>
-<ion-content [fullscreen]="true">
-  <!-- Label only -->
   <ion-segment [scrollable]="true" (ionChange)="filterSegment($event)">
     <ion-segment-button value="all">
       <ion-label>Tous</ion-label>
@@ -25,7 +22,11 @@
       <ion-label>Cordes</ion-label>
     </ion-segment-button>
   </ion-segment>
-  <ion-searchbar showCancelButton="always" class="list-searchbar" (ionChange)="filterList($event)"></ion-searchbar>
+  <ion-searchbar showCancelButton="never" class="list-searchbar" (ionChange)="filterList($event)"></ion-searchbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <!-- Label only -->
+
   <ion-list>
     <ion-list-header>
       Instruments
