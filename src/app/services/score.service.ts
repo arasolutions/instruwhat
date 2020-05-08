@@ -21,7 +21,11 @@ export class ScoreService {
   async getScores(family: Family, level: Level, nbQuestions: number): Promise<ScoreModel[]> {
     await this.initStorage();
     const res = await Storage.get({ key: this.STORAGE_NAME });
-    return JSON.parse(res.value).map(this.calc);
+
+    //Filtre
+    let result = JSON.parse(res.value).filter(element => element._family.id == family['id'] && element._level.value == level['value'] && element._nbQuestions == nbQuestions);
+
+    return result;
   }
 
   async addScore(name: string, score: number, family: Family, level: Level, nbQuestions: number): Promise<boolean> {
@@ -32,7 +36,6 @@ export class ScoreService {
 
     scores.push(new ScoreModel(name, score, family, level, nbQuestions));
 
-    console.log(scores);
     await Storage.set({ key: this.STORAGE_NAME, value: JSON.stringify(scores) });
     return true;
   }
@@ -46,9 +49,4 @@ export class ScoreService {
     }
   }
 
-  calc = item => {
-    let score = new ScoreModel(item['_name'], item['_score'], null, null, null);
-
-    return score;
-  }
 }

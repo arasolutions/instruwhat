@@ -25,12 +25,12 @@
   <ng-container *ngIf="scores.length == 0">
     Pas de score
   </ng-container>
-  <ion-list class="score-list" *ngIf="scores.length > 1">
+  <ion-list class="score-list" *ngIf="scores.length >= 1">
     <ion-item class="bounceInUp" [style.animation-delay]="(0.05 * i) + 's, 0s'" *ngFor="let score of scores; let i = index">
       <ion-label>
-        {{i+1}}. {{score.name}}
+        {{i+1}}. {{score._name}}
       </ion-label>
-      <ion-note slot="end" color="primary">{{score.score}}</ion-note>
+      <ion-note slot="end" color="primary">{{score._score}}</ion-note>
     </ion-item>
     <!--</ng-container>-->
   </ion-list>
