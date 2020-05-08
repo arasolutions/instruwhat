@@ -123,16 +123,16 @@ export class InstrumentService {
     let ocarina = new InstrumentModel(34, 'Ocarina', Level.EXPERT, 'assets/instruments/bois/biseau/ocarina/ocarina.mp3', 'assets/instruments/bois/biseau/ocarina/photo.png', Family.BOIS, SubFamily.BOIS_BISEAU);
     this.instruments.push(ocarina);
 
-    let guimbarde = new InstrumentModel(35, 'Guimbarde', Level.EASY, 'assets/instruments/percussions/sons-determines/guimbarde/guimbarde.mp3', 'assets/instruments/percussions/sons-indetermines/didgeridoo/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_DETERMINE);
+    let guimbarde = new InstrumentModel(35, 'Guimbarde', Level.EASY, 'assets/instruments/percussions/sons-determines/guimbarde/guimbarde.mp3', 'assets/instruments/percussions/sons-determines/guimbarde/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_DETERMINE);
     this.instruments.push(guimbarde);
 
-    let kazoo = new InstrumentModel(36, 'Kazoo', Level.EASY, 'assets/instruments/bois/autres/kazoo/kazoo.mp3', 'assets/instruments/percussions/sons-indetermines/castagnettes/photo.png', Family.BOIS, SubFamily.BOIS_AUTRE);
+    let kazoo = new InstrumentModel(36, 'Kazoo', Level.EASY, 'assets/instruments/bois/autres/kazoo/kazoo.mp3', 'assets/instruments/bois/autres/kazoo/photo.png', Family.BOIS, SubFamily.BOIS_AUTRE);
     this.instruments.push(kazoo);
 
-    let gong = new InstrumentModel(37, 'Gong', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/gong/gong.mp3', 'assets/instruments/bois/biseau/flute-de-pan/photo.png', Family.BOIS, SubFamily.PERCUSSIONS_NON_DETERMINE);
+    let gong = new InstrumentModel(37, 'Gong', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/gong/gong.mp3', 'assets/instruments/percussions/sons-indetermines/gong/photo.png', Family.BOIS, SubFamily.PERCUSSIONS_NON_DETERMINE);
     this.instruments.push(gong);
 
-    let cithare = new InstrumentModel(38, 'Cithare', Level.INTERMEDIATE, 'assets/instruments/cordes/cordes-pincees/cithare/cithare.mp3', 'assets/instruments/bois/biseau/ocarina/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
+    let cithare = new InstrumentModel(38, 'Cithare', Level.INTERMEDIATE, 'assets/instruments/cordes/cordes-pincees/cithare/cithare.mp3', 'assets/instruments/cordes/cordes-pincees/cithare/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
     this.instruments.push(cithare);
 
     //this.getInstrumentsByFirebase();
