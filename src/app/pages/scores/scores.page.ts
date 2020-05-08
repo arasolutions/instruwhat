@@ -144,7 +144,7 @@ export class ScoresPage implements OnInit {
     await alert.present();
   }
 
-  getScores() {
-    this.scores = this.scoreService.getScores(this.familyChosen, this.levelChosen, this.questionsChosen);
+  async getScores() {
+    this.scores = await this.scoreService.getScores(this.familyChosen, this.levelChosen, this.questionsChosen);
   }
 }

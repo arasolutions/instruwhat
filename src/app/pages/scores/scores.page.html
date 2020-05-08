@@ -22,12 +22,13 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <ion-list class="score-list">
-    <!--<ng-container *ngFor="let question of questionnaire.questions; let i = index">-->
-    <!--[class.bounceInUp]="finished" [style.animation-delay]="finished ? (0.05 * i) + 's':''"-->
+  <ng-container *ngIf="scores.length == 0">
+    Pas de score
+  </ng-container>
+  <ion-list class="score-list" *ngIf="scores.length > 1">
     <ion-item class="bounceInUp" [style.animation-delay]="(0.05 * i) + 's, 0s'" *ngFor="let score of scores; let i = index">
       <ion-label>
-        {{i}}. {{score.name}}
+        {{i+1}}. {{score.name}}
       </ion-label>
       <ion-note slot="end" color="primary">{{score.score}}</ion-note>
     </ion-item>
