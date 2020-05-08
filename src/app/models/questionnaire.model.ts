@@ -1,5 +1,6 @@
 import { ParamGameForm } from '../forms/param-game.form';
 import { Family } from '../enums/family.enum';
+import { Level } from '../enums/level.enum';
 
 /**
  * Generated class for the ModelsInstrumentComponent component.
@@ -17,6 +18,8 @@ export class QuestionnaireModel {
 
   family: Family;
 
+    level: Level;
+
   questions: any[];
 
   nbQuestions: number;
@@ -30,6 +33,7 @@ export class QuestionnaireModel {
     this.nbQuestions = form.nbQuestions;
     this.help = form.help;
     this.family = form.family;
+    this.level = form.level;
     this.score = 0;
   }
 

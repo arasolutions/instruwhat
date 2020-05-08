@@ -20,7 +20,7 @@ export class ScoresPage implements OnInit {
   levelChosen: Level = Level.EASY;
   questionsChosen: number = 10;
 
-  scores: ScoreModel[];
+  scores: ScoreModel[] = new Array<ScoreModel>();
 
   constructor(public alertController: AlertController, public scoreService: ScoreService) { }
 
@@ -29,6 +29,7 @@ export class ScoresPage implements OnInit {
 
   ionViewDidEnter() {
     this.getScores();
+    console.log(this.scores);
   }
 
   async changeFamily() {
@@ -105,25 +106,25 @@ export class ScoresPage implements OnInit {
           type: 'radio',
           label: '5 questions',
           value: 5,
-          checked: false
+          checked: this.questionsChosen == 5
         }, {
           name: 'nbQuestions',
           type: 'radio',
           label: '10 questions',
           value: 10,
-          checked: true
+          checked: this.questionsChosen == 10
         }, {
           name: 'nbQuestions',
           type: 'radio',
           label: '15 questions',
           value: 15,
-          checked: false
+          checked: this.questionsChosen == 15
         }, {
           name: 'nbQuestions',
           type: 'radio',
           label: '20 questions',
           value: 20,
-          checked: false
+          checked: this.questionsChosen == 20
         }
       ],
       buttons: [
