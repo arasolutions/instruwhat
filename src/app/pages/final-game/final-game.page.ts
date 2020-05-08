@@ -140,6 +140,7 @@ export class FinalGamePage implements OnInit {
                           name = 'INCONNU';
                       }
                       this.scoreService.addScore(name, this.questionnaire.score, this.questionnaire.family, this.questionnaire.level, this.questionnaire.nbQuestions);
+                      this.router.navigate(['/scores']);
                   }
               }]
       }).then(alert => alert.present());

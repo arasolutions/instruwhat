@@ -25,6 +25,12 @@ export class ScoreService {
     //Filtre
     let result = JSON.parse(res.value).filter(element => element._family.id == family['id'] && element._level.value == level['value'] && element._nbQuestions == nbQuestions);
 
+    console.log(result);
+    result.sort(function(a: any, b: any) {
+      return b._score - a._score;
+    });
+    console.log(result);
+
     return result;
   }
 
