@@ -6,7 +6,7 @@ android {
         applicationId "com.arasolutions.instruwhat"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode "1.0.1"
+        versionCode 10001
         versionName "1.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
