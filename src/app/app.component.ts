@@ -20,16 +20,16 @@ export class AppComponent implements OnInit {
       'label': 'Mes scores',
       'path': '/scores',
       'icon': 'medal-outline'
-    }/*,
-    {
-      'label': 'Paramètres',
-      'path': '/settings',
-      'icon': 'options-outline'
-    }*/,
+    },
     {
       'label': 'Instruments',
       'path': '/glossary',
       'icon': 'book-outline'
+    },
+    {
+        'label': 'Paramètres',
+        'path': '/settings',
+        'icon': 'options-outline'
     }
   ];
 
