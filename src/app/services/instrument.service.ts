@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 
-import { InstrumentModel } from '../models/instrument.model';
+import { Instrument } from '../interfaces/instrument';
 import { Level } from '../enums/level.enum';
 import { Family, SubFamily } from '../enums/family.enum';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
+
+import datas from '../../assets/instruments/data.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InstrumentService {
 
-  public instruments: InstrumentModel[];
+  public instruments: Instrument[];
+
+  private assetsRootDirectory: string = 'assets/instruments/';
 
   constructor(public afs: AngularFirestore,
     public afStorage: AngularFireStorage) {
@@ -21,122 +25,153 @@ export class InstrumentService {
   loadInstruments() {
     this.instruments = new Array();
 
-    let piano = new InstrumentModel(1, 'Piano', Level.EASY, 'assets/instruments/cordes/cordes-frappees/piano/piano.mp3', 'assets/instruments/cordes/cordes-frappees/piano/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
-    this.instruments.push(piano);
+    datas.forEach((element: any, index: number) => {
+      let instrument: Instrument = {
+        id: index + 1,
+        label: element.label,
+        level: element.level,
+        family: element.family,
+        subFamily: element.subFamily,
+        photo: this.getPhotoPath(element),
+        sound: this.getSoundPath(element)
+      };
+      this.instruments.push(instrument);
+    });
+    /*
+        let piano: Instrument = { id: 1, label: 'piano', level: Level.EASY, family: Family.CORDES, subFamily: SubFamily.CORDES_FRAPPEES };
+        this.instruments.push(piano);
 
-    let xylophone = new InstrumentModel(2, 'Xylophone', Level.EASY, 'assets/instruments/percussions/sons-determines/xylophone/xylophone.mp3', 'assets/instruments/percussions/sons-determines/xylophone/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_DETERMINE);
-    this.instruments.push(xylophone);
+        let xylophone: Instrument = { id: 2, label: 'xylophone', level: Level.EASY, family: Family.PERCUSSIONS, subFamily: SubFamily.PERCUSSIONS_DETERMINE };
+        this.instruments.push(xylophone);
 
-    let saxophone = new InstrumentModel(3, 'Saxophone', Level.EASY, 'assets/instruments/bois/anche-simple/saxophone/saxophone.mp3', 'assets/instruments/bois/anche-simple/saxophone/photo.png', Family.BOIS, SubFamily.BOIS_ANCHE_SIMPLE);
-    this.instruments.push(saxophone);
+        let saxophone: Instrument = { id: 3, label: 'saxophone', level: Level.EASY, family: Family.BOIS, subFamily: SubFamily.BOIS_ANCHE_SIMPLE };
+        this.instruments.push(saxophone);
 
-    let violon = new InstrumentModel(4, 'Violon', Level.EASY, 'assets/instruments/cordes/cordes-pincees/violon/violon.mp3', 'assets/instruments/cordes/cordes-pincees/violon/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
-    this.instruments.push(violon);
+        let violon: Instrument = { id: 4, label: 'violon', level: Level.EASY, family: Family.CORDES, subFamily: SubFamily.CORDES_PINCEES_DOIGTS };
+        this.instruments.push(violon);
 
-    let violoncelle = new InstrumentModel(5, 'Violoncelle', Level.EASY, 'assets/instruments/cordes/cordes-pincees/violoncelle/violoncelle.mp3', 'assets/instruments/cordes/cordes-pincees/violoncelle/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
-    this.instruments.push(violoncelle);
+        let violoncelle: Instrument = { id: 5, label: 'violoncelle', level: Level.EASY, family: Family.CORDES, subFamily: SubFamily.CORDES_PINCEES_DOIGTS };
+        this.instruments.push(violoncelle);
 
-    let triangle = new InstrumentModel(6, 'Triangle', Level.EASY, 'assets/instruments/percussions/sons-indetermines/triangle/triangle.mp3', 'assets/instruments/percussions/sons-indetermines/triangle/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
-    this.instruments.push(triangle);
+        let triangle: Instrument = { id: 6, label: 'triangle', level: Level.EASY, family: Family.PERCUSSIONS, subFamily: SubFamily.PERCUSSIONS_NON_DETERMINE };
+        this.instruments.push(triangle);
 
-    let violon_alto = new InstrumentModel(7, 'Violon alto', Level.EASY, 'assets/instruments/cordes/cordes-pincees/alto/alto.mp3', 'assets/instruments/cordes/cordes-pincees/alto/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
-    this.instruments.push(violon_alto);
+        let violon_alto: Instrument = { id: 7, label: 'violon alto', level: Level.INTERMEDIATE, family: Family.CORDES, subFamily: SubFamily.CORDES_PINCEES_DOIGTS };
+        this.instruments.push(violon_alto);
 
-    let marimba = new InstrumentModel(8, 'Marimba', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-determines/marimba/marimba.mp3', 'assets/instruments/percussions/sons-determines/marimba/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_DETERMINE);
-    this.instruments.push(marimba);
+        let marimba: Instrument = { id: 8, label: 'marimba', level: Level.INTERMEDIATE, family: Family.PERCUSSIONS, subFamily: SubFamily.PERCUSSIONS_DETERMINE };
+        this.instruments.push(marimba);
 
-    let djembe = new InstrumentModel(9, 'Djembé', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/djembe/djembe.mp3', 'assets/instruments/percussions/sons-indetermines/djembe/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
-    this.instruments.push(djembe);
+        let djembe: Instrument = { id: 9, label: 'djembe', level: Level.EASY, family: Family.PERCUSSIONS, subFamily: SubFamily.PERCUSSIONS_NON_DETERMINE };
+        this.instruments.push(djembe);
 
-    let cajon = new InstrumentModel(10, 'Cajón', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/cajon/cajon.mp3', 'assets/instruments/percussions/sons-indetermines/cajon/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
-    this.instruments.push(cajon);
+        let cajon: Instrument = { id: 10, label: 'cajón', level: Level.INTERMEDIATE, family: Family.PERCUSSIONS, subFamily: SubFamily.PERCUSSIONS_NON_DETERMINE };
+        this.instruments.push(cajon);
 
-    let clavecin = new InstrumentModel(11, 'Clavecin', Level.INTERMEDIATE, 'assets/instruments/cordes/cordes-frappees/clavecin/clavecin.mp3', 'assets/instruments/cordes/cordes-frappees/clavecin/photo.png', Family.CORDES, SubFamily.CORDES_FRAPPEES);
-    this.instruments.push(clavecin);
+        let clavecin: Instrument = { id: 11, label: 'clavecin', level: Level.INTERMEDIATE, family: Family.CORDES, subFamily: SubFamily.CORDES_FRAPPEES };
+        this.instruments.push(clavecin);
 
-    let guitare = new InstrumentModel(12, 'Guitare', Level.EASY, 'assets/instruments/cordes/cordes-pincees/guitare/guitare.mp3', 'assets/instruments/cordes/cordes-pincees/guitare/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
-    this.instruments.push(guitare);
+        let guitare: Instrument = { id: 12, label: 'guitare', level: Level.EASY, family: Family.CORDES, subFamily: SubFamily.CORDES_PINCEES_DOIGTS };
+        this.instruments.push(guitare);
 
-    let guitare_electrique = new InstrumentModel(13, 'Guitare éléctrique', Level.EASY, 'assets/instruments/cordes/cordes-pincees/guitare-electrique/guitare-electrique.mp3', 'assets/instruments/cordes/cordes-pincees/guitare-electrique/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
-    this.instruments.push(guitare_electrique);
+        let guitare_electrique: Instrument = { id: 13, label: 'guitare électrique', level: Level.EASY, family: Family.CORDES, subFamily: SubFamily.CORDES_PINCEES_DOIGTS };
+        this.instruments.push(guitare_electrique);
 
-    let harpe = new InstrumentModel(14, 'Harpe', Level.EASY, 'assets/instruments/cordes/cordes-pincees/harpe/harpe.mp3', 'assets/instruments/cordes/cordes-pincees/harpe/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
-    this.instruments.push(harpe);
+        let harpe: Instrument = { id: 14, label: 'harpe', level: Level.EASY, family: Family.CORDES, subFamily: SubFamily.CORDES_PINCEES_DOIGTS };
+        this.instruments.push(harpe);
 
-    let basson = new InstrumentModel(15, 'Basson', Level.INTERMEDIATE, 'assets/instruments/bois/anche-double/basson/basson.mp3', 'assets/instruments/bois/anche-double/basson/photo.png', Family.BOIS, SubFamily.BOIS_ANCHE_DOUBLE);
-    this.instruments.push(basson);
+        let basson: Instrument = { id: 15, label: 'basson', level: Level.INTERMEDIATE, family: Family.BOIS, subFamily: SubFamily.BOIS_ANCHE_DOUBLE };
+        this.instruments.push(basson);
 
-    let harmonica = new InstrumentModel(16, 'Harmonica', Level.EASY, 'assets/instruments/bois/anche-libre/harmonica/harmonica.mp3', 'assets/instruments/bois/anche-libre/harmonica/photo.png', Family.BOIS, SubFamily.BOIS_ANCHE_LIBRE);
-    this.instruments.push(harmonica);
+        let harmonica: Instrument = { id: 16, label: 'harmonica', level: Level.EASY, family: Family.BOIS, subFamily: SubFamily.BOIS_ANCHE_LIBRE };
+        this.instruments.push(harmonica);
 
-    let timbales = new InstrumentModel(17, 'Timbales', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-determines/timbales/timbales.mp3', 'assets/instruments/percussions/sons-determines/timbales/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_DETERMINE);
-    this.instruments.push(timbales);
+        let timbales: Instrument = { id: 17, label: 'timbales', level: Level.INTERMEDIATE, family: Family.PERCUSSIONS, subFamily: SubFamily.PERCUSSIONS_DETERMINE };
+        this.instruments.push(timbales);
 
-    let trombone = new InstrumentModel(18, 'Trombone', Level.INTERMEDIATE, 'assets/instruments/cuivres/trombone/trombone.mp3', 'assets/instruments/cuivres/trombone/photo.png', Family.CUIVRES, null);
-    this.instruments.push(trombone);
+        let trombone: Instrument = { id: 18, label: 'trombone', level: Level.INTERMEDIATE, family: Family.CUIVRES, subFamily: null };
+        this.instruments.push(trombone);
 
-    let flute_traversiere = new InstrumentModel(19, 'Flûte traversière ', Level.EASY, 'assets/instruments/bois/biseau/flute-traversiere/flute-traversiere.mp3', 'assets/instruments/bois/biseau/flute-traversiere/photo.png', Family.BOIS, SubFamily.BOIS_BISEAU);
-    this.instruments.push(flute_traversiere);
+        let flute_traversiere: Instrument = { id: 19, label: 'flûte traversiere', level: Level.EASY, family: Family.BOIS, subFamily: SubFamily.BOIS_BISEAU };
+        this.instruments.push(flute_traversiere);
 
-    let piccolo = new InstrumentModel(20, 'Piccolo ', Level.EASY, 'assets/instruments/bois/biseau/piccolo/piccolo.mp3', 'assets/instruments/bois/biseau/piccolo/photo.png', Family.BOIS, SubFamily.BOIS_BISEAU)
-    this.instruments.push(piccolo);
+        let piccolo: Instrument = { id: 20, label: 'piccolo', level: Level.EASY, family: Family.BOIS, subFamily: SubFamily.BOIS_BISEAU };
+        this.instruments.push(piccolo);
 
-    let clarinette = new InstrumentModel(21, 'Clarinette', Level.EASY, 'assets/instruments/bois/anche-simple/clarinette/clarinette.mp3', 'assets/instruments/bois/anche-simple/clarinette/photo.png', Family.BOIS, SubFamily.BOIS_ANCHE_SIMPLE);
-    this.instruments.push(clarinette);
+        let clarinette: Instrument = { id: 21, label: 'clarinette', level: Level.EASY, family: Family.BOIS, subFamily: SubFamily.BOIS_ANCHE_SIMPLE };
+        this.instruments.push(clarinette);
 
-    let cornemuse = new InstrumentModel(22, 'Cornemuse', Level.INTERMEDIATE, 'assets/instruments/bois/anche-simple/cornemuse/cornemuse.mp3', 'assets/instruments/bois/anche-simple/cornemuse/photo.png', Family.BOIS, SubFamily.BOIS_ANCHE_SIMPLE);
-    this.instruments.push(cornemuse);
+        let cornemuse: Instrument = { id: 22, label: 'cornemuse', level: Level.INTERMEDIATE, family: Family.BOIS, subFamily: SubFamily.BOIS_ANCHE_SIMPLE };
+        this.instruments.push(cornemuse);
 
-    let hautbois = new InstrumentModel(23, 'Hautbois', Level.EASY, 'assets/instruments/bois/anche-double/hautbois/hautbois.mp3', 'assets/instruments/bois/anche-double/hautbois/photo.png', Family.BOIS, SubFamily.BOIS_ANCHE_DOUBLE);
-    this.instruments.push(hautbois);
+        let hautbois: Instrument = { id: 23, label: 'hautbois', level: Level.EASY, family: Family.BOIS, subFamily: SubFamily.BOIS_ANCHE_DOUBLE };
+        this.instruments.push(hautbois);
 
-    let tuba = new InstrumentModel(24, 'Tuba', Level.INTERMEDIATE, 'assets/instruments/cuivres/tuba/tuba.mp3', 'assets/instruments/cuivres/tuba/photo.png', Family.CUIVRES, null);
-    this.instruments.push(tuba);
+        let tuba: Instrument = { id: 24, label: 'tuba', level: Level.INTERMEDIATE, family: Family.CUIVRES, subFamily: null };
+        this.instruments.push(tuba);
 
-    let claves = new InstrumentModel(25, 'Claves', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/claves/claves.mp3', 'assets/instruments/percussions/sons-indetermines/claves/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
-    this.instruments.push(claves);
+        let claves: Instrument = { id: 25, label: 'claves', level: Level.INTERMEDIATE, family: Family.PERCUSSIONS, subFamily: SubFamily.PERCUSSIONS_NON_DETERMINE };
+        this.instruments.push(claves);
 
-    let trompette = new InstrumentModel(26, 'Trompette', Level.EASY, 'assets/instruments/cuivres/trompette/trompette.mp3', 'assets/instruments/cuivres/trompette/photo.png', Family.CUIVRES, null);
-    this.instruments.push(trompette);
+        let trompette: Instrument = { id: 26, label: 'trompette', level: Level.EASY, family: Family.CUIVRES, subFamily: null };
+        this.instruments.push(trompette);
 
-    let saxo_baryton = new InstrumentModel(27, 'Saxo baryton', Level.INTERMEDIATE, 'assets/instruments/bois/anche-simple/saxo-baryton/saxo-baryton.mp3', 'assets/instruments/bois/anche-simple/saxo-baryton/photo.png', Family.BOIS, SubFamily.BOIS_ANCHE_SIMPLE);
-    this.instruments.push(saxo_baryton);
+        let saxo_baryton: Instrument = { id: 27, label: 'saxo baryton', level: Level.INTERMEDIATE, family: Family.BOIS, subFamily: SubFamily.BOIS_ANCHE_SIMPLE };
+        this.instruments.push(saxo_baryton);
 
-    let hang = new InstrumentModel(28, 'Hang', Level.EXPERT, 'assets/instruments/percussions/sons-determines/hang/hang.mp3', 'assets/instruments/percussions/sons-determines/hang/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_DETERMINE);
-    this.instruments.push(hang);
+        let hang: Instrument = { id: 28, label: 'hang', level: Level.EXPERT, family: Family.PERCUSSIONS, subFamily: SubFamily.PERCUSSIONS_DETERMINE };
+        this.instruments.push(hang);
 
-    let guiro = new InstrumentModel(29, 'Guiro', Level.EXPERT, 'assets/instruments/percussions/sons-indetermines/guiro/guiro.mp3', 'assets/instruments/percussions/sons-indetermines/guiro/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
-    this.instruments.push(guiro);
+        let guiro: Instrument = { id: 29, label: 'guiro', level: Level.EXPERT, family: Family.PERCUSSIONS, subFamily: SubFamily.PERCUSSIONS_NON_DETERMINE };
+        this.instruments.push(guiro);
 
-    let yukulele = new InstrumentModel(30, 'Yukulélé', Level.INTERMEDIATE, 'assets/instruments/cordes/cordes-pincees/yukulele/yukulele.mp3', 'assets/instruments/cordes/cordes-pincees/yukulele/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
-    this.instruments.push(yukulele);
+        let yukulele: Instrument = { id: 30, label: 'yukulélé', level: Level.INTERMEDIATE, family: Family.CORDES, subFamily: SubFamily.CORDES_PINCEES_DOIGTS };
+        this.instruments.push(yukulele);
 
-    let didgeridoo = new InstrumentModel(31, 'Didgeridoo', Level.EASY, 'assets/instruments/cuivres/didgeridoo/didgeridoo.mp3', 'assets/instruments/cuivres/didgeridoo/photo.png', Family.CUIVRES, null);
-    this.instruments.push(didgeridoo);
+        let didgeridoo: Instrument = { id: 31, label: 'didgeridoo', level: Level.EASY, family: Family.CUIVRES, subFamily: null };
+        this.instruments.push(didgeridoo);
 
-    let castagnettes = new InstrumentModel(32, 'Castagnettes', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/castagnettes/castagnettes.mp3', 'assets/instruments/percussions/sons-indetermines/castagnettes/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_NON_DETERMINE);
-    this.instruments.push(castagnettes);
+        let castagnettes: Instrument = { id: 32, label: 'castagnettes', level: Level.INTERMEDIATE, family: Family.PERCUSSIONS, subFamily: SubFamily.PERCUSSIONS_NON_DETERMINE };
+        this.instruments.push(castagnettes);
 
-    let flute_de_pan = new InstrumentModel(33, 'Flûte de pan', Level.EASY, 'assets/instruments/bois/biseau/flute-de-pan/flute-de-pan.mp3', 'assets/instruments/bois/biseau/flute-de-pan/photo.png', Family.BOIS, SubFamily.BOIS_BISEAU);
-    this.instruments.push(flute_de_pan);
+        let flute_de_pan: Instrument = { id: 33, label: 'flûte de pan', level: Level.EASY, family: Family.BOIS, subFamily: SubFamily.BOIS_BISEAU };
+        this.instruments.push(flute_de_pan);
 
-    let ocarina = new InstrumentModel(34, 'Ocarina', Level.EXPERT, 'assets/instruments/bois/biseau/ocarina/ocarina.mp3', 'assets/instruments/bois/biseau/ocarina/photo.png', Family.BOIS, SubFamily.BOIS_BISEAU);
-    this.instruments.push(ocarina);
+        let ocarina: Instrument = { id: 34, label: 'ocarina', level: Level.EXPERT, family: Family.BOIS, subFamily: SubFamily.BOIS_BISEAU };
+        this.instruments.push(ocarina);
 
-    let guimbarde = new InstrumentModel(35, 'Guimbarde', Level.EASY, 'assets/instruments/percussions/sons-determines/guimbarde/guimbarde.mp3', 'assets/instruments/percussions/sons-determines/guimbarde/photo.png', Family.PERCUSSIONS, SubFamily.PERCUSSIONS_DETERMINE);
-    this.instruments.push(guimbarde);
+        let guimbarde: Instrument = { id: 35, label: 'guimbarde', level: Level.EASY, family: Family.PERCUSSIONS, subFamily: SubFamily.PERCUSSIONS_DETERMINE };
+        this.instruments.push(guimbarde);
 
-    let kazoo = new InstrumentModel(36, 'Kazoo', Level.EASY, 'assets/instruments/bois/autres/kazoo/kazoo.mp3', 'assets/instruments/bois/autres/kazoo/photo.png', Family.BOIS, SubFamily.BOIS_AUTRE);
-    this.instruments.push(kazoo);
+        let kazoo: Instrument = { id: 36, label: 'kazoo', level: Level.EASY, family: Family.BOIS, subFamily: SubFamily.BOIS_AUTRE };
+        this.instruments.push(kazoo);
 
-    let gong = new InstrumentModel(37, 'Gong', Level.INTERMEDIATE, 'assets/instruments/percussions/sons-indetermines/gong/gong.mp3', 'assets/instruments/percussions/sons-indetermines/gong/photo.png', Family.BOIS, SubFamily.PERCUSSIONS_NON_DETERMINE);
-    this.instruments.push(gong);
+        let gong: Instrument = { id: 37, label: 'gong', level: Level.INTERMEDIATE, family: Family.PERCUSSIONS, subFamily: SubFamily.PERCUSSIONS_NON_DETERMINE };
+        this.instruments.push(gong);
 
-    let cithare = new InstrumentModel(38, 'Cithare', Level.INTERMEDIATE, 'assets/instruments/cordes/cordes-pincees/cithare/cithare.mp3', 'assets/instruments/cordes/cordes-pincees/cithare/photo.png', Family.CORDES, SubFamily.CORDES_PINCEES_DOIGTS);
-    this.instruments.push(cithare);
-
+        let cithare: Instrument = { id: 38, label: 'cithare', level: Level.INTERMEDIATE, family: Family.CORDES, subFamily: SubFamily.CORDES_PINCEES_DOIGTS };
+        this.instruments.push(cithare);
+    */
     //this.getInstrumentsByFirebase();
 
+    console.log(this.instruments);
+
+  }
+
+  getPhotoPath(instrument: any) {
+    let label = instrument.label.replace(/ /g, '-');
+    if (instrument.subFamily != null) {
+      return this.assetsRootDirectory + instrument.family.directory + '/' + instrument.subFamily.directory + '/' + label + '/photo.png';
+    }
+    return this.assetsRootDirectory + instrument.family.directory + '/' + label + '/photo.png';
+  }
+
+  getSoundPath(instrument: any) {
+    let label = instrument.label.replace(/ /g, '-');
+    if (instrument.subFamily != null) {
+      return this.assetsRootDirectory + instrument.family.directory + '/' + instrument.subFamily.directory + '/' + label + '/' + label + '.mp3';
+    }
+    return this.assetsRootDirectory + instrument.family.directory + '/' + label + '/' + label + '.mp3';
   }
 
   getInstruments() {
@@ -147,8 +182,8 @@ export class InstrumentService {
     return this.instruments.find(element => element.id == id);
   }
 
-  getXInstruments(nbQuestion: number): InstrumentModel[] {
-    let result = new Array<InstrumentModel>();
+  getXInstruments(nbQuestion: number): Instrument[] {
+    let result = new Array<Instrument>();
     this.randomize(this.instruments);
 
     for (let i = 0; i < nbQuestion; i++) {
@@ -158,12 +193,12 @@ export class InstrumentService {
     return result;
   }
 
-  getInstrumentsByFilters(form): InstrumentModel[] {
-    let resultFilter = new Array<InstrumentModel>();
-    let resultCount = new Array<InstrumentModel>();
+  getInstrumentsByFilters(form): Instrument[] {
+    let resultFilter = new Array<Instrument>();
+    let resultCount = new Array<Instrument>();
     this.randomize(this.instruments);
 
-    resultFilter = this.instruments.filter(element  => (form.family.id === Family.ALL['id'] || element.family['id'] == form.family.id) && element.level['value'] <= form.level.value);
+    resultFilter = this.instruments.filter(element => (form.family.id === Family.ALL['id'] || element.family['id'] == form.family.id) && element.level['value'] <= form.level.value);
 
     for (let i = 0; i < form.nbQuestions; i++) {
       resultCount.push(resultFilter[i]);
@@ -186,12 +221,12 @@ export class InstrumentService {
     getInstrumentsByFirebase : permet de récupérer les instruments depuis Firebase Database
     getPhotoFirebase : permet de récupérer un média depuis Firebase Storage
    */
-  getInstrumentsByFirebase() {
+  /*getInstrumentsByFirebase() {
     let instrusFire = new Array();
     let instrumentsCollection = this.afs.collection<any>('instrument').valueChanges();
     let instrusObs = instrumentsCollection.subscribe(val => {
       val.forEach(function(value) {
-        let ins = new InstrumentModel(value.id,
+        let ins = new Instrument(value.id,
           value.label,
           value.level,
           value.sound,
@@ -202,7 +237,8 @@ export class InstrumentService {
       });
       this.instruments = instrusFire;
     });
-  }
+  }*/
+
   async getPhotoFirebase() {
     let urlLink = '';
     const linkPh = 'instrument/bois/anche-double/basson/photo.png';

@@ -62,7 +62,7 @@ ion-content {
   font-size: 30px;
 }
 
-.instrument {
+.instrument-block {
   margin: 5px;
   padding: 10px;
   border-radius: 5px;
@@ -71,25 +71,25 @@ ion-content {
   box-shadow: #FEFEFE 0 0 5px 0;
 }
 
-.instrument.disabled {
+.instrument-block.disabled {
   opacity: 0.2;
 }
 
-.instrument.good,
-.instrument.good .label {
+.instrument-block.good,
+.instrument-block.good .label {
   background: #28ba62 !important;
   box-shadow: #28ba62 0 0 5px 0;
   color: white;
 }
 
-.instrument.bad,
-.instrument.bad .label {
+.instrument-block.bad,
+.instrument-block.bad .label {
   background: #cf3c4f !important;
   box-shadow: #cf3c4f 0 0 5px 0;
   color: white;
 }
 
-.instrument .label {
+.instrument-block .label {
   margin-top: 10px;
   background-color: #FEFEFE !important;
   color: #333;

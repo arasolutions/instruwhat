@@ -86,6 +86,7 @@ export class GlossaryPage implements OnInit {
     if (family === 'all') {
       this.instrumentsList = this.instruments;
     } else {
+      console.log(this.instruments);
       this.instrumentsList = this.instruments.filter(currentInstru => {
         if (currentInstru.family.label.toLowerCase() === family) {
           return true;

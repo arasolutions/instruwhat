@@ -1,0 +1,614 @@
+[
+  {
+    "label": "piano",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 11,
+      "directory": "cordes-frappees"
+    }
+  },
+  {
+    "label": "xylophone",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 7,
+      "directory": "sons-determines"
+    }
+  },
+  {
+    "label": "saxophone",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 4,
+      "directory": "anche-simple"
+    }
+  },
+  {
+    "label": "violon",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 8,
+      "directory": "cordes-frottees"
+    }
+  },
+  {
+    "label": "violoncelle",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 8,
+      "directory": "cordes-frottees"
+    }
+  },
+  {
+    "label": "triangle",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "contrebasse",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 8,
+      "directory": "cordes-frottees"
+    }
+  },
+  {
+    "label": "violon alto",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 8,
+      "directory": "cordes-frottees"
+    }
+  },
+  {
+    "label": "marimba",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 7,
+      "directory": "sons-determines"
+    }
+  },
+  {
+    "label": "djembe",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "cajón",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "clavecin",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 11,
+      "directory": "cordes-frappees"
+    }
+  },
+  {
+    "label": "guitare",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  },
+  {
+    "label": "guitare électrique",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  },
+  {
+    "label": "harpe",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  },
+  {
+    "label": "basson",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 2,
+      "directory": "anche-double"
+    }
+  },
+  {
+    "label": "harmonica",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 3,
+      "directory": "anche-libre"
+    }
+  },
+  {
+    "label": "timbales",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 7,
+      "directory": "sons-determines"
+    }
+  },
+  {
+    "label": "trombone",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 3,
+      "directory": "cuivres",
+      "fulllabel": "Cuivre"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "flûte traversiere",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 1,
+      "directory": "biseau"
+    }
+  },
+  {
+    "label": "piccolo",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 1,
+      "directory": "biseau"
+    }
+  },
+  {
+    "label": "clarinette",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 4,
+      "directory": "anche-simple"
+    }
+  },
+  {
+    "label": "cornemuse",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 4,
+      "directory": "anche-simple"
+    }
+  },
+  {
+    "label": "hautbois",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 2,
+      "directory": "anche-double"
+    }
+  },
+  {
+    "label": "tuba",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 3,
+      "directory": "cuivres",
+      "fulllabel": "Cuivre"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "claves",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "trompette",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 3,
+      "directory": "cuivres",
+      "fulllabel": "Cuivre"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "saxo baryton",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 4,
+      "directory": "anche-simple"
+    }
+  },
+  {
+    "label": "hang",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 7,
+      "directory": "sons-determines"
+    }
+  },
+  {
+    "label": "guiro",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "yukulélé",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  },
+  {
+    "label": "didgeridoo",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 3,
+      "directory": "cuivres",
+      "fulllabel": "Cuivre"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "castagnettes",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "flûte de pan",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 1,
+      "directory": "biseau"
+    }
+  },
+  {
+    "label": "ocarina",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 1,
+      "directory": "biseau"
+    }
+  },
+  {
+    "label": "guimbarde",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 7,
+      "directory": "sons-determines"
+    }
+  },
+  {
+    "label": "kazoo",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 5,
+      "directory": "autres"
+    }
+  },
+  {
+    "label": "gong",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "cithare",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  }
+]

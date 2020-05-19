@@ -23,6 +23,10 @@
 .hide {
   display: none !important;
 }
+
+.ucfirst::first-letter {
+  text-transform: capitalize;
+}
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -80,12 +84,11 @@
   animation-duration: 0.5s;
   opacity: 0;
 }
-
 @-webkit-keyframes bounceInUp {
-  from,
   60%,
   75%,
   90%,
+  from,
   to {
     -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -118,12 +121,11 @@
     transform: translate3d(0, 0, 0);
   }
 }
-
 @keyframes bounceInUp {
-  from,
   60%,
   75%,
   90%,
+  from,
   to {
     -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -162,17 +164,15 @@
   animation-name: bounceInUp, fadeIn;
   animation-duration: 1.5s, 0.5s;
 }
-
 @font-face {
   font-family: 'Source Code Pro';
-  src: url('./assets/fonts/SourceCodePro-Regular.ttf');
+  src: url("./assets/fonts/SourceCodePro-Regular.ttf");
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'Roboto Mono';
-  src: url('./assets/fonts/RobotoMono-Regular.ttf');
+  src: url("./assets/fonts/RobotoMono-Regular.ttf");
   font-weight: 400;
   font-style: normal;
 }

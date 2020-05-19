@@ -36,10 +36,10 @@
               <ion-grid>
                 <ion-row>
                   <ion-col size="6" *ngFor="let instrument of question.instruments">
-                    <div class="instrument" [class.disabled]="isDisabled(instrument, question)" [class.good]="question.clicked && instrument.id==question.goodAnswer.id"
+                    <div class="instrument-block" [class.disabled]="isDisabled(instrument, question)" [class.good]="question.clicked && instrument.id==question.goodAnswer.id"
                       [class.bad]="question.clicked==instrument.id && instrument.id!=question.goodAnswer.id" (click)="choose(question, instrument)">
                       <img [src]="instrument.photo" />
-                      <div class="label">
+                      <div class="label ucfirst">
                         {{ instrument.label }}
                       </div>
                     </div>

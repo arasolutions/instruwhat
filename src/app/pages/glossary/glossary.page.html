@@ -22,14 +22,14 @@
       <ion-label>Cordes</ion-label>
     </ion-segment-button>
   </ion-segment>
-  <ion-searchbar showCancelButton="never" class="list-searchbar" (ionChange)="filterList($event)"></ion-searchbar>
+  <ion-searchbar showCancelButton="never" class="list-searchbar" (ionChange)="filterList($event)" placeholder="Rechercher"></ion-searchbar>
 </ion-header>
 <ion-content [fullscreen]="true">
   <!-- Label only -->
 
   <ion-list>
     <ion-list-header>
-      Instruments
+      <h2>Instruments</h2>
     </ion-list-header>
 
     <ion-item *ngFor="let instrument of instrumentsList; let i = index" (click)="play(instrument.id, i);">
@@ -37,7 +37,7 @@
         <img [src]="instrument.photo">
       </ion-avatar>
       <ion-label>
-        <h2>{{ instrument.label }}</h2>
+        <h2 class="ucfirst">{{ instrument.label }}</h2>
         <!--<h3>{{ instrument.family.label }}</h3>-->
         <p>{{ instrument.family.label }}</p>
         <p *ngIf="instrument.playing"><ion-progress-bar [value]="instrument.percent" color="warning"></ion-progress-bar></p>

@@ -1,28 +1,29 @@
 export enum Family {
-  ALL = <any>{ 'id': 1, 'label': 'Tout', 'fulllabel': 'Tous les instruments' },
-  BOIS = <any>{ 'id': 2, 'label': 'Bois', 'fulllabel': 'Bois' },
-  CUIVRES = <any>{ 'id': 3, 'label': 'Cuivre', 'fulllabel': 'Cuivre' },
-  PERCUSSIONS = <any>{ 'id': 4, 'label': 'Percussions', 'fulllabel': 'Percussions' },
-  CORDES = <any>{ 'id': 5, 'label': 'Cordes', 'fulllabel': 'Cordes' }
+  ALL = <any>{ 'id': 1, 'directory': null, 'fulllabel': 'Tous les instruments' },
+  BOIS = <any>{ 'id': 2, 'directory': 'bois', 'fulllabel': 'Bois' },
+  CUIVRES = <any>{ 'id': 3, 'directory': 'cuivres', 'fulllabel': 'Cuivre' },
+  PERCUSSIONS = <any>{ 'id': 4, 'directory': 'percussions', 'fulllabel': 'Percussions' },
+  CORDES = <any>{ 'id': 5, 'directory': 'cordes', 'fulllabel': 'Cordes' },
+  VENTS = <any>{ 'id': 6, 'directory': 'vents', 'fulllabel': 'Vents' }
 }
 
 export enum SubFamily {
-  BOIS_BISEAU,
-  BOIS_ANCHE_DOUBLE,
-  BOIS_ANCHE_LIBRE,
-  BOIS_ANCHE_SIMPLE,
-  BOIS_AUTRE,
-  PERCUSSIONS_NON_DETERMINE,
-  PERCUSSIONS_DETERMINE,
-  CORDES_FROTTEES,
-  CORDES_PINCEES_DOIGTS,
-  CORDES_PINCEES_CLAVIER,
-  CORDES_FRAPPEES
+  BOIS_BISEAU = <any>{ 'id': 1, 'directory': 'biseau' },
+  BOIS_ANCHE_DOUBLE = <any>{ 'id': 2, 'directory': 'anche-double' },
+  BOIS_ANCHE_LIBRE = <any>{ 'id': 3, 'directory': 'anche-libre' },
+  BOIS_ANCHE_SIMPLE = <any>{ 'id': 4, 'directory': 'anche-simple' },
+  BOIS_AUTRE = <any>{ 'id': 5, 'directory': 'autres' },
+  PERCUSSIONS_NON_DETERMINE = <any>{ 'id': 6, 'directory': 'sons-indetermines' },
+  PERCUSSIONS_DETERMINE = <any>{ 'id': 7, 'directory': 'sons-determines' },
+  CORDES_FROTTEES = <any>{ 'id': 8, 'directory': 'cordes-frottees' },
+  CORDES_PINCEES_DOIGTS = <any>{ 'id': 9, 'directory': 'cordes-pincees' },
+  CORDES_PINCEES_CLAVIER = <any>{ 'id': 10, 'directory': 'cordes-pincees' },
+  CORDES_FRAPPEES = <any>{ 'id': 11, 'directory': 'cordes-frappees' }
 }
 
 export namespace Family {
   export function getAll() {
-    return [this.ALL, this.BOIS, this.CUIVRES, this.PERCUSSIONS, this.CORDES];
+    return [this.ALL, this.BOIS, this.CUIVRES, this.PERCUSSIONS, this.CORDES, this.VENTS];
   }
 
   export function getById(id: number) {

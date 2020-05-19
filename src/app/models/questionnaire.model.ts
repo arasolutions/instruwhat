@@ -18,7 +18,7 @@ export class QuestionnaireModel {
 
   family: Family;
 
-    level: Level;
+  level: Level;
 
   questions: any[];
 
