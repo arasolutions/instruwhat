@@ -1,7 +1,7 @@
 export enum Family {
   ALL = <any>{ 'id': 1, 'directory': null, 'fulllabel': 'Tous les instruments' },
   BOIS = <any>{ 'id': 2, 'directory': 'bois', 'fulllabel': 'Bois' },
-  CUIVRES = <any>{ 'id': 3, 'directory': 'cuivres', 'fulllabel': 'Cuivre' },
+  CUIVRES = <any>{ 'id': 3, 'directory': 'cuivres', 'fulllabel': 'Cuivres' },
   PERCUSSIONS = <any>{ 'id': 4, 'directory': 'percussions', 'fulllabel': 'Percussions' },
   CORDES = <any>{ 'id': 5, 'directory': 'cordes', 'fulllabel': 'Cordes' },
   VENTS = <any>{ 'id': 6, 'directory': 'vents', 'fulllabel': 'Vents' }
