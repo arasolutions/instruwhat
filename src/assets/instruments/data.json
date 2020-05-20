@@ -1,5 +1,4 @@
-[
-  {
+[{
     "label": "piano",
     "level": {
       "label": "Facile",
@@ -610,5 +609,153 @@
       "id": 9,
       "directory": "cordes-pincees"
     }
+  },
+  {
+    "label": "banjo",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  },
+  {
+    "label": "basse",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  },
+  {
+    "label": "flûte-à-bec",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 1,
+      "directory": "biseau"
+    }
+  },
+  {
+    "label": "grelot",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "orgue",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 6,
+      "directory": "vents",
+      "fulllabel": "Vents"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "clarinette basse",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 4,
+      "directory": "anche-simple"
+    }
+  },
+  {
+    "label": "contrebasson",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 2,
+      "directory": "anche-double"
+    }
+  },
+  {
+    "label": "sousaphone",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 3,
+      "directory": "cuivres",
+      "fulllabel": "Cuivres"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "sacqueboute",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 2,
+      "directory": "vents",
+      "fulllabel": "Vents"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "ophicléide",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 3,
+      "directory": "cuivres",
+      "fulllabel": "Cuivres"
+    },
+    "subFamily": null
   }
 ]
