@@ -757,5 +757,156 @@
       "fulllabel": "Cuivres"
     },
     "subFamily": null
+  },
+  {
+    "label": "cornet à pistons",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 3,
+      "directory": "cuivres",
+      "fulllabel": "Cuivres"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "cor",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 3,
+      "directory": "cuivres",
+      "fulllabel": "Cuivres"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "clairon",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 3,
+      "directory": "cuivres",
+      "fulllabel": "Cuivres"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "caisse claire",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "grosse caisse",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "célesta",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 7,
+      "directory": "sons-determines"
+    }
+  },
+  {
+    "label": "cloches",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 7,
+      "directory": "sons-determines"
+    }
+  },
+  {
+    "label": "luth",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  },
+  {
+    "label": "lyre",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  },
+  {
+    "label": "mandoline",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
   }
 ]
