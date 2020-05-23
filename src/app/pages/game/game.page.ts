@@ -94,7 +94,7 @@ export class GamePage implements OnInit {
     if (this.platform.is('android')) {
       this.file = this.media.create('/android_asset/public/' + uri);
     } else {
-      this.file = this.media.create('/android_asset/public/' + uri);
+      this.file = this.media.create(uri);
     }
     this.file.onStatusUpdate.subscribe(status => {
       this.fileStatus = status;

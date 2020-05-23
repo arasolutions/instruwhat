@@ -45,7 +45,7 @@ export class FinalGamePage implements OnInit {
         this.files.push(this.media.create('/android_asset/public/' + uri));
       }
       if (this.platform.is('ios')) {
-        this.files.push(this.media.create('/android_asset/public/' + uri));
+        this.files.push(this.media.create(uri));
       }
       this.files[i].onStatusUpdate.subscribe(status => {
         if (status == 1) {
