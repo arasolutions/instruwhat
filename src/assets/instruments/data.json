@@ -643,7 +643,7 @@
     }
   },
   {
-    "label": "flûte-à-bec",
+    "label": "flûte à bec",
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -907,6 +907,227 @@
     "subFamily": {
       "id": 9,
       "directory": "cordes-pincees"
+    }
+  },
+  {
+    "label": "cor de basset",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 4,
+      "directory": "anche-simple"
+    }
+  },
+  {
+    "label": "harmonium",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 5,
+      "directory": "autres"
+    }
+  },
+  {
+    "label": "flûte à nez",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 1,
+      "directory": "biseau"
+    }
+  },
+  {
+    "label": "vielle à roue",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 8,
+      "directory": "cordes-frottees"
+    }
+  },
+  {
+    "label": "balalaïka",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  },
+  {
+    "label": "koto",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  },
+  {
+    "label": "ud",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  },
+  {
+    "label": "yangqin",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  },
+  {
+    "label": "serpent",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 3,
+      "directory": "cuivres",
+      "fulllabel": "Cuivres"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "angklung",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 7,
+      "directory": "sons-determines"
+    }
+  },
+  {
+    "label": "congas",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 7,
+      "directory": "sons-determines"
+    }
+  },
+  {
+    "label": "harmonica en verre",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 7,
+      "directory": "sons-determines"
+    }
+  },
+  {
+    "label": "conque",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "vuvuzela",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
     }
   }
 ]
