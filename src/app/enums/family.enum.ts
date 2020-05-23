@@ -4,7 +4,8 @@ export enum Family {
   CUIVRES = <any>{ 'id': 3, 'directory': 'cuivres', 'fulllabel': 'Cuivres' },
   PERCUSSIONS = <any>{ 'id': 4, 'directory': 'percussions', 'fulllabel': 'Percussions' },
   CORDES = <any>{ 'id': 5, 'directory': 'cordes', 'fulllabel': 'Cordes' },
-  VENTS = <any>{ 'id': 6, 'directory': 'vents', 'fulllabel': 'Vents' }
+  VENTS = <any>{ 'id': 6, 'directory': 'vents', 'fulllabel': 'Vents' },
+  ELECTRONIQUES = <any>{ 'id': 7, 'directory': 'éléctroniques', 'fulllabel': 'Electroniques' }
 }
 
 export enum SubFamily {

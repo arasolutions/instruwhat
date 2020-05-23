@@ -1129,5 +1129,304 @@
       "id": 6,
       "directory": "sons-indetermines"
     }
+  },
+  {
+    "label": "woodblock",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "tambourin",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "batterie",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "sifflet",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "steel drum",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "waterphone",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "pyrophone",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "maracas",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "arbre de pluie",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "tubulum",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 7,
+      "directory": "sons-determines"
+    }
+  },
+  {
+    "label": "mbira",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 7,
+      "directory": "sons-determines"
+    }
+  },
+  {
+    "label": "orgue de barbarie",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 6,
+      "directory": "vents",
+      "fulllabel": "Vents"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "orgue",
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 6,
+      "directory": "vents",
+      "fulllabel": "Vents"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "xun",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 6,
+      "directory": "vents",
+      "fulllabel": "Vents"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "trompe de chasse",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 3,
+      "directory": "cuivres",
+      "fulllabel": "Cuivre"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "cor des alpes",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 3,
+      "directory": "cuivres",
+      "fulllabel": "Cuivre"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "melodica",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 3,
+      "directory": "anche-libre"
+    }
+  },
+  {
+    "label": "cymbalum",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 11,
+      "directory": "cordes-frappees"
+    }
+  },
+  {
+    "label": "thérémine",
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 7,
+      "directory": "éléctroniques",
+      "fulllabel": "Eléctroniques"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "ondes martenot",
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 7,
+      "directory": "éléctroniques",
+      "fulllabel": "Eléctroniques"
+    },
+    "subFamily": null
   }
 ]
