@@ -3,5 +3,6 @@
   "appName": "InstruWhat",
   "bundledWebRuntime": false,
   "npmClient": "npm",
-  "webDir": "www"
+  "webDir": "www",
+  "version": "1.0.2"
 }
