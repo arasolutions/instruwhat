@@ -6,7 +6,7 @@ const { Storage } = Plugins;
 import { Family } from '../enums/family.enum';
 import { Level } from '../enums/level.enum';
 
-import { ScoreModel } from '../models/score.model';
+import { Score } from '../interfaces/score';
 
 @Injectable({
   providedIn: 'root'
@@ -14,36 +14,46 @@ import { ScoreModel } from '../models/score.model';
 export class ScoreService {
 
   private STORAGE_NAME = 'SCORES';
+  private STORAGE_SCORE_NAME = 'SCORE_NAME';
 
   constructor() {
   }
 
-  async getScores(family: Family, level: Level, nbQuestions: number): Promise<ScoreModel[]> {
+  async getScores(family: Family, level: Level, nbQuestions: number): Promise<Score[]> {
     await this.initStorage();
     const res = await Storage.get({ key: this.STORAGE_NAME });
 
     //Filtre
-    let result = JSON.parse(res.value).filter(element => element._family.id == family['id'] && element._level.value == level['value'] && element._nbQuestions == nbQuestions);
+    let result = JSON.parse(res.value).filter((element: any) => element.family.id == family['id'] && element.level.value == level['value'] && element.nbQuestions == nbQuestions);
 
-    console.log(result);
     result.sort(function(a: any, b: any) {
-      return b._score - a._score;
+      return b.score - a.score;
     });
-    console.log(result);
 
     return result;
   }
 
-  async addScore(name: string, score: number, family: Family, level: Level, nbQuestions: number): Promise<boolean> {
+  async addScore(name: string, score: number, family: Family, level: Level, nbQuestions: number): Promise<number> {
     await this.initStorage();
     const actualScores = await Storage.get({ key: this.STORAGE_NAME });
 
     let scores = JSON.parse(actualScores.value);
 
-    scores.push(new ScoreModel(name, score, family, level, nbQuestions));
+    let newScore: Score = { id: scores.length + 1, name: name, score: score, family: family, level: level, nbQuestions: nbQuestions, date: new Date() };
+
+    scores.push(newScore);
 
     await Storage.set({ key: this.STORAGE_NAME, value: JSON.stringify(scores) });
-    return true;
+    return newScore.id;
+  }
+
+  async getNameScore(): Promise<string> {
+    const name = await Storage.get({ key: this.STORAGE_SCORE_NAME });
+    return name.value;
+  }
+
+  async setNameScore(name: string): Promise<void> {
+    return await Storage.set({ key: this.STORAGE_SCORE_NAME, value: name });
   }
 
   async initStorage(): Promise<boolean> {

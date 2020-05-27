@@ -1,4 +1,4 @@
-import { Family, SubFamily } from '../enums/family.enum';
+import { Family } from '../enums/family.enum';
 import { Level } from '../enums/level.enum';
 
 /**

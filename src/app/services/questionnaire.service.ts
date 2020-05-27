@@ -25,23 +25,12 @@ export class QuestionnaireService {
     let questionnaireInstru = this.instrumentService.getInstrumentsByFilters(form);
 
     for (let i = 0; i < questionnaireInstru.length; i++) {
-      result.questions.push(this.questionService.createQuestion(i, questionnaireInstru[i]));
+      result.questions.push(this.questionService.createQuestion(i, questionnaireInstru[i], form));
     }
 
     this.questionnaire = result;
 
     return result;
-  }
-
-  restartQuestionnaire() {
-    this.questionnaire.questions = new Array();
-
-    let questionnaireInstru = this.instrumentService.getXInstruments(this.questionnaire.nbQuestions);
-
-    this.questionnaire.score = 0;
-    for (let i = 0; i < questionnaireInstru.length; i++) {
-      this.questionnaire.questions.push(this.questionService.createQuestion(i, questionnaireInstru[i]));
-    }
   }
 
   getQuestionnaire() {

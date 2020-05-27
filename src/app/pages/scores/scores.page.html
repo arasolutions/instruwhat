@@ -27,14 +27,19 @@
     </div>
   </ng-container>
   <ion-list class="score-list" *ngIf="scores.length >= 1">
-    <ion-item class="bounceInUp" [style.animation-delay]="(0.05 * i) + 's, 0s'" *ngFor="let score of scores; let i = index">
+    <ion-item class="bounceInUp" [class.last-score]="score.id == lastScore" [style.animation-delay]="(0.05 * i) + 's, 0s'" *ngFor="let score of scores; let i = index">
       <ion-label>
-        {{i+1}}. {{score._name}}
+        {{i+1}}. {{score.name}}
       </ion-label>
-      <ion-note slot="end" color="primary">{{score._score}}</ion-note>
+      <ion-note slot="end" color="primary">{{score.score}}</ion-note>
     </ion-item>
     <!--</ng-container>-->
   </ion-list>
 </ion-content>
 <ion-footer id="finish-footer" collapse="condense">
+  <ion-row>
+    <ion-col offset="2" size="8">
+      <ion-button expand="block" color="light" (click)="goToGame()">C'est parti !</ion-button>
+    </ion-col>
+  </ion-row>
 </ion-footer>

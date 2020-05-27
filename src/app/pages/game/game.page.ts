@@ -201,26 +201,28 @@ export class GamePage implements OnInit {
     }
     this.block_action = false;
   }
+
   onSlideWillChange() {
     this.block_action = true;
     this.stop();
     if (this.current + 1 == this.questionnaire.nbQuestions) {
       this.questionnaire.updateScore();
       //Loader
-      this.loading = 2000;
+      this.loading = 0;
       let currentIcon = 0;
+      this.loaderIcon = this.icons[currentIcon];
       this.intervalLoaderIcon = setInterval(() => {
         this.loaderIcon = this.icons[currentIcon % this.icons.length];
         currentIcon++;
       }, 100);
       this.intervalLoader = setInterval(() => {
-        if (this.loading == 0) {
+        if (this.loading >= 2000) {
           clearInterval(this.intervalLoader);
           clearInterval(this.intervalLoaderIcon);
           this.router.navigate(['/final-game']);
           return;
         }
-        this.loading -= 50;
+        this.loading += 50;
       }, 50);
     }
     else {

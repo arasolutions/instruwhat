@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 
 import { AlertController } from '@ionic/angular';
 
@@ -6,8 +7,9 @@ import { ScoreService } from '../../services/score.service';
 
 import { Family } from '../../enums/family.enum';
 import { Level } from '../../enums/level.enum';
+import { ParamGameForm } from '../../forms/param-game.form';
 
-import { ScoreModel } from '../../models/score.model';
+import { Score } from '../../interfaces/score';
 
 @Component({
   selector: 'app-scores',
@@ -20,16 +22,25 @@ export class ScoresPage implements OnInit {
   levelChosen: Level = Level.EASY;
   questionsChosen: number = 10;
 
-  scores: ScoreModel[] = new Array<ScoreModel>();
+  scores: Score[] = new Array<Score>();
+  lastScore: number;
 
-  constructor(public alertController: AlertController, public scoreService: ScoreService) { }
+  constructor(public alertController: AlertController, public scoreService: ScoreService, public router: Router, public route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
+    if (this.route.snapshot.queryParams.form) {
+      let form = <ParamGameForm>JSON.parse(this.route.snapshot.queryParams.form);
+
+      this.familyChosen = form.family;
+      this.levelChosen = form.level;
+      this.questionsChosen = form.nbQuestions;
+
+      this.lastScore = this.route.snapshot.queryParams.scoreId;
+    }
     this.getScores();
-    console.log(this.scores);
   }
 
   async changeFamily() {
@@ -148,4 +159,16 @@ export class ScoresPage implements OnInit {
   async getScores() {
     this.scores = await this.scoreService.getScores(this.familyChosen, this.levelChosen, this.questionsChosen);
   }
+
+  goToGame() {
+    let form: ParamGameForm = { family: this.familyChosen, level: this.levelChosen, nbQuestions: this.questionsChosen, help: false }
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        form: JSON.stringify(form)
+      }
+    };
+
+    this.router.navigate(['/initial-game'], navigationExtras);
+  }
+
 }

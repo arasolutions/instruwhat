@@ -33,7 +33,7 @@
               {{ question.goodAnswer.label}}
             </div>
             <div class="ion-float-right score">
-              {{ question.points| number:'1.0-0' }}
+              {{ question.points| number:'1.0-0' | score }}
             </div>
           </h2>
           <p>
@@ -60,7 +60,7 @@
             Total
           </div>
           <div class="ion-float-right score">
-            {{ questionnaire.score | number:'1.0-0' }}
+            {{ questionnaire.score | number:'1.0-0' | score }}
           </div>
         </h2>
       </ion-label>

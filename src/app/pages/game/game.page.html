@@ -35,7 +35,7 @@
             <ion-row>
               <ion-grid>
                 <ion-row>
-                  <ion-col size="6" *ngFor="let instrument of question.instruments">
+                  <ion-col class="instrument-col" size="6" *ngFor="let instrument of question.instruments">
                     <div class="instrument-block" [class.disabled]="isDisabled(instrument, question)" [class.good]="question.clicked && instrument.id==question.goodAnswer.id"
                       [class.bad]="question.clicked==instrument.id && instrument.id!=question.goodAnswer.id" (click)="choose(question, instrument)">
                       <img [src]="instrument.photo" />
@@ -52,6 +52,16 @@
             <div class="block-swipe">
               <div>
                 <div class="block-swipe-text">Passe à la prochaine question</div>
+                <div>
+                  <img src="assets/icon/swipe-left.png" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="overlay-swipe" [class.hide]="!finished || isOverlayHidden(question)" [class.fadeIn]="finished && !overlay && !isOverlayHidden(question)" [class.fadeOut]="finished && overlay" (click)="closeOverlay()">
+            <div class="block-swipe">
+              <div>
+                <div class="block-swipe-text">Passe aux résultats</div>
                 <div>
                   <img src="assets/icon/swipe-left.png" />
                 </div>

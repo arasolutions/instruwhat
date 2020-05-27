@@ -8,12 +8,15 @@ import { FinalGamePageRoutingModule } from './final-game-routing.module';
 
 import { FinalGamePage } from './final-game.page';
 
+import { PipesModule } from '../../pipes.modules';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FinalGamePageRoutingModule
+    FinalGamePageRoutingModule,
+    PipesModule
   ],
   declarations: [FinalGamePage]
 })

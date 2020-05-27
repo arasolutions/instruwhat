@@ -22,7 +22,16 @@ export class FinalGamePage implements OnInit {
 
   currentFile: number;
 
-  constructor(public router: Router, public platform: Platform, public route: ActivatedRoute, public media: Media, public questionnaireService: QuestionnaireService, public alertCtrl: AlertController, public scoreService: ScoreService) {
+  name: string;
+
+  constructor(
+    public router: Router,
+    public platform: Platform,
+    public route: ActivatedRoute,
+    public media: Media,
+    public questionnaireService: QuestionnaireService,
+    public alertCtrl: AlertController,
+    public scoreService: ScoreService) {
     this.questionnaire = this.questionnaireService.getQuestionnaire();
 
     this.loadAllSounds();
@@ -31,14 +40,21 @@ export class FinalGamePage implements OnInit {
   }
 
   ngOnInit() {
-    const backButtonSub = this.platform.backButton.subscribeWithPriority(10000, () => {
+    this.platform.backButton.subscribeWithPriority(10000, () => {
       this.router.navigate(['/param-game']);
     });
   }
 
+  async ionViewWillEnter() {
+    let scores = await this.scoreService.getScores(this.questionnaire.family, this.questionnaire.level, this.questionnaire.nbQuestions);
+    if (scores.length > 0) {
+      this.name = await this.scoreService.getNameScore();
+    }
+  }
+
   loadAllSounds() {
     this.files = new Array();
-    this.questionnaire.questions.forEach((question, i) => {
+    this.questionnaire.questions.forEach((question: any, i: number) => {
       const uri = question.goodAnswer.sound;
 
       if (this.platform.is('android')) {
@@ -114,36 +130,49 @@ export class FinalGamePage implements OnInit {
   }
 
   saveResult() {
-      this.alertCtrl.create({
-          header: 'Enregistre ton score !',
-          message: 'Renseigne ton nom (10 caractères maximum)',
-          inputs: [
-              {
-                  name: 'name',
-                  type: 'text',
-                  placeholder: 'NOM'
+    this.alertCtrl.create({
+      header: 'Enregistre ton score !',
+      message: 'Renseigne ton nom (10 caractères maximum)',
+      inputs: [
+        {
+          name: 'name',
+          type: 'text',
+          placeholder: 'NOM',
+          value: this.name
+        }
+      ],
+      buttons: [
+        {
+          text: 'Annuler',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Enregistrer',
+          handler: async (prompt) => {
+            this.name = prompt.name;
+            console.log(this.name);
+            let name = prompt.name.toUpperCase().substring(0, 10);
+            if (name === '') {
+              name = 'INCONNU';
+            }
+
+            await this.scoreService.setNameScore(name);
+
+            const scoreId: number = await this.scoreService.addScore(name, this.questionnaire.score, this.questionnaire.family, this.questionnaire.level, this.questionnaire.nbQuestions);
+
+            let navigationExtras: NavigationExtras = {
+              queryParams: {
+                form: JSON.stringify(this.questionnaire.form),
+                scoreId: scoreId
               }
-          ],
-          buttons: [
-              {
-                  text: 'Annuler',
-                  role: 'cancel',
-                  cssClass: 'secondary',
-                  handler: () => {
-                      console.log('Confirm Cancel');
-                  }
-              }, {
-                  text: 'Enregistrer',
-                  handler: (prompt) => {
-                      let name = prompt.name.toUpperCase().substring(0, 10);
-                      if (name === '') {
-                          name = 'INCONNU';
-                      }
-                      this.scoreService.addScore(name, this.questionnaire.score, this.questionnaire.family, this.questionnaire.level, this.questionnaire.nbQuestions);
-                      this.router.navigate(['/scores']);
-                  }
-              }]
-      }).then(alert => alert.present());
+            };
+            this.router.navigate(['/scores'], navigationExtras);
+          }
+        }]
+    }).then(alert => alert.present());
   }
 
 }

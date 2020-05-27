@@ -24,7 +24,6 @@ ion-menu-button {
   transform: translateY(-50%);
 }
 
-
 #container strong {
   font-size: 20px;
   line-height: 26px;
@@ -46,8 +45,7 @@ ion-content {
   --color: white;
 }
 
-#final
- {
+#final {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -60,6 +58,20 @@ ion-content {
 
 .music-action ion-icon {
   font-size: 30px;
+}
+
+@media(min-width:768px) {
+  .instrument-col {
+    padding: 0 20px 20px;
+  }
+
+  .instrument-block{
+    font-size: 1.5em;
+  }
+
+  .swiper-slide img {
+    padding: 20px 20px 0 20px;
+  }
 }
 
 .instrument-block {
@@ -104,7 +116,6 @@ ion-content {
   padding-right: 10px;
   color: var(--ion-color-warning) !important;
 }
-
 
 .player ion-progress-bar {
   height: 5px;
@@ -208,5 +219,5 @@ ion-footer {
 
 .loader-icon {
   width: 100px;
-  padding: 20px;
+  padding: 20px !important;
 }

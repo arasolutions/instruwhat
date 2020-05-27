@@ -19,6 +19,11 @@ ion-list.score-list > ion-item > ion-note {
   font-size: 1em;
 }
 
+ion-list.score-list > ion-item.last-score > ion-label,
+ion-list.score-list > ion-item.last-score > ion-note {
+  color: var(--ion-color-danger);
+}
+
 .level-label {
   font-size: 0.9em;
   position: absolute;

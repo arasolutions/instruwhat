@@ -37,7 +37,7 @@ export class InstrumentService {
       };
       this.instruments.push(instrument);
     });
-    
+
     //this.getInstrumentsByFirebase();
 
     console.log(this.instruments);
@@ -88,6 +88,25 @@ export class InstrumentService {
     for (let i = 0; i < form.nbQuestions; i++) {
       resultCount.push(resultFilter[i]);
     }
+
+    return resultCount;
+  }
+
+  getInstrumentsBySubFamily(idInstru:number, subFamily: SubFamily, family:Family): Instrument[] {
+    let resultFilter = new Array<Instrument>();
+    let resultCount = new Array<Instrument>();
+
+    if (subFamily == null) {
+      resultFilter = this.instruments.filter(element => (element.id != idInstru && element.family == family['id']));
+    } else {
+      resultFilter = this.instruments.filter(element => (element.id != idInstru && element.subFamily != null && element.subFamily['id'] === subFamily['id']));
+    }
+    this.randomize(resultFilter);
+
+    for (let i = 0; i < 4; i++) {
+      resultCount.push(resultFilter[i]);
+    }
+
     return resultCount;
   }
 
@@ -133,8 +152,8 @@ export class InstrumentService {
           console.log('Val OK');
           urlLink = val;
         }
-      }, e => {
-        //console.log(e);
+      }, (e: any) => {
+        console.log(e);
       });
     } catch (e) {
       //console.log(e);

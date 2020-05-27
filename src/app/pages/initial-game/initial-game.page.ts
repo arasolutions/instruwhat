@@ -27,7 +27,7 @@ export class InitialGamePage implements OnInit {
 
   ionViewWillEnter() {
     let form = <ParamGameForm>JSON.parse(this.route.snapshot.queryParams.form);
-
+    
     this.questionnaireService.createQuestionnaire(form);
 
     //Loader

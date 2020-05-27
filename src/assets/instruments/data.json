@@ -1320,19 +1320,6 @@
     "subFamily": null
   },
   {
-    "label": "orgue",
-    "level": {
-      "label": "Facile",
-      "value": 10
-    },
-    "family": {
-      "id": 6,
-      "directory": "vents",
-      "fulllabel": "Vents"
-    },
-    "subFamily": null
-  },
-  {
     "label": "xun",
     "level": {
       "label": "Expert",
