@@ -36,9 +36,8 @@ export class GlossaryPage implements OnInit {
 
       if (this.platform.is('android')) {
         this.files[intru.id] = this.media.create('/android_asset/public/' + uri);
-      }
-      if (this.platform.is('ios')) {
-        this.files[intru.id] = this.media.create('/android_asset/public/' + uri);
+      } else {
+        this.files[intru.id] = this.media.create(uri);
       }
     });
   }
