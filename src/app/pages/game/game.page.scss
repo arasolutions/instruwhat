@@ -59,18 +59,17 @@ ion-content {
 .music-action ion-icon {
   font-size: 30px;
 }
-
 @media(min-width:768px) {
   .instrument-col {
     padding: 0 20px 20px;
   }
 
-  .instrument-block{
+  .instrument-block {
     font-size: 1.5em;
   }
 
   .swiper-slide img {
-    padding: 20px 20px 0 20px;
+    padding: 20px 20px 0;
   }
 }
 
@@ -123,9 +122,8 @@ ion-content {
 }
 
 .question {
-  //height: 10%;
   font-size: 1.5rem;
-  height: 10%;
+  height: 8%;
   display: inline-flex;
 }
 

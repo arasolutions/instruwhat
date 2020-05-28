@@ -16,74 +16,72 @@
     </div>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true">
-  <div id="container">
-    <ion-slides #questionSlides class="game-slides" (ionSlideWillChange)="onSlideWillChange()" (ionSlideDidChange)="onSlideChange()" [options]="slideOpts">
-      <ion-slide class="slide-game" *ngFor="let question of questionsInGame">
-        <ion-content>
-          <div class="question ion-align-items-center">
-            Quel est cet instrument ?
-          </div>
-          <div class="player">
-            <ion-row>
-              <ion-col size="12">
-                <ion-progress-bar [value]="percent" color="warning"></ion-progress-bar>
-              </ion-col>
-            </ion-row>
-          </div>
-          <div class="answer">
-            <ion-row>
-              <ion-grid>
-                <ion-row>
-                  <ion-col class="instrument-col" size="6" *ngFor="let instrument of question.instruments">
-                    <div class="instrument-block" [class.disabled]="isDisabled(instrument, question)" [class.good]="question.clicked && instrument.id==question.goodAnswer.id"
-                      [class.bad]="question.clicked==instrument.id && instrument.id!=question.goodAnswer.id" (click)="choose(question, instrument)">
-                      <img [src]="instrument.photo" />
-                      <div class="label ucfirst">
-                        {{ instrument.label }}
-                      </div>
+<ion-content>
+  <ion-slides #questionSlides class="game-slides" (ionSlideWillChange)="onSlideWillChange()" (ionSlideDidChange)="onSlideChange()" [options]="slideOpts">
+    <ion-slide class="slide-game" *ngFor="let question of questionsInGame">
+      <ion-content>
+        <div class="question ion-align-items-center">
+          Quel est cet instrument ?
+        </div>
+        <div class="player">
+          <ion-row>
+            <ion-col size="12">
+              <ion-progress-bar [value]="percent" color="warning"></ion-progress-bar>
+            </ion-col>
+          </ion-row>
+        </div>
+        <div class="answer">
+          <ion-row>
+            <ion-grid>
+              <ion-row>
+                <ion-col class="instrument-col" size="6" *ngFor="let instrument of question.instruments">
+                  <div class="instrument-block" [class.disabled]="isDisabled(instrument, question)" [class.good]="question.clicked && instrument.id==question.goodAnswer.id"
+                    [class.bad]="question.clicked==instrument.id && instrument.id!=question.goodAnswer.id" (click)="choose(question, instrument)">
+                    <img [src]="instrument.photo" />
+                    <div class="label ucfirst">
+                      {{ instrument.label }}
                     </div>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-row>
-          </div>
-          <div class="overlay-swipe" [class.hide]="!novice || isOverlayHidden(question)" [class.fadeIn]="novice && !overlay && !isOverlayHidden(question)" [class.fadeOut]="novice && overlay" (click)="closeOverlay()">
-            <div class="block-swipe">
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-row>
+        </div>
+        <div class="overlay-swipe" [class.hide]="!novice || isOverlayHidden(question)" [class.fadeIn]="novice && !overlay && !isOverlayHidden(question)" [class.fadeOut]="novice && overlay" (click)="closeOverlay()">
+          <div class="block-swipe">
+            <div>
+              <div class="block-swipe-text">Passe à la prochaine question</div>
               <div>
-                <div class="block-swipe-text">Passe à la prochaine question</div>
-                <div>
-                  <img src="assets/icon/swipe-left.png" />
-                </div>
+                <img src="assets/icon/swipe-left.png" />
               </div>
             </div>
           </div>
-          <div class="overlay-swipe" [class.hide]="!finished || isOverlayHidden(question)" [class.fadeIn]="finished && !overlay && !isOverlayHidden(question)" [class.fadeOut]="finished && overlay" (click)="closeOverlay()">
-            <div class="block-swipe">
+        </div>
+        <div class="overlay-swipe" [class.hide]="!finished || isOverlayHidden(question)" [class.fadeIn]="finished && !overlay && !isOverlayHidden(question)" [class.fadeOut]="finished && overlay" (click)="closeOverlay()">
+          <div class="block-swipe">
+            <div>
+              <div class="block-swipe-text">Passe aux résultats</div>
               <div>
-                <div class="block-swipe-text">Passe aux résultats</div>
-                <div>
-                  <img src="assets/icon/swipe-left.png" />
-                </div>
+                <img src="assets/icon/swipe-left.png" />
               </div>
             </div>
           </div>
-        </ion-content>
-      </ion-slide>
-      <ion-slide id="final-slide" *ngIf="finished">
-        <ion-content [fullscreen]="true">
-          <div id="final">
-            <ion-row>
-              <ion-col offset="2" size="8">
-                <img [src]="'assets/settings/instru-icon/' + loaderIcon + '/default.png'" class="loader-icon" />
-                <ion-progress-bar color="warning" [value]="loading / 2000"></ion-progress-bar>
-              </ion-col>
-            </ion-row>
-          </div>
-        </ion-content>
-      </ion-slide>
-    </ion-slides>
-  </div>
+        </div>
+      </ion-content>
+    </ion-slide>
+    <ion-slide id="final-slide" *ngIf="finished">
+      <ion-content [fullscreen]="true">
+        <div id="final">
+          <ion-row>
+            <ion-col offset="2" size="8">
+              <img [src]="'assets/settings/instru-icon/' + loaderIcon + '/default.png'" class="loader-icon" />
+              <ion-progress-bar color="warning" [value]="loading / 2000"></ion-progress-bar>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-content>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
 <ion-footer>
   <ion-toolbar color="secondary">
