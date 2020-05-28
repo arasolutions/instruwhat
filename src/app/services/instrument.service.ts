@@ -97,7 +97,9 @@ export class InstrumentService {
     let resultCount = new Array<Instrument>();
 
     if (subFamily == null) {
-      resultFilter = this.instruments.filter(element => (element.id != idInstru && element.family == family['id']));
+      console.log(family);
+      resultFilter = this.instruments.filter(element => (element.id != idInstru && element.family['id'] === family['id']));
+      console.log(resultFilter);
     } else {
       resultFilter = this.instruments.filter(element => (element.id != idInstru && element.subFamily != null && element.subFamily['id'] === subFamily['id']));
     }

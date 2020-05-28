@@ -71,6 +71,14 @@ ion-content {
   .swiper-slide img {
     padding: 20px 20px 0;
   }
+
+  .player {
+    margin-bottom: 20px !important;
+  }
+
+  .question {
+    margin: 10px !important;
+  }
 }
 
 .instrument-block {
@@ -110,7 +118,7 @@ ion-content {
 }
 
 .player {
-  height: 5%;
+  margin-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
   color: var(--ion-color-warning) !important;
@@ -123,12 +131,12 @@ ion-content {
 
 .question {
   font-size: 1.5rem;
-  height: 8%;
+  margin: 10px;
   display: inline-flex;
 }
 
 .answer {
-  height: 85%;
+  //height: 85%;
 }
 
 .overlay-swipe {

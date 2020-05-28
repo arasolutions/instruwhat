@@ -26,8 +26,6 @@ export class QuestionService {
       }
     }
 
-    console.log(form.level);
-
     if (form.level.value === Level.INTERMEDIATE['value']) {
       // 1 carte de la même sous famille
       let sameSubFamily = this.instrumentService.getInstrumentsBySubFamily(instrumentChosen.id, instrumentChosen.subFamily, instrumentChosen.family);
@@ -41,6 +39,7 @@ export class QuestionService {
     if (form.level.value === Level.EXPERT['value']) {
       // 2 cartes de la même sous famille
       let sameSubFamily = this.instrumentService.getInstrumentsBySubFamily(instrumentChosen.id, instrumentChosen.subFamily, instrumentChosen.family);
+      console.log(sameSubFamily);
       if (sameSubFamily[0]) {
         result.instruments.push(sameSubFamily[0]);
         let index = possibilities.indexOf(sameSubFamily[0].id);
@@ -53,7 +52,7 @@ export class QuestionService {
         possibilities.splice(index, 1);
       }
     }
-
+    console.log(result.instruments.length);
     const nbInstruRestants = 4 - result.instruments.length;
 
     for (let i = 0; i < nbInstruRestants; i++) {
