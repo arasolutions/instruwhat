@@ -26,16 +26,20 @@ export class InstrumentService {
     this.instruments = new Array();
 
     datas.forEach((element: any, index: number) => {
-      let instrument: Instrument = {
-        id: index + 1,
-        label: element.label,
-        level: element.level,
-        family: element.family,
-        subFamily: element.subFamily,
-        photo: this.getPhotoPath(element),
-        sound: this.getSoundPath(element)
-      };
-      this.instruments.push(instrument);
+      for (let indexSound = 1; indexSound <= element.sounds; indexSound++) {
+        for (let indexPhoto = 1; indexPhoto <= element.photos; indexPhoto++) {
+          let instrument: Instrument = {
+            id: index + 1,
+            label: element.label,
+            level: element.level,
+            family: element.family,
+            subFamily: element.subFamily,
+            photo: this.getPhotoPath(element, indexPhoto),
+            sound: this.getSoundPath(element, indexSound)
+          };
+          this.instruments.push(instrument);
+        }
+      }
     });
 
     //this.getInstrumentsByFirebase();
@@ -43,20 +47,26 @@ export class InstrumentService {
     console.log(this.instruments);
   }
 
-  getPhotoPath(instrument: any) {
+  getPhotoPath(instrument: any, index: number) {
     let label = instrument.label.replace(/ /g, '-');
-    if (instrument.subFamily != null) {
-      return this.assetsRootDirectory + instrument.family.directory + '/' + instrument.subFamily.directory + '/' + label + '/' + label + '.png';
+    if (index > 1) {
+      return 'http://demo.ara-solutions.com/instruwhat/' + label + index + '.png';
     }
-    return this.assetsRootDirectory + instrument.family.directory + '/' + label + '/' + label + '.png';
+    if (instrument.subFamily != null) {
+      return this.assetsRootDirectory + instrument.family.directory + '/' + instrument.subFamily.directory + '/' + label + '/' + label + index + '.png';
+    }
+    return this.assetsRootDirectory + instrument.family.directory + '/' + label + '/' + label + index + '.png';
   }
 
-  getSoundPath(instrument: any) {
+  getSoundPath(instrument: any, index: number) {
     let label = instrument.label.replace(/ /g, '-');
-    if (instrument.subFamily != null) {
-      return this.assetsRootDirectory + instrument.family.directory + '/' + instrument.subFamily.directory + '/' + label + '/' + label + '.mp3';
+    if (index > 1) {
+      return 'http://demo.ara-solutions.com/instruwhat/' + label + index + '.mp3';
     }
-    return this.assetsRootDirectory + instrument.family.directory + '/' + label + '/' + label + '.mp3';
+    if (instrument.subFamily != null) {
+      return this.assetsRootDirectory + instrument.family.directory + '/' + instrument.subFamily.directory + '/' + label + '/' + label + index + '.mp3';
+    }
+    return this.assetsRootDirectory + instrument.family.directory + '/' + label + '/' + label + index + '.mp3';
   }
 
   getInstruments() {
@@ -92,7 +102,7 @@ export class InstrumentService {
     return resultCount;
   }
 
-  getInstrumentsBySubFamily(idInstru:number, subFamily: SubFamily, family:Family): Instrument[] {
+  getInstrumentsBySubFamily(idInstru: number, subFamily: SubFamily, family: Family): Instrument[] {
     let resultFilter = new Array<Instrument>();
     let resultCount = new Array<Instrument>();
 

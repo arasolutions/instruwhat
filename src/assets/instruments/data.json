@@ -1,5 +1,7 @@
 [{
     "label": "piano",
+    "sounds": 2,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -16,6 +18,8 @@
   },
   {
     "label": "xylophone",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -32,6 +36,8 @@
   },
   {
     "label": "saxophone",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -48,6 +54,8 @@
   },
   {
     "label": "violon",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -64,6 +72,8 @@
   },
   {
     "label": "violoncelle",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -80,6 +90,8 @@
   },
   {
     "label": "triangle",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -96,6 +108,8 @@
   },
   {
     "label": "contrebasse",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -112,6 +126,8 @@
   },
   {
     "label": "violon alto",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -128,6 +144,8 @@
   },
   {
     "label": "marimba",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -144,6 +162,8 @@
   },
   {
     "label": "djembe",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -160,6 +180,8 @@
   },
   {
     "label": "cajón",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -176,6 +198,8 @@
   },
   {
     "label": "clavecin",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -192,6 +216,8 @@
   },
   {
     "label": "guitare",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -208,6 +234,8 @@
   },
   {
     "label": "guitare électrique",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -224,6 +252,8 @@
   },
   {
     "label": "harpe",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -240,6 +270,8 @@
   },
   {
     "label": "basson",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -256,6 +288,8 @@
   },
   {
     "label": "harmonica",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -272,6 +306,8 @@
   },
   {
     "label": "timbales",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -288,6 +324,8 @@
   },
   {
     "label": "trombone",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -301,6 +339,8 @@
   },
   {
     "label": "flûte traversiere",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -317,6 +357,8 @@
   },
   {
     "label": "piccolo",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -333,6 +375,8 @@
   },
   {
     "label": "clarinette",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -349,6 +393,8 @@
   },
   {
     "label": "cornemuse",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -365,6 +411,8 @@
   },
   {
     "label": "hautbois",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -381,6 +429,8 @@
   },
   {
     "label": "tuba",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -394,6 +444,8 @@
   },
   {
     "label": "claves",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -410,6 +462,8 @@
   },
   {
     "label": "trompette",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -423,6 +477,8 @@
   },
   {
     "label": "saxo baryton",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -439,6 +495,8 @@
   },
   {
     "label": "hang",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -455,6 +513,8 @@
   },
   {
     "label": "guiro",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -471,6 +531,8 @@
   },
   {
     "label": "yukulélé",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -487,6 +549,8 @@
   },
   {
     "label": "didgeridoo",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -500,6 +564,8 @@
   },
   {
     "label": "castagnettes",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -516,6 +582,8 @@
   },
   {
     "label": "flûte de pan",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -532,6 +600,8 @@
   },
   {
     "label": "ocarina",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -548,6 +618,8 @@
   },
   {
     "label": "guimbarde",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -564,6 +636,8 @@
   },
   {
     "label": "kazoo",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -580,6 +654,8 @@
   },
   {
     "label": "gong",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -596,6 +672,8 @@
   },
   {
     "label": "cithare",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -612,6 +690,8 @@
   },
   {
     "label": "banjo",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -628,6 +708,8 @@
   },
   {
     "label": "basse",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -644,6 +726,8 @@
   },
   {
     "label": "flûte à bec",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -660,6 +744,8 @@
   },
   {
     "label": "grelot",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -676,6 +762,8 @@
   },
   {
     "label": "orgue",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -689,6 +777,8 @@
   },
   {
     "label": "clarinette basse",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -705,6 +795,8 @@
   },
   {
     "label": "contrebasson",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -721,6 +813,8 @@
   },
   {
     "label": "sousaphone",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -734,6 +828,8 @@
   },
   {
     "label": "sacqueboute",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -747,6 +843,8 @@
   },
   {
     "label": "ophicléide",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -760,6 +858,8 @@
   },
   {
     "label": "cornet à pistons",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -773,6 +873,8 @@
   },
   {
     "label": "cor",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -786,6 +888,8 @@
   },
   {
     "label": "clairon",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -799,6 +903,8 @@
   },
   {
     "label": "caisse claire",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -815,6 +921,8 @@
   },
   {
     "label": "grosse caisse",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -831,6 +939,8 @@
   },
   {
     "label": "célesta",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -847,6 +957,8 @@
   },
   {
     "label": "cloches",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -863,6 +975,8 @@
   },
   {
     "label": "luth",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -879,6 +993,8 @@
   },
   {
     "label": "lyre",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -895,6 +1011,8 @@
   },
   {
     "label": "mandoline",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -911,6 +1029,8 @@
   },
   {
     "label": "cor de basset",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -927,6 +1047,8 @@
   },
   {
     "label": "harmonium",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -943,6 +1065,8 @@
   },
   {
     "label": "flûte à nez",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -959,6 +1083,8 @@
   },
   {
     "label": "vielle à roue",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -975,6 +1101,8 @@
   },
   {
     "label": "balalaïka",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -991,6 +1119,8 @@
   },
   {
     "label": "koto",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -1007,6 +1137,8 @@
   },
   {
     "label": "ud",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -1023,6 +1155,8 @@
   },
   {
     "label": "yangqin",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -1039,6 +1173,8 @@
   },
   {
     "label": "serpent",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -1052,6 +1188,8 @@
   },
   {
     "label": "angklung",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -1068,6 +1206,8 @@
   },
   {
     "label": "congas",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -1084,6 +1224,8 @@
   },
   {
     "label": "harmonica en verre",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -1100,6 +1242,8 @@
   },
   {
     "label": "conque",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -1116,6 +1260,8 @@
   },
   {
     "label": "vuvuzela",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -1132,6 +1278,8 @@
   },
   {
     "label": "woodblock",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -1148,6 +1296,8 @@
   },
   {
     "label": "tambourin",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -1164,6 +1314,8 @@
   },
   {
     "label": "batterie",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -1180,6 +1332,8 @@
   },
   {
     "label": "sifflet",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Facile",
       "value": 10
@@ -1196,6 +1350,8 @@
   },
   {
     "label": "steel drum",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -1212,6 +1368,8 @@
   },
   {
     "label": "waterphone",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -1228,6 +1386,8 @@
   },
   {
     "label": "pyrophone",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -1244,6 +1404,8 @@
   },
   {
     "label": "maracas",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -1260,6 +1422,8 @@
   },
   {
     "label": "arbre de pluie",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -1276,6 +1440,8 @@
   },
   {
     "label": "tubulum",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -1292,6 +1458,8 @@
   },
   {
     "label": "mbira",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -1308,6 +1476,8 @@
   },
   {
     "label": "orgue de barbarie",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -1321,6 +1491,8 @@
   },
   {
     "label": "xun",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -1334,6 +1506,8 @@
   },
   {
     "label": "trompe de chasse",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -1347,6 +1521,8 @@
   },
   {
     "label": "cor des alpes",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -1360,6 +1536,8 @@
   },
   {
     "label": "melodica",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -1376,6 +1554,8 @@
   },
   {
     "label": "cymbalum",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30
@@ -1392,6 +1572,8 @@
   },
   {
     "label": "thérémine",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Intermédiaire",
       "value": 20
@@ -1405,6 +1587,8 @@
   },
   {
     "label": "ondes martenot",
+    "sounds": 1,
+    "photos": 1,
     "level": {
       "label": "Expert",
       "value": 30

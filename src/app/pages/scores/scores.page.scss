@@ -21,7 +21,7 @@ ion-list.score-list > ion-item > ion-note {
 
 ion-list.score-list > ion-item.last-score > ion-label,
 ion-list.score-list > ion-item.last-score > ion-note {
-  color: var(--ion-color-danger);
+  font-weight: bold;
 }
 
 .level-label {
