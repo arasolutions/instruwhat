@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -20,14 +21,14 @@ import { Media } from '@ionic-native/media/ngx';
 import { InstrumentService } from './services/instrument.service';
 
 const firebase = {
-    apiKey: 'AIzaSyDr1yh5vc0RitEFvg5SA-rJpFTbTfu9vYs',
-    authDomain: 'instruwhat.firebaseapp.com',
-    databaseURL: 'https://instruwhat.firebaseio.com',
-    projectId: 'instruwhat',
-    storageBucket: 'instruwhat.appspot.com',
-    messagingSenderId: '1036659892115',
-    appId: '1:1036659892115:web:9820f9d160a0f5b62b1266',
-    measurementId: 'G-EYK4G7C2EL'
+  apiKey: 'AIzaSyDr1yh5vc0RitEFvg5SA-rJpFTbTfu9vYs',
+  authDomain: 'instruwhat.firebaseapp.com',
+  databaseURL: 'https://instruwhat.firebaseio.com',
+  projectId: 'instruwhat',
+  storageBucket: 'instruwhat.appspot.com',
+  messagingSenderId: '1036659892115',
+  appId: '1:1036659892115:web:9820f9d160a0f5b62b1266',
+  measurementId: 'G-EYK4G7C2EL'
 };
 
 @NgModule({
@@ -41,7 +42,8 @@ const firebase = {
     AngularFireAnalyticsModule,
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    HttpClientModule
   ],
   providers: [
     StatusBar,
@@ -52,4 +54,4 @@ const firebase = {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

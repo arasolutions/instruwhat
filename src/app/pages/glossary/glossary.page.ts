@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 
+import { Plugins } from '@capacitor/core';
+const { Network } = Plugins;
+
 import { Media, MediaObject } from '@ionic-native/media/ngx';
 
 import { InstrumentService } from '../../services/instrument.service';
@@ -20,9 +23,13 @@ export class GlossaryPage implements OnInit {
   constructor(public instrumentService: InstrumentService,
     public media: Media,
     public platform: Platform) {
+  }
+
+  async ionViewWillEnter(){
+    let status = await Network.getStatus();
     this.instruments = this.instrumentService.getInstruments();
     if (this.instruments === undefined) {
-      this.instrumentService.loadInstruments();
+      this.instrumentService.loadInstruments(status.connected);
       this.instruments = this.instrumentService.getInstruments();
     }
     this.loadAllSounds();

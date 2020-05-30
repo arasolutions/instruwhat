@@ -91,10 +91,16 @@ export class GamePage implements OnInit {
 
   load() {
     const uri = this.questionsInGame[0].goodAnswer.sound;
-    if (this.platform.is('android')) {
-      this.file = this.media.create('/android_asset/public/' + uri);
-    } else {
+    if (uri.indexOf('http') == 0) {
+      console.log('Fichier distant');
+        console.log(uri);
       this.file = this.media.create(uri);
+    } else {
+      if (this.platform.is('android')) {
+        this.file = this.media.create('/android_asset/public/' + uri);
+      } else {
+        this.file = this.media.create(uri);
+      }
     }
     this.file.onStatusUpdate.subscribe(status => {
       this.fileStatus = status;

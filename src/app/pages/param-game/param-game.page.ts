@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 
+import { Plugins } from '@capacitor/core';
+const { Network } = Plugins;
+
 import { Family } from '../../enums/family.enum';
 import { Level } from '../../enums/level.enum';
 import { ParamGameForm } from '../../forms/param-game.form';
@@ -26,9 +29,8 @@ export class ParamGamePage implements OnInit {
 
   constructor(public router: Router, public route: ActivatedRoute, public questionnaireService: QuestionnaireService, public instrumentService: InstrumentService, public analytics: AngularFireAnalytics) {
 
-    this.analytics.logEvent('page_view', {page: 'ParamGame'});
+    this.analytics.logEvent('page_view', { page: 'ParamGame' });
 
-    this.instrumentService.loadInstruments();
 
     this.form = new ParamGameForm();
 
@@ -40,8 +42,10 @@ export class ParamGamePage implements OnInit {
   ngOnInit() {
   }
 
-  ionViewWillEnter() {
-
+  async ionViewWillEnter() {
+    let status = await Network.getStatus();
+      alert(JSON.stringify(status));
+    this.instrumentService.loadInstruments(status.connected);
   }
 
   ionViewDidEnter() {

@@ -1,7 +1,7 @@
 [{
     "label": "piano",
     "sounds": 2,
-    "photos": 1,
+    "photos": 2,
     "level": {
       "label": "Facile",
       "value": 10
