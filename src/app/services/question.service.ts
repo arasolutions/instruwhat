@@ -22,7 +22,9 @@ export class QuestionService {
 
     for (let instrument of this.instrumentService.getInstrumentsByFilters(form)) {
       if (instrument.id != instrumentChosen.id) {
-        possibilities.push(instrument.id);
+        if (!possibilities.includes(instrument.id)) {
+          possibilities.push(instrument.id);
+        }
       }
     }
 
