@@ -44,7 +44,6 @@ export class ParamGamePage implements OnInit {
 
   async ionViewWillEnter() {
     let status = await Network.getStatus();
-      alert(JSON.stringify(status));
     this.instrumentService.loadInstruments(status.connected);
   }
 

@@ -28,7 +28,6 @@ export class InstrumentService {
   }
 
   loadInstruments(online: boolean = false) {
-    alert(online);
     this.instruments = new Array();
     if (online) {
       // Si connecté, on peut récupérer les URLS
@@ -83,15 +82,6 @@ export class InstrumentService {
   async getSoundPath(instrument: any, index: number) {
     let label = instrument.label.replace(/ /g, '-');
     if (index > 1) {
-      /*const res = await Storage.get({ key: label + index + '.mp3' });
-      if (res.value != null) {
-        console.log('coucou');
-        console.log(res);
-      } else {
-        const data = await this.http.get('https://cordova.apache.org/downloads/BlueZedEx.mp3', {responseType: 'text'}).toPromise();
-        console.log(data);
-        await Storage.set({ key: label + index + '.mp3', value: JSON.stringify(data) });
-      }*/
       return 'https://demo.ara-solutions.com/instruwhat/' + label + index + '.mp3';
     }
     if (instrument.subFamily != null) {
