@@ -41,10 +41,10 @@ export class QuestionService {
     if (form.level.value === Level.EXPERT['value']) {
       // 2 cartes de la même sous famille
       let sameSubFamily = this.instrumentService.getInstrumentsBySubFamily(instrumentChosen.id, instrumentChosen.subFamily, instrumentChosen.family);
-      console.log(sameSubFamily);
       if (sameSubFamily[0]) {
         result.instruments.push(sameSubFamily[0]);
         let index = possibilities.indexOf(sameSubFamily[0].id);
+        console.log(index);
         possibilities.splice(index, 1);
       }
 

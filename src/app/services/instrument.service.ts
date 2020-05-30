@@ -116,8 +116,14 @@ export class InstrumentService {
 
     resultFilter = this.instruments.filter(element => (form.family.id === Family.ALL['id'] || element.family['id'] == form.family.id) && element.level['value'] <= form.level.value);
 
-    for (let i = 0; i < form.nbQuestions; i++) {
-      resultCount.push(resultFilter[i]);
+    let i = 0;
+    while (resultCount.length < form.nbQuestions) {
+      if (resultCount.find(instru => (instru.sound == resultFilter[i].sound)) === undefined) {
+        resultCount.push(resultFilter[i]);
+      } else {
+        console.log('On ne prends pas. Doublon de ' + resultFilter[i].sound);
+      }
+      i++;
     }
 
     return resultCount;
@@ -128,16 +134,24 @@ export class InstrumentService {
     let resultCount = new Array<Instrument>();
 
     if (subFamily == null) {
-      console.log(family);
       resultFilter = this.instruments.filter(element => (element.id != idInstru && element.family['id'] === family['id']));
-      console.log(resultFilter);
     } else {
       resultFilter = this.instruments.filter(element => (element.id != idInstru && element.subFamily != null && element.subFamily['id'] === subFamily['id']));
     }
     this.randomize(resultFilter);
 
-    for (let i = 0; i < 4; i++) {
-      resultCount.push(resultFilter[i]);
+    let i = 0;
+    while (resultCount.length < 4) {
+      if (resultFilter[i]) {
+        if (resultCount.find(instru => (instru.id == resultFilter[i].id)) === undefined) {
+          resultCount.push(resultFilter[i]);
+        } else {
+          console.log('On ne prends pas. Doublon de ' + resultFilter[i].sound);
+        }
+        i++;
+      } else {
+        break;
+      }
     }
 
     return resultCount;
