@@ -29,7 +29,7 @@ export class GlossaryPage implements OnInit {
     let status = await Network.getStatus();
     this.instruments = this.instrumentService.getInstruments();
     if (this.instruments === undefined) {
-      this.instrumentService.loadInstruments(status.connected);
+      this.instrumentService.loadInstruments(false);
       this.instruments = this.instrumentService.getInstruments();
     }
     this.loadAllSounds();

@@ -44,7 +44,6 @@ export class QuestionService {
       if (sameSubFamily[0]) {
         result.instruments.push(sameSubFamily[0]);
         let index = possibilities.indexOf(sameSubFamily[0].id);
-        console.log(index);
         possibilities.splice(index, 1);
       }
 
@@ -54,7 +53,6 @@ export class QuestionService {
         possibilities.splice(index, 1);
       }
     }
-    console.log(result.instruments.length);
     const nbInstruRestants = 4 - result.instruments.length;
 
     for (let i = 0; i < nbInstruRestants; i++) {
