@@ -27,7 +27,7 @@ export class InstrumentService {
     private http: HttpClient) {
   }
 
-  loadInstruments(online: boolean = false) {
+  async loadInstruments(online: boolean = false) {
     this.instruments = new Array();
     if (online) {
       // Si connecté, on peut récupérer les URLS

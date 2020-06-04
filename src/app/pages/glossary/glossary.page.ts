@@ -25,11 +25,11 @@ export class GlossaryPage implements OnInit {
     public platform: Platform) {
   }
 
-  async ionViewWillEnter(){
+  async ionViewWillEnter() {
     let status = await Network.getStatus();
     this.instruments = this.instrumentService.getInstruments();
     if (this.instruments === undefined) {
-      this.instrumentService.loadInstruments(false);
+      await this.instrumentService.loadInstruments(false);
       this.instruments = this.instrumentService.getInstruments();
     }
     this.loadAllSounds();
@@ -93,7 +93,7 @@ export class GlossaryPage implements OnInit {
       this.instrumentsList = this.instruments;
     } else {
       console.log(this.instruments);
-      this.instrumentsList = this.instruments.filter(currentInstru => {
+      this.instrumentsList = this.instruments.filter((currentInstru:any) => {
         if (currentInstru.family.label.toLowerCase() === family) {
           return true;
         }
