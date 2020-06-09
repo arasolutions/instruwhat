@@ -6,20 +6,26 @@
     <ion-title class="ion-pull-right">Instruments</ion-title>
   </ion-toolbar>
   <ion-segment [scrollable]="true" (ionChange)="filterSegment($event)">
-    <ion-segment-button value="all">
+    <ion-segment-button value="1">
       <ion-label>Tous</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="bois">
+    <ion-segment-button value="2">
       <ion-label>Bois</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="cuivre">
-      <ion-label>Cuivre</ion-label>
+    <ion-segment-button value="3">
+      <ion-label>Cuivres</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="percussions">
+    <ion-segment-button value="4">
       <ion-label>Percussions</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="cordes">
+    <ion-segment-button value="5">
       <ion-label>Cordes</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="6">
+      <ion-label>Vents</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="7">
+      <ion-label>Electroniques</ion-label>
     </ion-segment-button>
   </ion-segment>
   <ion-searchbar showCancelButton="never" class="list-searchbar" (ionChange)="filterList($event)" placeholder="Rechercher"></ion-searchbar>

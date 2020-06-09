@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 
-import { Plugins } from '@capacitor/core';
-const { Network } = Plugins;
-
 import { Media, MediaObject } from '@ionic-native/media/ngx';
 
 import { InstrumentService } from '../../services/instrument.service';
@@ -26,7 +23,6 @@ export class GlossaryPage implements OnInit {
   }
 
   async ionViewWillEnter() {
-    let status = await Network.getStatus();
     this.instruments = this.instrumentService.getInstruments();
     if (this.instruments === undefined) {
       await this.instrumentService.loadInstruments(false);
@@ -34,13 +30,13 @@ export class GlossaryPage implements OnInit {
     }
     this.loadAllSounds();
     this.instrumentsList = this.instruments;
+    this.instrumentsList.sort((a: any, b: any) => a.label.localeCompare(b.label));
   }
 
   loadAllSounds() {
     this.files = new Array();
-    this.instruments.forEach((intru, i) => {
+    this.instruments.forEach((intru: any) => {
       const uri = intru.sound;
-
       if (this.platform.is('android')) {
         this.files[intru.id] = this.media.create('/android_asset/public/' + uri);
       } else {
@@ -70,13 +66,13 @@ export class GlossaryPage implements OnInit {
     }
   }
 
-  filterList(evt) {
+  filterList(evt: any) {
     const searchTerm = evt.srcElement.value;
     if (!searchTerm) {
       this.instrumentsList = this.instruments;
       return;
     }
-    this.instrumentsList = this.instruments.filter(currentInstru => {
+    this.instrumentsList = this.instruments.filter((currentInstru: any) => {
       if (currentInstru.label && searchTerm) {
         if (currentInstru.label.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
           return true;
@@ -86,19 +82,18 @@ export class GlossaryPage implements OnInit {
     });
   }
 
-  filterSegment(evt) {
-    console.log(evt.detail.value);
-    const family = evt.detail.value;
-    if (family === 'all') {
+  filterSegment(evt: any) {
+    const family = parseInt(evt.detail.value);
+    if (family === 1) {
       this.instrumentsList = this.instruments;
     } else {
-      console.log(this.instruments);
-      this.instrumentsList = this.instruments.filter((currentInstru:any) => {
-        if (currentInstru.family.label.toLowerCase() === family) {
+      this.instrumentsList = this.instruments.filter((currentInstru: any) => {
+        if (currentInstru.family['id'] === family) {
           return true;
         }
         return false;
       });
+      this.instrumentsList.sort((a: any, b: any) => a.label.localeCompare(b.label));
     }
   }
 

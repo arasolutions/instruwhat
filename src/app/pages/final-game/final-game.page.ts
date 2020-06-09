@@ -56,12 +56,16 @@ export class FinalGamePage implements OnInit {
     this.files = new Array();
     this.questionnaire.questions.forEach((question: any, i: number) => {
       const uri = question.goodAnswer.sound;
-
-      if (this.platform.is('android')) {
-        this.files.push(this.media.create('/android_asset/public/' + uri));
+      if (uri.indexOf('http') == 0) {
+        this.files.push(this.media.create(uri));
       } else {
+        if (this.platform.is('android')) {
+          this.files.push(this.media.create('/android_asset/public/' + uri));
+        } else {
           this.files.push(this.media.create(uri));
+        }
       }
+
       this.files[i].onStatusUpdate.subscribe(status => {
         if (status == 1) {
           // STARTING
