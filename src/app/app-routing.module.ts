@@ -9,19 +9,35 @@ const routes: Routes = [
   },
   {
     path: 'game',
-    loadChildren: () => import('./pages/game/game.module').then( m => m.GamePageModule)
+    loadChildren: () => import('./pages/single-game/game/game.module').then( m => m.GamePageModule)
   },
   {
     path: 'param-game',
-    loadChildren: () => import('./pages/param-game/param-game.module').then( m => m.ParamGamePageModule)
+    loadChildren: () => import('./pages/single-game/param-game/param-game.module').then( m => m.ParamGamePageModule)
   },
   {
     path: 'initial-game',
-    loadChildren: () => import('./pages/initial-game/initial-game.module').then( m => m.InitialGamePageModule)
+    loadChildren: () => import('./pages/single-game/initial-game/initial-game.module').then( m => m.InitialGamePageModule)
   },
   {
     path: 'final-game',
-    loadChildren: () => import('./pages/final-game/final-game.module').then( m => m.FinalGamePageModule)
+    loadChildren: () => import('./pages/single-game/final-game/final-game.module').then( m => m.FinalGamePageModule)
+  },
+  {
+    path: 'double-game',
+    loadChildren: () => import('./pages/double-game/game/double-game.module').then( m => m.DoubleGamePageModule)
+  },
+  {
+    path: 'double-param-game',
+    loadChildren: () => import('./pages/double-game/param-game/double-param-game.module').then( m => m.DoubleParamGamePageModule)
+  },
+  {
+    path: 'double-initial-game',
+    loadChildren: () => import('./pages/double-game/initial-game/double-initial-game.module').then( m => m.DoubleInitialGamePageModule)
+  },
+  {
+    path: 'double-final-game',
+    loadChildren: () => import('./pages/double-game/final-game/double-final-game.module').then( m => m.DoubleFinalGamePageModule)
   },
   {
     path: 'settings',

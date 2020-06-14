@@ -1,0 +1,51 @@
+<ion-content [fullscreen]="true">
+  <div class="players" *ngIf="!isAllReady()">
+    <div class="player-2">
+      <ion-row class="title ion-text-center ion-padding-top">
+        Joueur 2
+      </ion-row>
+      <ion-row class="ion-text-center ion-padding-top">
+        <div class="final-icon" *ngFor="let score of scores[1]" [style.width]="'calc(100% / ' + scores[baseScore].length + ')'">
+          <img [src]="'assets/settings/instru-icon/' + questionnaires[1].icon + '/default.png'" />
+        </div>
+      </ion-row>
+      <ion-row class="instrument ion-text-center ion-padding-top">
+        {{scores[1]?.length}} bonnes réponses
+      </ion-row>
+      <ion-row class="actions buttons ion-text-center ion-padding-top ion-flex">
+        <ion-col offset="2" size="8">
+          <ion-button expand="block" color="light" (click)="checkReady(1)">Prêt pour une autre !</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div class="resultat">
+      <div *ngIf="scores[1].length > scores[0].length" class="align-center">
+        Le joueur 2 remporte la partie
+      </div>
+      <div *ngIf="scores[1].length == scores[0].length" class="align-center">
+        Egalité
+      </div>
+      <div *ngIf="scores[1].length < scores[0].length" class="align-center">
+        Le joueur 1 remporte la partie
+      </div>
+    </div>
+    <div class="player-1">
+      <ion-row class="title ion-text-center ion-padding-top">
+        Joueur 1
+      </ion-row>
+      <ion-row class=" ion-text-center ion-padding-top">
+        <div class="final-icon" *ngFor="let score of scores[0]" [style.width]="'calc(100% / ' + scores[baseScore].length + ')'">
+          <img [src]="'assets/settings/instru-icon/' + questionnaires[0].icon + '/default.png'" />
+        </div>
+      </ion-row>
+      <ion-row class="instrument ion-text-center ion-padding-top">
+        {{scores[0]?.length}} bonnes réponses
+      </ion-row>
+      <ion-row class="actions buttons ion-text-center ion-padding-top ion-flex">
+        <ion-col offset="2" size="8">
+          <ion-button expand="block" color="light" (click)="checkReady(0)">Prêt pour une autre !</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

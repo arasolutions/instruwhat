@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-pull-right">Démarrer un jeu en battle</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+
+  <ion-row class="param-label ion-padding-top fix-data">
+    Famille
+  </ion-row>
+  <ion-row class="fix-data">
+    <ion-col offset="2" size="8">
+      <ion-select [(ngModel)]="form.family" ok-text="Ok" cancel-text="Annuler" disabled="true">
+        <ion-select-option *ngFor="let family of families" [value]="family">{{family.label}}</ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="param-label ion-padding-top">
+    Niveau
+  </ion-row>
+  <ion-row>
+    <ion-col offset="2" size="8">
+      <ion-select [(ngModel)]="form.level" ok-text="Ok" cancel-text="Annuler">
+        <ion-select-option *ngFor="let level of levels" [value]="level">{{level.label}}</ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="param-label ion-padding-top">
+    {{form.nbQuestions}} questions
+  </ion-row>
+  <ion-row>
+    <ion-col offset="2" size="8">
+      <ion-range [(ngModel)]="form.nbQuestions" min="5" max="20" step="5" color="light" pin="false"></ion-range>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="buttons ion-text-center ion-padding-top">
+    <ion-col offset="2" size="8">
+      <ion-button expand="block" color="light" (click)="goToGame()">C'est parti !</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

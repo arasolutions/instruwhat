@@ -18,7 +18,7 @@ export class QuestionModel {
 
   state: QuestionState;
 
-  clicked: boolean;
+  clicked: any;
 
   points: number;
 
@@ -32,7 +32,7 @@ export class QuestionModel {
     this.helpAnswers = new Array();
     this.goodAnswer = goodAnswer;
     this.state = QuestionState.NOT_PLAYED;
-    this.clicked = false;
+    this.clicked = null;
     this.playing = false;
     this.points = 0;
     this.percent = 0;

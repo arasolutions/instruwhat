@@ -1,0 +1,83 @@
+ion-content {
+  --background: #2980b9;
+  --color: white;
+  display: contents;
+  text-align: center;
+}
+
+.players {
+  height: 100%;
+}
+
+.player-2, .player-2-loading {
+  transform: rotate(180deg);
+}
+
+.player-1,
+.player-1-loading,
+.player-2,
+.player-2-loading {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: center;
+  border-bottom: solid 5px #064670;
+  border-top: solid 5px #064670;
+}
+
+.player-1 ion-row,
+.player-2 ion-row {
+  display: block;
+}
+
+.ion-flex {
+  display: flex !important;
+}
+
+.align-center {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.title {
+  height: 25%;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.instrument {
+  height: 10%;
+  font-size: 1.2em;
+}
+
+.instrument-list {
+  height: 20%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.actions {
+  height: 45%;
+  align-items: center;
+}
+
+.loader-icon {
+  width: 100px;
+  padding: 20px;
+}
+
+.icon {
+  width: 100px;
+  padding: 5px;
+}
+
+.icon:not(.selected) {
+  opacity: 0.3;
+}

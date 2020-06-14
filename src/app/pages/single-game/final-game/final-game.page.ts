@@ -4,8 +4,8 @@ import { AlertController, Platform } from '@ionic/angular';
 
 import { Media, MediaObject } from '@ionic-native/media/ngx';
 
-import { QuestionnaireService } from '../../services/questionnaire.service';
-import { ScoreService } from '../../services/score.service';
+import { QuestionnaireService } from '../../../services/questionnaire.service';
+import { ScoreService } from '../../../services/score.service';
 
 @Component({
   selector: 'app-final-game',

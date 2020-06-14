@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Media, MediaObject } from '@ionic-native/media/ngx';
 import { Platform, AlertController } from '@ionic/angular';
 
-import { InstrumentService } from '../../services/instrument.service';
-import { QuestionnaireService } from '../../services/questionnaire.service';
-import { QuestionService } from '../../services/question.service';
+import { InstrumentService } from '../../../services/instrument.service';
+import { QuestionnaireService } from '../../../services/questionnaire.service';
+import { QuestionService } from '../../../services/question.service';
 
-import { QuestionState } from '../../enums/question-state.enum'
+import { QuestionState } from '../../../enums/question-state.enum'
 
 @Component({
   selector: 'app-folder',

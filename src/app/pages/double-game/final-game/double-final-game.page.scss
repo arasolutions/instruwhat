@@ -1,0 +1,64 @@
+ion-content {
+  --background: #2980b9;
+  --color: white;
+  display: contents;
+  text-align: center;
+}
+
+.title {
+  height: 25%;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.players {
+  height: 100%;
+}
+
+.player-2,
+.player-2-loading {
+  transform: rotate(180deg);
+}
+
+.player-1,
+.player-1-loading,
+.player-2,
+.player-2-loading {
+  height: 48%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: center;
+  border-bottom: solid 5px #064670;
+  border-top: solid 5px #064670;
+}
+
+.player-1 ion-row,
+.player-2 ion-row {
+  display: block;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.resultat {
+  height: 4%;
+  background-color: #064670;
+}
+.align-center {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ion-flex {
+  display: flex !important;
+}
+
+.final-icon {
+  display: inline-table;
+}

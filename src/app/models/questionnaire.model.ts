@@ -26,6 +26,8 @@ export class QuestionnaireModel {
 
   score: number;
 
+  icon: number;
+
   constructor(id: number, form: ParamGameForm) {
     this.id = id;
     this.form = form;
@@ -34,7 +36,9 @@ export class QuestionnaireModel {
     this.help = form.help;
     this.family = form.family;
     this.level = form.level;
+    this.level = form.level;
     this.score = 0;
+    this.icon = 0;
   }
 
   updateScore() {

@@ -4,14 +4,14 @@ import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { Plugins } from '@capacitor/core';
 const { Network } = Plugins;
 
-import { Family } from '../../enums/family.enum';
-import { Level } from '../../enums/level.enum';
-import { ParamGameForm } from '../../forms/param-game.form';
+import { Family } from '../../../enums/family.enum';
+import { Level } from '../../../enums/level.enum';
+import { ParamGameForm } from '../../../forms/param-game.form';
 
 import { AngularFireAnalytics } from '@angular/fire/analytics';
 
-import { QuestionnaireService } from '../../services/questionnaire.service';
-import { InstrumentService } from '../../services/instrument.service';
+import { QuestionnaireService } from '../../../services/questionnaire.service';
+import { InstrumentService } from '../../../services/instrument.service';
 
 @Component({
   selector: 'app-param-game',

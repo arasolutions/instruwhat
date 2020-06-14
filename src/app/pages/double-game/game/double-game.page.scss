@@ -1,0 +1,274 @@
+ion-menu-button {
+  color: var(--ion-color-primary);
+}
+
+.game-slides {
+  height: calc(100% - 40px);
+}
+
+.game-slides ion-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #2980b9;
+}
+
+#container {
+  background: #333;
+  display: contents;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+ion-content {
+  --background: #2980b9;
+  --color: white;
+}
+
+#final {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.music-action ion-icon {
+  font-size: 30px;
+}
+@media(min-width:768px) {
+  .instrument-col {
+    padding: 0 20px 20px;
+  }
+
+  .instrument-block {
+    font-size: 1.5em;
+  }
+
+  .swiper-slide img {
+    padding: 20px 20px 0;
+  }
+
+  .question {
+    margin: 10px !important;
+  }
+}
+
+.instrument-block {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: #FEFEFE !important;
+  box-shadow: #FEFEFE 0 0 5px 0;
+  position: relative;
+  height: 100%;
+}
+
+.instrument-block.disabled {
+  opacity: 0.2;
+}
+
+.instrument-block.good,
+.instrument-block.good .label {
+  background: #28ba62 !important;
+  box-shadow: #28ba62 0 0 5px 0;
+  color: white;
+}
+
+.instrument-block.bad,
+.instrument-block.bad .label {
+  background: #cf3c4f !important;
+  box-shadow: #cf3c4f 0 0 5px 0;
+  color: white;
+}
+
+.instrument-block.dead {
+  opacity: 0.1;
+}
+
+.instrument-block .label {
+  margin-top: 10px;
+  background-color: #FEFEFE !important;
+  color: #333;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  margin: auto;
+  right: 0;
+  font-size: 0.8em;
+}
+
+.player {
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: var(--ion-color-warning) !important;
+}
+
+.player ion-progress-bar {
+  height: 5px;
+  border-radius: 5px;
+  margin-top: -2px;
+}
+
+.question {
+  font-size: 1.5rem;
+  margin: 10px;
+  display: inline-flex;
+}
+
+.answer,
+.answer ion-row,
+.answer ion-row ion-grid,
+.answer ion-row ion-grid ion-row {
+  height: 100%;
+}
+
+.answer ion-row ion-grid ion-row .instrument-col {
+  height: 45%;
+}
+
+.overlay-swipe {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, .3) !important;
+  display: inline-flex;
+  align-items: center;
+  align-content: center;
+  color: black !important;
+  margin: auto;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.block-swipe {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  align-content: center;
+  background: #fefefe !important;
+  border-radius: 10px;
+  color: #333 !important;
+}
+
+.block-swipe > div {
+  margin: auto;
+}
+
+.block-swipe > div > div {
+  background: #fefefe !important;
+  color: #444;
+}
+
+.block-swipe > div > div > img {
+  height: 100px;
+}
+
+.block-swipe-text {
+  padding: 10px;
+}
+
+ion-footer {
+  background-color: var(--ion-color-secondary);
+  height: 40px;
+}
+
+.answers {
+  padding: 0 5px;
+  display: flex;
+  height: 40px;
+  margin: auto;
+}
+
+.answer-item {
+  margin: auto;
+}
+
+.answer-item img {
+  max-height: 30px;
+  margin-top: 5px;
+  padding: 0 1px;
+}
+
+.label-level {
+  font-size: 0.9em;
+  position: absolute;
+  margin-top: -20px;
+  width: 100%;
+}
+
+.label-instrument {
+  font-size: 0.9em;
+  position: absolute;
+  width: 100%;
+}
+
+.back {
+  white-space: nowrap;
+}
+
+.loader-icon {
+  width: 100px;
+  padding: 20px !important;
+}
+
+.players {
+  height: 100%;
+}
+
+.player-2,
+.player-2-loading {
+  transform: rotate(180deg);
+}
+
+.player-1,
+.player-2 {
+  height: 49%;
+  text-align: center;
+}
+
+.player {
+  height: 2%;
+  margin: auto;
+}
+
+.instrument-block img {
+  height: calc(100% - 20px);
+}

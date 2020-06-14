@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import { Family } from '../../enums/family.enum';
-import { ParamGameForm } from '../../forms/param-game.form';
+import { ParamGameForm } from '../../../forms/param-game.form';
 
-import { QuestionnaireService } from '../../services/questionnaire.service';
+import { QuestionnaireService } from '../../../services/questionnaire.service';
 
 @Component({
   selector: 'app-initial-game',

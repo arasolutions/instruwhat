@@ -1,0 +1,59 @@
+<ion-content [fullscreen]="true">
+  <div class="players" *ngIf="!isAllReady()">
+    <div class="player-2">
+      <ion-row class="title ion-text-center ion-padding-top">
+        Joueur 2
+      </ion-row>
+      <ion-row class="instrument ion-text-center ion-padding-top">
+        Mon instrument
+      </ion-row>
+      <ion-row class="instrument-list ion-text-center ion-padding-top ion-flex">
+        <ion-col *ngFor="let icon of icons;let i = index" [style.width]='"calc(100% / " + icons.length + ")"'>
+          <img (click)="chooseAvatar(1,i)" [src]="'assets/settings/instru-icon/' + icon + '/default.png'" class="icon" [class.selected]="i==form.icons[1]" />
+        </ion-col>
+      </ion-row>
+      <ion-row class="actions buttons ion-text-center ion-padding-top ion-flex">
+        <ion-col offset="2" size="8">
+          <ion-button expand="block" color="light" (click)="checkReady(1)">Prêt !</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div class="player-1">
+      <ion-row class="title ion-text-center ion-padding-top">
+        Joueur 1
+      </ion-row>
+      <ion-row class="instrument ion-text-center ion-padding-top">
+        Mon instrument
+      </ion-row>
+      <ion-row class="instrument-list ion-text-center ion-padding-top ion-flex">
+        <ion-col *ngFor="let icon of icons;let i = index" [style.width]='"calc(100% / " + icons.length + ")"'>
+          <img (click)="chooseAvatar(0,i)" [src]="'assets/settings/instru-icon/' + icon + '/default.png'" class="icon" [class.selected]="i==form.icons[0]" />
+        </ion-col>
+      </ion-row>
+      <ion-row class="actions buttons ion-text-center ion-padding-top ion-flex">
+        <ion-col offset="2" size="8">
+          <ion-button expand="block" color="light" (click)="checkReady(0)">Prêt !</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+  <div class="players" *ngIf="isAllReady()">
+    <div class="player-2-loading">
+      <ion-row class="align-center">
+        <ion-col offset="2" size="8">
+          <img [src]="'assets/settings/instru-icon/' + loaderIcon + '/default.png'" class="loader-icon" />
+          <ion-progress-bar color="warning" [value]="loading / 3000"></ion-progress-bar>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div class="player-1-loading">
+      <ion-row class="align-center">
+        <ion-col offset="2" size="8">
+          <img [src]="'assets/settings/instru-icon/' + loaderIcon + '/default.png'" class="loader-icon" />
+          <ion-progress-bar color="warning" [value]="loading / 3000"></ion-progress-bar>
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </div>
+</ion-content>
