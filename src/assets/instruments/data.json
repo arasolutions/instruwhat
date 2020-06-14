@@ -17,9 +17,9 @@
     }
   },
   {
-    "label": "xylophone",
-    "sounds": 1,
-    "photos": 1,
+    "label": "vibraphone",
+    "sounds": 4,
+    "photos": 3,
     "level": {
       "label": "Facile",
       "value": 10
@@ -776,6 +776,36 @@
     "subFamily": null
   },
   {
+    "label": "flageolet",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 6,
+      "directory": "vents",
+      "fulllabel": "Vents"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "launeddas",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 6,
+      "directory": "vents",
+      "fulllabel": "Vents"
+    },
+    "subFamily": null
+  },
+  {
     "label": "clarinette basse",
     "sounds": 1,
     "photos": 1,
@@ -1259,6 +1289,42 @@
     }
   },
   {
+    "label": "crecelle",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "cymbales",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
     "label": "vuvuzela",
     "sounds": 1,
     "photos": 1,
@@ -1496,6 +1562,36 @@
     "level": {
       "label": "Expert",
       "value": 30
+    },
+    "family": {
+      "id": 6,
+      "directory": "vents",
+      "fulllabel": "Vents"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "accordéon",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Facile",
+      "value": 10
+    },
+    "family": {
+      "id": 6,
+      "directory": "vents",
+      "fulllabel": "Vents"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "concertina",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
     },
     "family": {
       "id": 6,
