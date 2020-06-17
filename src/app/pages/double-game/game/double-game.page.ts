@@ -189,8 +189,7 @@ export class DoubleGamePage implements OnInit {
             question.clicked = instrumentChosen.id;
             if (question.clicked == question.goodAnswer.id) {
               if (this.fileStatus == 2) {
-                this.file.stop();
-                clearInterval(this.interval);
+                this.stop();
               }
               question.state = QuestionState.GOOD;
               questionOther.state = QuestionState.BAD;
@@ -220,8 +219,7 @@ export class DoubleGamePage implements OnInit {
           if (question.state == QuestionState.NOT_PLAYED) {
             question.clicked = instrumentChosen.id;
             if (this.fileStatus == 2) {
-              this.file.stop();
-              clearInterval(this.interval);
+              this.stop();
             }
             if (question.clicked == question.goodAnswer.id) {
               question.state = QuestionState.GOOD;
