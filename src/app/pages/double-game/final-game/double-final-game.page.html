@@ -6,7 +6,8 @@
       </ion-row>
       <ion-row class="ion-text-center ion-padding-top">
         <div class="final-icon" *ngFor="let score of scores[1]" [style.width]="'calc(100% / ' + scores[baseScore].length + ')'">
-          <img [src]="'assets/settings/instru-icon/' + questionnaires[1].icon + '/default.png'" />
+            <img *ngIf="scores[1].length >= scores[0].length" [src]="'assets/settings/instru-icon/' + questionnaires[1].icon + '/good.png'" />
+            <img *ngIf="scores[1].length < scores[0].length" [src]="'assets/settings/instru-icon/' + questionnaires[1].icon + '/bad.png'" />
         </div>
       </ion-row>
       <ion-row class="instrument ion-text-center ion-padding-top">
@@ -19,24 +20,15 @@
         </ion-col>
       </ion-row>
     </div>
-    <div class="resultat">
-      <div *ngIf="scores[1].length > scores[0].length" class="align-center">
-        Le joueur 2 remporte la partie
-      </div>
-      <div *ngIf="scores[1].length == scores[0].length" class="align-center">
-        Egalité
-      </div>
-      <div *ngIf="scores[1].length < scores[0].length" class="align-center">
-        Le joueur 1 remporte la partie
-      </div>
-    </div>
+    <div class="player"></div>
     <div class="player-1">
       <ion-row class="title ion-text-center ion-padding-top">
         Joueur 1
       </ion-row>
       <ion-row class=" ion-text-center ion-padding-top">
         <div class="final-icon" *ngFor="let score of scores[0]" [style.width]="'calc(100% / ' + scores[baseScore].length + ')'">
-          <img [src]="'assets/settings/instru-icon/' + questionnaires[0].icon + '/default.png'" />
+          <img *ngIf="scores[0].length >= scores[1].length" [src]="'assets/settings/instru-icon/' + questionnaires[0].icon + '/good.png'" />
+          <img *ngIf="scores[0].length < scores[1].length" [src]="'assets/settings/instru-icon/' + questionnaires[0].icon + '/bad.png'" />
         </div>
       </ion-row>
       <ion-row class="instrument ion-text-center ion-padding-top">

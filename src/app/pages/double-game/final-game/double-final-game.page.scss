@@ -24,13 +24,12 @@ ion-content {
 .player-1-loading,
 .player-2,
 .player-2-loading {
-  height: 48%;
+  height: 49%;
   display: flex;
   flex-direction: column;
   position: relative;
   text-align: center;
   border-bottom: solid 5px #064670;
-  border-top: solid 5px #064670;
 }
 
 .player-1 ion-row,
@@ -64,4 +63,17 @@ ion-content {
   display: inline-table;
   max-width: 15%;
   padding: 2px;
+}
+
+.player-2, .player-2-loading {
+  background-color: #4995C7;
+}
+
+.player-1, .player-1-loading {
+  background-color: #07507F;
+}
+
+.player{
+  height: 2%;
+  background: linear-gradient(#4995C7, #07507F);
 }

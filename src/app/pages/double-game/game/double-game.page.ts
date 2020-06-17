@@ -147,7 +147,7 @@ export class DoubleGamePage implements OnInit {
       this.stop();
     }
 
-    if (!this.questionsInGame1[0].clicked || !this.questionsInGame2[0].clicked) {
+    if (!this.questionsInGame1[0].clicked && !this.questionsInGame2[0].clicked) {
       this.file.play();
       this.playing = true;
       clearInterval(this.interval);
@@ -194,6 +194,18 @@ export class DoubleGamePage implements OnInit {
               question.state = QuestionState.GOOD;
               questionOther.state = QuestionState.BAD;
               question.points = Math.floor(200 + (800 * (1 - this.percent)));
+
+              // Création de la prochaine slide
+              if (this.current + 1 < this.questionnaires[0].nbQuestions) {
+
+                this.questionsInGame1.push(this.questionnaires[0].questions[this.current + 1]);
+                this.questionsInGame2.push(this.questionnaires[1].questions[this.current + 1]);
+              }
+
+              if (this.current + 1 == this.questionnaires[0].nbQuestions) {
+                this.finished = true;
+              }
+
               setTimeout(() => {
                 this.slides1.lockSwipeToNext(false);
                 this.slides2.lockSwipeToNext(false);
@@ -204,15 +216,6 @@ export class DoubleGamePage implements OnInit {
             else {
               question.state = QuestionState.BAD;
               question.points = 0;
-            }
-            // Création de la prochaine slide
-            if (this.current + 1 < this.questionnaires[0].nbQuestions) {
-              this.questionsInGame1.push(this.questionnaires[0].questions[this.current + 1]);
-              this.questionsInGame2.push(this.questionnaires[1].questions[this.current + 1]);
-            }
-
-            if (this.current + 1 == this.questionnaires[0].nbQuestions) {
-              this.finished = true;
             }
           }
         } else {
@@ -261,7 +264,6 @@ export class DoubleGamePage implements OnInit {
   }
 
   onSlideChange() {
-    console.log('onchange');
 
     this.slides1.lockSwipeToNext(true);
     this.slides2.lockSwipeToNext(true);
@@ -279,8 +281,6 @@ export class DoubleGamePage implements OnInit {
   }
 
   onSlideWillChange() {
-    console.log('onwillchange');
-
     this.block_action = true;
     this.stop();
     if (this.current + 1 == this.questionnaires[0].nbQuestions) {
@@ -312,7 +312,6 @@ export class DoubleGamePage implements OnInit {
     }
     else {
       this.current++;
-
       this.novice = false;
     }
   }

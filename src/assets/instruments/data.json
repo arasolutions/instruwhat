@@ -251,6 +251,42 @@
     }
   },
   {
+    "label": "kamanche",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  },
+  {
+    "label": "yueqin",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 5,
+      "directory": "cordes",
+      "fulllabel": "Cordes"
+    },
+    "subFamily": {
+      "id": 9,
+      "directory": "cordes-pincees"
+    }
+  },
+  {
     "label": "harpe",
     "sounds": 1,
     "photos": 1,
@@ -324,6 +360,21 @@
   },
   {
     "label": "trombone",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 3,
+      "directory": "cuivres",
+      "fulllabel": "Cuivre"
+    },
+    "subFamily": null
+  },
+  {
+    "label": "trompette piccolo",
     "sounds": 1,
     "photos": 1,
     "level": {
@@ -428,6 +479,42 @@
     }
   },
   {
+    "label": "pungi",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 4,
+      "directory": "anche-simple"
+    }
+  },
+  {
+    "label": "zurna",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 2,
+      "directory": "bois",
+      "fulllabel": "Bois"
+    },
+    "subFamily": {
+      "id": 4,
+      "directory": "anche-simple"
+    }
+  },
+  {
     "label": "tuba",
     "sounds": 1,
     "photos": 1,
@@ -444,6 +531,78 @@
   },
   {
     "label": "claves",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "zilli masa",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "odaiko",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Intermédiaire",
+      "value": 20
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "rhombe",
+    "sounds": 1,
+    "photos": 1,
+    "level": {
+      "label": "Expert",
+      "value": 30
+    },
+    "family": {
+      "id": 4,
+      "directory": "percussions",
+      "fulllabel": "Percussions"
+    },
+    "subFamily": {
+      "id": 6,
+      "directory": "sons-indetermines"
+    }
+  },
+  {
+    "label": "sistre",
     "sounds": 1,
     "photos": 1,
     "level": {
