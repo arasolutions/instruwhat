@@ -14,7 +14,8 @@
       </ion-row>
       <ion-row class="actions buttons ion-text-center ion-padding-top ion-flex">
         <ion-col offset="2" size="8">
-          <ion-button expand="block" color="light" (click)="checkReady(1)">Prêt pour une autre !</ion-button>
+          <ion-button expand="block" color="light" *ngIf="!ready[1]" (click)="checkReady(1)">Prêt pour une autre !</ion-button>
+          <ion-spinner *ngIf="ready[1]" name="dots"></ion-spinner>
         </ion-col>
       </ion-row>
     </div>
@@ -43,7 +44,8 @@
       </ion-row>
       <ion-row class="actions buttons ion-text-center ion-padding-top ion-flex">
         <ion-col offset="2" size="8">
-          <ion-button expand="block" color="light" (click)="checkReady(0)">Prêt pour une autre !</ion-button>
+          <ion-button expand="block" color="light" *ngIf="!ready[0]" (click)="checkReady(0)">Prêt pour une autre !</ion-button>
+          <ion-spinner *ngIf="ready[0]" name="dots"></ion-spinner>
         </ion-col>
       </ion-row>
     </div>

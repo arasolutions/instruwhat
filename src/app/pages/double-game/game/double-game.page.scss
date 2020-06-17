@@ -258,6 +258,27 @@ ion-footer {
   transform: rotate(180deg);
 }
 
+.player-2 ion-content {
+  --background: #4995C7;
+}
+
+.player-2 ion-footer {
+  background-color: #4995C7;
+}
+
+
+.player-1 ion-content {
+  --background: #07507F;
+}
+
+.player-1 ion-footer {
+  background-color: #07507F;
+}
+
+.player{
+  background: linear-gradient(#4995C7, #07507F);
+}
+
 .player-1,
 .player-2 {
   height: 49%;

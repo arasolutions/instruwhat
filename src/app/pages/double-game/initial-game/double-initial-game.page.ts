@@ -42,7 +42,6 @@ export class DoubleInitialGamePage implements OnInit {
   checkReady(index: number): void {
     this.ready[index] = true;
     if (this.isAllReady()) {
-
       let questionnaire = this.questionnaireService.createQuestionnaireBattle(this.form);
 
       let preloadArray: any[] = new Array();

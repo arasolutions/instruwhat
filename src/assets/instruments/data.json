@@ -216,8 +216,8 @@
   },
   {
     "label": "guitare",
-    "sounds": 1,
-    "photos": 1,
+    "sounds": 4,
+    "photos": 2,
     "level": {
       "label": "Facile",
       "value": 10
@@ -288,7 +288,7 @@
   },
   {
     "label": "harmonica",
-    "sounds": 1,
+    "sounds": 4,
     "photos": 1,
     "level": {
       "label": "Facile",

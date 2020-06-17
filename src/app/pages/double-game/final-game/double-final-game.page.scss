@@ -44,6 +44,7 @@ ion-content {
   height: 4%;
   background-color: #064670;
 }
+
 .align-center {
   display: flex;
   flex-direction: column;
@@ -61,4 +62,6 @@ ion-content {
 
 .final-icon {
   display: inline-table;
+  max-width: 15%;
+  padding: 2px;
 }
