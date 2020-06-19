@@ -30,7 +30,7 @@ export class GlossaryPage implements OnInit {
     }
     this.loadAllSounds();
     this.instrumentsList = this.instruments;//
-    this.instrumentsList = this.instruments.filter((element: any) =>  element.sound.indexOf('http') != 0 );
+    this.instrumentsList = this.instruments.filter((element: any) => element.sound.indexOf('http') != 0 && element.photo.indexOf('http') != 0);
 
     this.instrumentsList.sort((a: any, b: any) => a.label.localeCompare(b.label));
   }
@@ -76,10 +76,12 @@ export class GlossaryPage implements OnInit {
     }
     this.instrumentsList = this.instruments.filter((currentInstru: any) => {
       if (currentInstru.label && searchTerm) {
-        if (currentInstru.label.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
-          return true;
+        if (currentInstru.sound.indexOf('http') != 0 && currentInstru.photo.indexOf('http') != 0) {
+          if (currentInstru.label.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+            return true;
+          }
+          return false;
         }
-        return false;
       }
     });
   }
@@ -90,8 +92,10 @@ export class GlossaryPage implements OnInit {
       this.instrumentsList = this.instruments;
     } else {
       this.instrumentsList = this.instruments.filter((currentInstru: any) => {
-        if (currentInstru.family['id'] === family) {
-          return true;
+        if (currentInstru.sound.indexOf('http') != 0 && currentInstru.photo.indexOf('http') != 0) {
+          if (currentInstru.family['id'] === family) {
+            return true;
+          }
         }
         return false;
       });
