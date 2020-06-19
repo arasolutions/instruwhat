@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-row class="title">
+    <ion-col>
+      <div class=" ion-text-center">
+        <img src="assets/icon/icon.png" />
+      </div>
+      <div class=" ion-text-center">
+        <div>Bienvenue sur Instruwhat ?</div>
+      </div>
+      <div class=" ion-text-center">
+        Le jeu qui teste tes connaissances musicales
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="choice-1" (click)="toSoloMode()">
+    <ion-col class="left-padding" size="9">
+      <h2>
+        Jouer en solo
+      </h2>
+      <p>
+        Essaye d'obtenir le plus gros score
+      </p>
+    </ion-col>
+    <ion-col size="3">
+      <ion-icon name="person-sharp"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row class="choice-2" (click)="toBattleMode()">
+    <ion-col size="3">
+      <ion-icon name="people-sharp"></ion-icon>
+    </ion-col>
+    <ion-col class="right-padding" size="9">
+      <h2>
+        Jouer en duel
+      </h2>
+      <p>
+        Affrontez-vous et ayez le plus de bonnes réponses
+      </p>
+    </ion-col>
+  </ion-row>
+  <ion-row class="choice-3" (click)="toScore()">
+    <ion-col class="left-padding" size="9">
+        <h2>Voir mes scores</h2>
+    </ion-col>
+      <ion-col size="3">
+        <ion-icon name="medal-sharp"></ion-icon>
+      </ion-col>
+  </ion-row>
+</ion-content>

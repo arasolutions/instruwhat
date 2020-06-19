@@ -12,14 +12,14 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent implements OnInit {
   public items = [
     {
-      'label': 'Jouer (solo)',
+      'label': 'Jouer en solo',
       'path': '/param-game',
-      'icon': 'play-outline'
+      'icon': 'person-outline'
     },
     {
-      'label': 'Jouer (battle)',
+      'label': 'Jouer en duel',
       'path': '/double-param-game',
-      'icon': 'swap-vertical-outline'
+      'icon': 'people-outline'
     },
     {
       'label': 'Mes scores',

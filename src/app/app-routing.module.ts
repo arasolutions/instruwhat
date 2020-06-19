@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'param-game',
+    redirectTo: 'index',
     pathMatch: 'full'
   },
   {
@@ -50,6 +50,10 @@ const routes: Routes = [
   {
     path: 'glossary',
     loadChildren: () => import('./pages/glossary/glossary.module').then( m => m.GlossaryPageModule)
+  },
+  {
+    path: 'index',
+    loadChildren: () => import('./pages/index/index.module').then( m => m.IndexPageModule)
   }
 ];
 

@@ -29,7 +29,9 @@ export class GlossaryPage implements OnInit {
       this.instruments = this.instrumentService.getInstruments();
     }
     this.loadAllSounds();
-    this.instrumentsList = this.instruments;
+    this.instrumentsList = this.instruments;//
+    this.instrumentsList = this.instruments.filter((element: any) =>  element.sound.indexOf('http') != 0 );
+
     this.instrumentsList.sort((a: any, b: any) => a.label.localeCompare(b.label));
   }
 
@@ -93,8 +95,8 @@ export class GlossaryPage implements OnInit {
         }
         return false;
       });
-      this.instrumentsList.sort((a: any, b: any) => a.label.localeCompare(b.label));
     }
+    this.instrumentsList.sort((a: any, b: any) => a.label.localeCompare(b.label));
   }
 
   ngOnInit() {
