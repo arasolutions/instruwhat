@@ -36,6 +36,15 @@ ion-range {
   padding-bottom: 0;
 }
 
-.fix-data{
-  opacity: 0
+.fix-data {
+  opacity: 0;
+}
+
+.background-icon {
+  position: absolute;
+  right: -40px;
+  margin-top: 10px;
+  opacity: 0.2;
+  color: white;
+  font-size: 10em;
 }

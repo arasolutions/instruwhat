@@ -135,7 +135,11 @@ ion-content {
 .player ion-progress-bar {
   height: 5px;
   border-radius: 5px;
-  margin-top: -2px;
+}
+
+.player ion-button {
+  height: 20px;
+  font-size: 0.6em;
 }
 
 .question {
@@ -266,7 +270,6 @@ ion-footer {
   background-color: #4995C7;
 }
 
-
 .player-1 ion-content {
   --background: #07507F;
 }
@@ -275,18 +278,18 @@ ion-footer {
   background-color: #07507F;
 }
 
-.player{
+.player {
   background: linear-gradient(#4995C7, #07507F);
 }
 
 .player-1,
 .player-2 {
-  height: 49%;
+  height: 48%;
   text-align: center;
 }
 
 .player {
-  height: 2%;
+  height: 4%;
   margin: auto;
 }
 

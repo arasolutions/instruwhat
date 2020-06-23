@@ -270,7 +270,7 @@ export class GamePage implements OnInit {
           text: 'Oui',
           handler: () => {
             this.stop();
-            this.router.navigate(['/param-game']);
+            this.router.navigate(['/index']);
           }
         }
       ]

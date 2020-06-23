@@ -1,5 +1,5 @@
 ion-content {
-  --background: #2980b9;
+  --background: #07507F;
   color: white;
 }
 
@@ -38,4 +38,13 @@ ion-range {
 
 .fix-data{
   opacity: 0
+}
+
+.background-icon {
+  position: absolute;
+  right: -40px;
+  margin-top: 10px;
+  opacity: 0.2;
+  color: white;
+  font-size: 10em;
 }

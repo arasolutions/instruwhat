@@ -28,16 +28,17 @@ export class GlossaryPage implements OnInit {
       await this.instrumentService.loadInstruments(false);
       this.instruments = this.instrumentService.getInstruments();
     }
-    this.loadAllSounds();
     this.instrumentsList = this.instruments;//
     this.instrumentsList = this.instruments.filter((element: any) => element.sound.indexOf('http') != 0 && element.photo.indexOf('http') != 0);
 
+    this.loadAllSounds();
     this.instrumentsList.sort((a: any, b: any) => a.label.localeCompare(b.label));
+
   }
 
   loadAllSounds() {
     this.files = new Array();
-    this.instruments.forEach((intru: any) => {
+    this.instrumentsList.forEach((intru: any) => {
       const uri = intru.sound;
       if (this.platform.is('android')) {
         this.files[intru.id] = this.media.create('/android_asset/public/' + uri);

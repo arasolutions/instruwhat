@@ -120,7 +120,7 @@ export class FinalGamePage implements OnInit {
 
   stopGame() {
     this.releaseAll();
-    this.router.navigate(['/param-game']);
+    this.router.navigate(['/index']);
   }
 
   releaseAll() {

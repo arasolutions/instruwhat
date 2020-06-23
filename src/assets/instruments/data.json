@@ -360,7 +360,7 @@
   },
   {
     "label": "trombone",
-    "sounds": 1,
+    "sounds": 3,
     "photos": 1,
     "level": {
       "label": "Intermédiaire",
@@ -516,7 +516,7 @@
   },
   {
     "label": "tuba",
-    "sounds": 1,
+    "sounds": 3,
     "photos": 1,
     "level": {
       "label": "Intermédiaire",
@@ -1776,7 +1776,7 @@
   },
   {
     "label": "cor des alpes",
-    "sounds": 1,
+    "sounds": 3,
     "photos": 1,
     "level": {
       "label": "Expert",
@@ -1791,7 +1791,7 @@
   },
   {
     "label": "melodica",
-    "sounds": 1,
+    "sounds": 4,
     "photos": 1,
     "level": {
       "label": "Expert",
@@ -1827,7 +1827,7 @@
   },
   {
     "label": "thérémine",
-    "sounds": 1,
+    "sounds": 4,
     "photos": 1,
     "level": {
       "label": "Intermédiaire",

@@ -66,7 +66,7 @@ export class DoubleFinalGamePage implements OnInit {
   }
 
   stopGame() {
-    this.router.navigate(['/param-game']);
+    this.router.navigate(['/index']);
   }
 
   checkReady(index: number): void {

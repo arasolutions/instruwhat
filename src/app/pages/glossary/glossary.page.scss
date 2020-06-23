@@ -3,6 +3,10 @@ ion-content {
   color: white !important;
 }
 
+ion-segment{
+    --background: #07507F;
+}
+
 ion-segment-button {
   background-color: var(--ion-color-secondary, #3dc2ff);
   color: white;

@@ -108,8 +108,16 @@ export class DoubleGamePage implements OnInit {
         // En lecture
         this.file.setVolume(0.0);
       }
-      this.askCancel();
+      this.askCancel(false);
     });
+  }
+
+  async stopGame(reversed: boolean = false) {
+    if (this.fileStatus == 2) {
+      // En lecture
+      this.file.setVolume(0.0);
+    }
+    this.askCancel(reversed);
   }
 
   load() {
@@ -323,20 +331,14 @@ export class DoubleGamePage implements OnInit {
     let firstDisabled = (question.state == QuestionState.NOT_PLAYED && this.percent > .5 && this.questionnaires[0].help && instrument.id == question.helpAnswers[0].id);
     let secondDisabled = (question.state == QuestionState.NOT_PLAYED && this.percent > .8 && this.questionnaires[0].help && instrument.id == question.helpAnswers[1].id);
 
-    /*if (firstDisabled) {
-      console.log("First : " + instrument);
-    }
-    if (secondDisabled) {
-      console.log("Second : " + instrument);
-    }*/
-
     return firstDisabled || secondDisabled;
   }
 
-  async askCancel() {
+  async askCancel(reversed: boolean = false) {
     const alert = await this.alertCtrl.create({
       header: 'Quitter',
       message: 'Tu veux vraiment quitter ?',
+      cssClass: reversed ? 'reversed' : '',
       buttons: [
         {
           text: 'Non',
@@ -349,7 +351,7 @@ export class DoubleGamePage implements OnInit {
           text: 'Oui',
           handler: () => {
             this.stop();
-            this.router.navigate(['/param-game']);
+            this.router.navigate(['/index']);
           }
         }
       ]
