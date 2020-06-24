@@ -426,7 +426,7 @@
   },
   {
     "label": "clarinette",
-    "sounds": 1,
+    "sounds": 4,
     "photos": 1,
     "level": {
       "label": "Facile",
@@ -1200,7 +1200,7 @@
   },
   {
     "label": "mandoline",
-    "sounds": 1,
+    "sounds": 4,
     "photos": 1,
     "level": {
       "label": "Intermédiaire",
@@ -1308,7 +1308,7 @@
   },
   {
     "label": "koto",
-    "sounds": 1,
+    "sounds": 4,
     "photos": 1,
     "level": {
       "label": "Expert",
@@ -1326,7 +1326,7 @@
   },
   {
     "label": "ud",
-    "sounds": 1,
+    "sounds": 4,
     "photos": 1,
     "level": {
       "label": "Expert",
@@ -1377,7 +1377,7 @@
   },
   {
     "label": "angklung",
-    "sounds": 1,
+    "sounds": 3,
     "photos": 1,
     "level": {
       "label": "Intermédiaire",
@@ -1539,7 +1539,7 @@
   },
   {
     "label": "batterie",
-    "sounds": 1,
+    "sounds": 4,
     "photos": 1,
     "level": {
       "label": "Intermédiaire",
@@ -1575,7 +1575,7 @@
   },
   {
     "label": "steel drum",
-    "sounds": 1,
+    "sounds": 4,
     "photos": 1,
     "level": {
       "label": "Expert",
@@ -1683,7 +1683,7 @@
   },
   {
     "label": "mbira",
-    "sounds": 1,
+    "sounds": 4,
     "photos": 1,
     "level": {
       "label": "Expert",
@@ -1731,7 +1731,7 @@
   },
   {
     "label": "accordéon",
-    "sounds": 1,
+    "sounds": 4,
     "photos": 1,
     "level": {
       "label": "Facile",
@@ -1746,7 +1746,7 @@
   },
   {
     "label": "concertina",
-    "sounds": 1,
+    "sounds": 4,
     "photos": 1,
     "level": {
       "label": "Intermédiaire",
@@ -1835,7 +1835,7 @@
     },
     "family": {
       "id": 7,
-      "directory": "éléctroniques",
+      "directory": "electroniques",
       "fulllabel": "Eléctroniques"
     },
     "subFamily": null
@@ -1850,7 +1850,7 @@
     },
     "family": {
       "id": 7,
-      "directory": "éléctroniques",
+      "directory": "electroniques",
       "fulllabel": "Eléctroniques"
     },
     "subFamily": null

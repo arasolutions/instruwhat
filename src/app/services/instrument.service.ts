@@ -69,7 +69,7 @@ export class InstrumentService {
   }
 
   getPhotoPath(instrument: any, index: number) {
-    let label = instrument.label.replace(/ /g, '-');
+    let label = this.replaceForbiddenChars(instrument.label);
     if (index > 1) {
       return 'https://demo.ara-solutions.com/instruwhat/' + label + index + '.png';
     }
@@ -80,7 +80,7 @@ export class InstrumentService {
   }
 
   async getSoundPath(instrument: any, index: number) {
-    let label = instrument.label.replace(/ /g, '-');
+    let label = this.replaceForbiddenChars(instrument.label);
     if (index > 1) {
       return 'https://demo.ara-solutions.com/instruwhat/' + label + index + '.mp3';
     }
@@ -208,5 +208,14 @@ export class InstrumentService {
     return urlLink;
   }
 
+  replaceForbiddenChars(str: string) {
+    let result = str.replace(/ /g, '-');
+    result = result.replace(/é/g, 'e');
+    result = result.replace(/û/g, 'u');
+    result = result.replace(/à/g, 'a');
+    result = result.replace(/ó/g, 'o');
+    result = result.replace(/ï/g, 'i');
+    return result;
+  }
 
 }
