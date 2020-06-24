@@ -7,7 +7,7 @@ export class ScorePipe implements PipeTransform {
 
   transform(value: string, ...args: any[]): any {
 
-    return value.replace(',', ' ');
+    return value.replace(',', ' ') + ' pts';
   }
 
 }

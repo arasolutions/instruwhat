@@ -14,8 +14,11 @@
     <ion-item lines="none">
       <ion-label>
         <h2>
-          <div class="ion-float-right score">
+          <div class="ion-float-left score">
             Ton score
+          </div>
+          <div class="ion-float-right score">
+            {{ questionnaire.score | number:'1.0-0' | score }}
           </div>
         </h2>
       </ion-label>
@@ -53,18 +56,6 @@
     </ion-list>
   </ion-content>
   <ion-footer id="finish-footer" collapse="condense">
-    <ion-item lines="none">
-      <ion-label>
-        <h2>
-          <div class="ion-float-left score">
-            Total
-          </div>
-          <div class="ion-float-right score">
-            {{ questionnaire.score | number:'1.0-0' | score }}
-          </div>
-        </h2>
-      </ion-label>
-    </ion-item>
     <ion-item lines="none" class="action-line">
       <ion-label>
         <h2>

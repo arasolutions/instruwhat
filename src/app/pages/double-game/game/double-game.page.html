@@ -51,14 +51,14 @@
     </div>
     <div class="player">
       <ion-row class="ion-align-items-center">
-        <ion-col size="2" *ngIf="!finished">
-          <ion-button size="small" color="light" (click)="stopGame(false)">Retour</ion-button>
+        <ion-col size="2" *ngIf="!finished" class="text-center">
+          <ion-button size="small" color="light" (click)="stopGame(false)">STOP</ion-button>
         </ion-col>
         <ion-col size="8" *ngIf="!finished">
           <ion-progress-bar [value]="percent" color="warning"></ion-progress-bar>
         </ion-col>
-        <ion-col size="2" *ngIf="!finished">
-          <ion-button size="small" color="light" class="reversed" (click)="stopGame(true)">Retour</ion-button>
+        <ion-col size="2" *ngIf="!finished" class="text-center">
+          <ion-button size="small" color="light" class="reversed" (click)="stopGame(true)">STOP</ion-button>
         </ion-col>
       </ion-row>
     </div>

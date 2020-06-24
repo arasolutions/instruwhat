@@ -140,6 +140,11 @@ ion-content {
 .player ion-button {
   height: 20px;
   font-size: 0.6em;
+  margin: 0;
+}
+
+.player ion-button button {
+  padding: 0 2px;
 }
 
 .question {
@@ -295,4 +300,8 @@ ion-footer {
 
 .instrument-block img {
   height: calc(100% - 20px);
+}
+
+.text-center {
+  text-align: center;
 }
