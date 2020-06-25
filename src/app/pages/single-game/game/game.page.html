@@ -11,7 +11,7 @@
           <div class="label-level">{{questionnaire.form.family.fulllabel}}</div>
           <div class="label-instrument">Niveau <strong>{{questionnaire.form.level.label}}</strong></div>
         </ion-col>
-        <ion-col size="3" class="ion-text-right"><strong>{{ current + 1 }} / {{ questionnaire.nbQuestions }}</strong></ion-col>
+        <ion-col size="3" class="ion-text-right" *ngIf="!finished"><strong>{{ current + 1 }} / {{ questionnaire.nbQuestions }}</strong></ion-col>
       </ion-row>
     </div>
   </ion-toolbar>
