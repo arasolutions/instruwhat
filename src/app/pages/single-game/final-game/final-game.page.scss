@@ -29,10 +29,6 @@ ion-header ion-item {
   font-size: 1.5em;
 }
 
-ion-header ion-col {
-  height: 34px;
-}
-
 ion-footer ion-item.action-line {
   --background: #022F4C;
 }
@@ -67,4 +63,22 @@ ion-footer ion-item.action-line {
 .progress ion-progress-bar {
   height: 5px;
   border-radius: 5px;
+}
+
+.with-label {
+  font-size: 12px;
+  color: white;
+}
+
+.with-label ion-icon {
+  display: block;
+  margin: 0 auto;
+  height: 32px;
+  font-size: 32px;
+}
+
+.final-score {
+  --background: #2980b9 !important;
+  height: 100px;
+  display: flex;
 }

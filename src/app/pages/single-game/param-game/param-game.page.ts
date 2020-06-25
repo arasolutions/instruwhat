@@ -31,7 +31,6 @@ export class ParamGamePage implements OnInit {
 
     this.analytics.logEvent('page_view', { page: 'ParamGame' });
 
-
     this.form = new ParamGameForm();
 
     this.families = Family.getAll();

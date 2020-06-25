@@ -90,7 +90,7 @@ export class GlossaryPage implements OnInit {
   filterSegment(evt: any) {
     const family = parseInt(evt.detail.value);
     if (family === 1) {
-      this.instrumentsList = this.instruments;
+      this.instrumentsList = this.instruments.filter((element: any) => element.sound.indexOf('http') != 0 && element.photo.indexOf('http') != 0);
     } else {
       this.instrumentsList = this.instruments.filter((currentInstru: any) => {
         if (currentInstru.sound.indexOf('http') != 0 && currentInstru.photo.indexOf('http') != 0) {

@@ -93,7 +93,7 @@ export class GamePage implements OnInit {
     const uri = this.questionsInGame[0].goodAnswer.sound;
     if (uri.indexOf('http') == 0) {
       console.log('Fichier distant');
-        console.log(uri);
+      console.log(uri);
       this.file = this.media.create(uri);
     } else {
       if (this.platform.is('android')) {
@@ -178,9 +178,33 @@ export class GamePage implements OnInit {
           }
 
           if (this.current + 1 == this.questionnaire.nbQuestions) {
+            this.slides.lockSwipeToNext(true);
             this.finished = true;
+            setTimeout(() => {
+              this.slides.lockSwipeToNext(false);
+              this.slides.slideNext();
+              this.questionnaire.updateScore();
+              //Loader
+              this.loading = 0;
+              let currentIcon = 0;
+              this.loaderIcon = this.icons[currentIcon];
+              this.intervalLoaderIcon = setInterval(() => {
+                this.loaderIcon = this.icons[currentIcon % this.icons.length];
+                currentIcon++;
+              }, 100);
+              this.intervalLoader = setInterval(() => {
+                if (this.loading >= 2000) {
+                  clearInterval(this.intervalLoader);
+                  clearInterval(this.intervalLoaderIcon);
+                  this.router.navigate(['/final-game']);
+                  return;
+                }
+                this.loading += 50;
+              }, 50);
+            }, 1500);
+          } else {
+            this.slides.lockSwipeToNext(false);
           }
-          this.slides.lockSwipeToNext(false);
         }
       }
     }
@@ -211,30 +235,9 @@ export class GamePage implements OnInit {
   onSlideWillChange() {
     this.block_action = true;
     this.stop();
-    if (this.current + 1 == this.questionnaire.nbQuestions) {
-      this.questionnaire.updateScore();
-      //Loader
-      this.loading = 0;
-      let currentIcon = 0;
-      this.loaderIcon = this.icons[currentIcon];
-      this.intervalLoaderIcon = setInterval(() => {
-        this.loaderIcon = this.icons[currentIcon % this.icons.length];
-        currentIcon++;
-      }, 100);
-      this.intervalLoader = setInterval(() => {
-        if (this.loading >= 2000) {
-          clearInterval(this.intervalLoader);
-          clearInterval(this.intervalLoaderIcon);
-          this.router.navigate(['/final-game']);
-          return;
-        }
-        this.loading += 50;
-      }, 50);
-    }
-    else {
-      this.current++;
-      this.novice = false;
-    }
+    this.current++;
+    this.novice = false;
+
   }
 
   isDisabled(instrument: any, question: any) {

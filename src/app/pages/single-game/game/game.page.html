@@ -57,7 +57,7 @@
             </div>
           </div>
         </div>
-        <div class="overlay-swipe" [class.hide]="!finished || isOverlayHidden(question)" [class.fadeIn]="finished && !overlay && !isOverlayHidden(question)" [class.fadeOut]="finished && overlay" (click)="closeOverlay()">
+        <!--<div class="overlay-swipe" [class.hide]="!finished || isOverlayHidden(question)" [class.fadeIn]="finished && !overlay && !isOverlayHidden(question)" [class.fadeOut]="finished && overlay" (click)="closeOverlay()">
           <div class="block-swipe">
             <div>
               <div class="block-swipe-text">Passe aux résultats</div>
@@ -66,7 +66,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
       </ion-content>
     </ion-slide>
     <ion-slide id="final-slide" *ngIf="finished">
